@@ -21,11 +21,12 @@ env:
 
 jobs:
 
-  release_prepare_no_maven: # prepare for a release in scm, creates the tag and release branch with the proper release versions
+  release_prepare: # prepare for a release in scm, creates the tag and release branch with the proper release versions
     name: Call release prepare
-    uses: SecureApiGateway/secure-api-gateway-parent/.github/workflows/release-prepare-no-maven.yml@master
+    uses: SecureApiGateway/secure-api-gateway-parent/.github/workflows/release-prepare.yml@master
     with:
       release_version_number: ${{ inputs.release_version_number }}
+      require_maven: false
     secrets:
       GIT_COMMIT_USERNAME_BOT: ${{ secrets.GIT_COMMIT_USERNAME_BOT }}
       GIT_COMMIT_AUTHOR_EMAIL_BOT: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL_BOT }}
@@ -33,11 +34,11 @@ jobs:
 
   release_docker:
     name: Call publish docker
-    needs: [ release_prepare_no_maven ]
+    needs: [ release_prepare ]
     uses: SecureApiGateway/secure-api-gateway-parent/.github/workflows/release-publish-docker.yml@master
     with:
       release_version_number: ${{ inputs.release_version_number }}
-      release_tag_ref: ${{ needs.release_prepare_no_maven.outputs.release_tag_ref }}
+      release_tag_ref: ${{ needs.release_prepare.outputs.release_tag_ref }}
       SERVICE_NAME: ui/rcs
       with_maven: false
       GAR_RELEASE_REPO: ${{ vars.GAR_RELEASE_REPO }}
@@ -46,11 +47,11 @@ jobs:
 
   release_helm:
     name: Call publish helm
-    needs: [ release_prepare_no_maven ]
+    needs: [ release_prepare ]
     uses: SecureApiGateway/secure-api-gateway-parent/.github/workflows/release-publish-helm.yml@master
     with:
       release_version_number: ${{ inputs.release_version_number }}
-      release_tag_ref: ${{ needs.release_prepare_no_maven.outputs.release_tag_ref }}
+      release_tag_ref: ${{ needs.release_prepare.outputs.release_tag_ref }}
       root_helm_directory: "_infra/helm/securebanking-ui"
     secrets:
       FR_ARTIFACTORY_USER_ACCESS_TOKEN: ${{ secrets.FR_ARTIFACTORY_USER_ACCESS_TOKEN }}
@@ -58,7 +59,7 @@ jobs:
 
   update_version:
     name: Update version for the next development iteration
-    needs: [ release_prepare_no_maven, release_docker, release_helm ]
+    needs: [ release_prepare, release_docker, release_helm ]
     runs-on: ubuntu-latest
     steps:
       # https://github.com/actions/checkout
@@ -92,11 +93,11 @@ jobs:
 
   release_publish:
     name: Call publish release
-    needs: [ release_prepare_no_maven, release_docker, release_helm, update_version ]
+    needs: [ release_prepare, release_docker, release_helm, update_version ]
     uses: SecureApiGateway/secure-api-gateway-parent/.github/workflows/release-publish.yml@master
     with:
       release_version_number: ${{ inputs.release_version_number }}
-      release_tag_ref: ${{ needs.release_prepare_no_maven.outputs.release_tag_ref }}
+      release_tag_ref: ${{ needs.release_prepare.outputs.release_tag_ref }}
       release_notes: ${{ inputs.notes }}
     secrets:
       release_github_token: ${{ secrets.RELEASE_PAT }}
