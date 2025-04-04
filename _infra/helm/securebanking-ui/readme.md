@@ -87,12 +87,12 @@ spec:
             - name: IDENTITY_PLATFORM_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: core-deployment-config
+                  name: ob-deployment-config
                   key: IDENTITY_PLATFORM_FQDN
             - name: IG_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: core-deployment-config
+                  name: ob-deployment-config
                   key: IG_FQDN
           resources:
             limits:
@@ -109,8 +109,8 @@ These are the environment variables declared in the `deployment.yaml`;
 |-----|---------|-------------|--------|
 | PORT | 8080 | What port does the container use |deployment.containerPort |
 | TEMPLATE | forgerock | | deployment.template |
-| IDENTITY_PLATFORM_FQDN | | iam.forgerock.financial | Custom Domain created in Cloud Instance | core-deployment-config |
-| IG_FQDN | sapig.forgerock.financial | IG DNS to be used | core-deployment-config |
+| IDENTITY_PLATFORM_FQDN | | iam.forgerock.financial | Custom Domain created in Cloud Instance | ob-deployment-config |
+| IG_FQDN | sapig.forgerock.financial | IG DNS to be used | ob-deployment-config |
 
 
 ### Values
