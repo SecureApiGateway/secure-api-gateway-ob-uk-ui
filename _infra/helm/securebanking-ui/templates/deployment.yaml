@@ -41,12 +41,12 @@ spec:
             - name: IDENTITY_PLATFORM_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: core-deployment-config
+                  name: ob-deployment-config
                   key: IDENTITY_PLATFORM_FQDN
             - name: IG_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: core-deployment-config
+                  name: ob-deployment-config
                   key: IG_FQDN
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
