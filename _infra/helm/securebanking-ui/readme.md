@@ -87,13 +87,13 @@ spec:
             - name: IDENTITY_PLATFORM_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: ob-deployment-config
+                  name: rs-sapig-deployment-config
                   key: IDENTITY_PLATFORM_FQDN
-            - name: IG_FQDN
+            - name: RS_FQDN
               valueFrom:
                 configMapKeyRef:
-                  name: ob-deployment-config
-                  key: IG_FQDN
+                  name: rs-sapig-deployment-config
+                  key: RS_FQDN
           resources:
             limits:
               cpu: 0.5
@@ -110,7 +110,7 @@ These are the environment variables declared in the `deployment.yaml`;
 | PORT | 8080 | What port does the container use |deployment.containerPort |
 | TEMPLATE | forgerock | | deployment.template |
 | IDENTITY_PLATFORM_FQDN | | iam.forgerock.financial | Custom Domain created in Cloud Instance | ob-deployment-config |
-| IG_FQDN | sapig.forgerock.financial | IG DNS to be used | ob-deployment-config |
+| RS_FQDN | sapig.forgerock.financial | IG DNS to be used | ob-deployment-config |
 
 
 ### Values
