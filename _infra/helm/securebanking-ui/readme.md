@@ -109,8 +109,8 @@ These are the environment variables declared in the `deployment.yaml`;
 |-----|---------|-------------|--------|
 | PORT | 8080 | What port does the container use |deployment.containerPort |
 | TEMPLATE | forgerock | | deployment.template |
-| IDENTITY_PLATFORM_FQDN | | iam.forgerock.financial | Custom Domain created in Cloud Instance | ob-deployment-config |
-| RS_FQDN | sapig.forgerock.financial | IG DNS to be used | ob-deployment-config |
+| IDENTITY_PLATFORM_FQDN | | iam.forgerock.financial | Custom Domain created in Cloud Instance | rs-sapig-deployment-config |
+| RS_FQDN | sapig.forgerock.financial | IG DNS to be used | rs-sapig-deployment-config |
 
 
 ### Values
