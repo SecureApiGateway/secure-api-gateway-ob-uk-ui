@@ -10,7 +10,7 @@
   - PR: -v TAG=${{ env.PR_NUMBER }} -v SERVICE_NAME=ui -v ENVIRONMENT=${{ github.actor }} -v BRANCH=${{ github.head_ref }}
   - MERGE: -v SERVICE_NAME=ui
 We need to pass the below parameters when the environment = nightly:
-  - DOMAIN "dev.forgerock.financial"
+  - DOMAIN "dev-cdk-core.forgerock.financial"
   - PLATFORM ""
     AUTHORIZATION_URL "https://iam.DOMAIN"
     AUTHENTICATION_URL "https://iam.DOMAIN"
