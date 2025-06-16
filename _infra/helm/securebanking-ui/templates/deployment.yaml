@@ -47,6 +47,6 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: rs-sapig-deployment-config
-                  key: AS_FQDN
+                  key: RS_FQDN
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
