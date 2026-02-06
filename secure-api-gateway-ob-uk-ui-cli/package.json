@@ -1,6 +1,6 @@
 {
   "name": "@secureapigateway/secure-api-gateway-ob-uk-ui-cli",
-  "version": "1.0.1",
+  "version": "5.1.2",
   "description": "Tooling necessary to build Secure API Gateway",
   "author": "forgerock.com",
   "license": "Apache-2.0",
