@@ -5,15 +5,41 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/secure-api-gateway-ob-uk-ui-rcs" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/secure-api-gateway-ob-uk-ui-rcs"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/secure-api-gateway-ob-uk-ui-common" # Location of package manifests
+    open-pull-requests-limit: 5
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "npm"
+    directory: "/secure-api-gateway-ob-uk-ui-common"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/secure-api-gateway-ob-uk-ui-cli" # Location of package manifests
+    open-pull-requests-limit: 5
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "npm"
+    directory: "/secure-api-gateway-ob-uk-ui-cli"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
