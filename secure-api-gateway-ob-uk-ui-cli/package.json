@@ -1,13 +1,13 @@
 {
   "name": "@secureapigateway/secure-api-gateway-ob-uk-ui-cli",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Tooling necessary to build Secure API Gateway",
   "author": "forgerock.com",
   "license": "Apache-2.0",
   "main": "index.js",
   "engines": {
-    "node": ">=14 <16",
-    "npm": ">=6 <8"
+    "node": ">=18",
+    "npm": ">=8"
   },
   "engineStrict": true,
   "publishConfig": {
@@ -31,13 +31,16 @@
   "dependencies": {
     "@angular/cli": "^8.3.20",
     "ejs": "^3.0.1",
-    "favicons": "^6.0.0",
+    "favicons": "~7.2.0",
     "fs-extra": "^8.1.0",
     "gzip-size": "^5.1.1",
     "html-minifier": "^4.0.0",
     "lodash": "^4.17.15",
     "merge-dirs": "^0.2.1",
     "minimist": "^1.2.5",
-    "svg2img": "^0.6.1"
+    "svg2img": "^0.9.4"
+  },
+  "overrides": {
+    "canvas": "^3.2.3"
   }
 }
