@@ -11,6 +11,9 @@ module.exports = {
   transform: { '^.+\\.js$': 'babel-jest' },
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
   moduleNameMapper: {
+    '@angular/(.*)': '<rootDir>/node_modules/@angular/$1',
+    '@secureapigateway/secure-api-gateway-ob-uk-ui-common//(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',
+    '@secureapigateway/secure-api-gateway-ob-uk-ui-common/(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',
     '@tests/(.*)': '<rootDir>/tests/$1',
     '@utils/(.*)': '<rootDir>/utils/$1',
     '@fuse/(.*)': '<rootDir>/projects/@fuse/$1',
