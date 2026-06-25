@@ -1,12 +1,12 @@
 {
   "name": "@secureapigateway/secure-api-gateway-ob-uk-ui-common",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Tooling necessary to build Secure API Gateway apps",
   "author": "forgerock.com",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=14 <16",
-    "npm": ">=6 <8"
+    "node": ">=18",
+    "npm": ">=8"
   },
   "engineStrict": true,
   "publishConfig": {
@@ -74,7 +74,7 @@
     "lodash-es": "^4.17.15",
     "ngx-clipboard": "^12.1.0",
     "ngx-color-picker": "^6.7.0",
-    "ngx-cookie": "^4.0.2",
+    "ngx-cookie": "4.0.2",
     "ngx-cookieconsent": "^2.2.3",
     "ngx-file-drop": "^5.0.0",
     "rxjs": "~6.3.3",
