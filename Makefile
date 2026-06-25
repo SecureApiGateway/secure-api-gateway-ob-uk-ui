@@ -32,12 +32,10 @@ ifndef setlatest
 	$(eval setlatest=false)
 endif
 	@if [ "${setlatest}" = "true" ]; then \
-		cd secure-api-gateway-ob-uk-ui-${service} && \
-		docker build -f projects/${service}/docker/Dockerfile -t ${repo}/securebanking/ui/${service}:${tag} -t ${repo}/securebanking/ui/${service}:${latesttagversion} . ; \
+		docker build -f secure-api-gateway-ob-uk-ui-${service}/projects/${service}/docker/Dockerfile -t ${repo}/securebanking/ui/${service}:${tag} -t ${repo}/securebanking/ui/${service}:${latesttagversion} . ; \
 		docker push ${repo}/securebanking/ui/${service} --all-tags; \
 	else \
-		cd secure-api-gateway-ob-uk-ui-${service} && \
-  	docker build -t ${repo}/securebanking/ui/${service}:${tag} -f projects/${service}/docker/Dockerfile . ; \
+		docker build -f secure-api-gateway-ob-uk-ui-${service}/projects/${service}/docker/Dockerfile -t ${repo}/securebanking/ui/${service}:${tag} . ; \
   	docker push ${repo}/securebanking/ui/${service}:${tag}; \
 	fi;
 # Helm target
