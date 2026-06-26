@@ -24,7 +24,7 @@ export interface ForgerockMainLayoutConfig {
   providers: []
 })
 export class ForgerockMainLayoutModule {
-  static forRoot(config: ForgerockMainLayoutConfig): ModuleWithProviders {
+  static forRoot(config: ForgerockMainLayoutConfig): ModuleWithProviders<ForgerockMainLayoutModule> {
     return {
       ngModule: ForgerockMainLayoutModule,
       providers: [

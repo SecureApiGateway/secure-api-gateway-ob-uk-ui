@@ -1,6 +1,7 @@
 const esModules = ['lodash-es'].join('|');
 
 module.exports = {
+  testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,

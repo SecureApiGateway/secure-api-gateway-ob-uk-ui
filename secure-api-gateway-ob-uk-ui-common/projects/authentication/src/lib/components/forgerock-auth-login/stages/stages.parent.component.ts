@@ -1,9 +1,10 @@
-import { OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { OnInit, Input, Output, EventEmitter, Directive } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ApiReponses } from '../../../models';
 import { IConfigClient } from '../../../models';
 
+@Directive()
 export class StagesParentComponent implements OnInit {
   constructor() {}
 
