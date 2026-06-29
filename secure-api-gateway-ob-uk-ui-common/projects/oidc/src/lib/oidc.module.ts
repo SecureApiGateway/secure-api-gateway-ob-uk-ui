@@ -50,7 +50,7 @@ export function getReducers() {
   ]
 })
 export class ForgerockOIDCModule {
-  static forRoot(factory: ForgerockOIDCConfigFactory): ModuleWithProviders {
+  static forRoot(factory: ForgerockOIDCConfigFactory): ModuleWithProviders<ForgerockOIDCModule> {
     return {
       ngModule: ForgerockOIDCModule,
       providers: [
