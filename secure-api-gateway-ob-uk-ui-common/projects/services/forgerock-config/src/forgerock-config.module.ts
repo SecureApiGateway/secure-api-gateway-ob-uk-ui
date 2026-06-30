@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ForgerockConfigService } from './forgerock-config.service';
@@ -7,7 +7,7 @@ import { ForgerockConfigService } from './forgerock-config.service';
   imports: [HttpClientModule]
 })
 export class ForgerockConfigModule {
-  static forRoot() {
+  static forRoot(): ModuleWithProviders<ForgerockConfigModule> {
     // include in appModule only
     return {
       ngModule: ForgerockConfigModule,

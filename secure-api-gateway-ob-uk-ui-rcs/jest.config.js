@@ -2,6 +2,7 @@ const esModules = ['lodash-es'].join('|');
 
 module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
+  testRunner: 'jest-jasmine2',
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,

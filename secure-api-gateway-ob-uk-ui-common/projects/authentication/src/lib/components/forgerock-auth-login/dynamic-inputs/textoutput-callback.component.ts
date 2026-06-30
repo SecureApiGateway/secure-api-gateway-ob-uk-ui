@@ -10,7 +10,7 @@ import { Field, ICallback } from '../../../models';
       {{ config.output[0].value }}
     </div>
     <div class="qr-wrapper">
-      <qrcode [qrdata]="qrcode" [size]="280" [level]="'L'"></qrcode>
+      <qrcode [qrdata]="qrcode" [width]="280" [errorCorrectionLevel]="'L'"></qrcode>
     </div>
   `,
   styles: [
