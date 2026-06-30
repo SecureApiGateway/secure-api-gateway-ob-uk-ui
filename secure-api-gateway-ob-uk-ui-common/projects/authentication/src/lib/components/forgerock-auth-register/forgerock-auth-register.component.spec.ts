@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ForgerockAlertModule } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/forgerock-alert';
 import { ForgerockConfirmDialogModule } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/forgerock-confirm-dialog';
 import { ForgerockCustomerLogoModule } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/forgerock-customer-logo';
 
@@ -32,6 +33,7 @@ describe('app:forgerock ForgerockAuthRegisterComponent', () => {
         TranslateModule.forRoot({}),
         NoopAnimationsModule,
         CommonModule,
+        ForgerockAlertModule,
         ForgerockConfirmDialogModule,
         FormsModule,
         ReactiveFormsModule,

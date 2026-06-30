@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/gdpr/tsconfig.lib.json",
@@ -45,7 +45,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/services/tsconfig.lib.json",
@@ -80,7 +80,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/utils/tsconfig.lib.json",
@@ -115,7 +115,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/layouts/tsconfig.lib.json",
@@ -150,7 +150,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/components/tsconfig.lib.json",
@@ -185,7 +185,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/pipes/tsconfig.lib.json",
@@ -220,7 +220,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/interceptors/tsconfig.lib.json",
@@ -255,7 +255,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/shared/tsconfig.lib.json",
@@ -290,7 +290,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/guards/tsconfig.lib.json",
@@ -325,7 +325,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/native/tsconfig.lib.json",
@@ -360,7 +360,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/authentication/tsconfig.lib.json",
@@ -395,7 +395,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "extractLicenses": true,
           "options": {
             "tsConfig": "projects/oidc/tsconfig.lib.json",
