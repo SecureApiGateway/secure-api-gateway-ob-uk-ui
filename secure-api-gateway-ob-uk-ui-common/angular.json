@@ -30,10 +30,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/gdpr/tsconfig.lib.json", "projects/gdpr/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/gdpr/**/*.ts",
+              "projects/gdpr/**/*.html"
+            ]
           }
         }
       }
@@ -65,10 +67,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/services/tsconfig.lib.json", "projects/services/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/services/**/*.ts",
+              "projects/services/**/*.html"
+            ]
           }
         }
       }
@@ -100,10 +104,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/utils/tsconfig.lib.json", "projects/utils/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/utils/**/*.ts",
+              "projects/utils/**/*.html"
+            ]
           }
         }
       }
@@ -135,10 +141,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/layouts/tsconfig.lib.json", "projects/layouts/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/layouts/**/*.ts",
+              "projects/layouts/**/*.html"
+            ]
           }
         }
       }
@@ -170,10 +178,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/components/tsconfig.lib.json", "projects/components/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/components/**/*.ts",
+              "projects/components/**/*.html"
+            ]
           }
         }
       }
@@ -205,10 +215,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/pipes/tsconfig.lib.json", "projects/pipes/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/pipes/**/*.ts",
+              "projects/pipes/**/*.html"
+            ]
           }
         }
       }
@@ -240,10 +252,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/interceptors/tsconfig.lib.json", "projects/interceptors/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/interceptors/**/*.ts",
+              "projects/interceptors/**/*.html"
+            ]
           }
         }
       }
@@ -275,10 +289,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/shared/tsconfig.lib.json", "projects/shared/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/shared/**/*.ts",
+              "projects/shared/**/*.html"
+            ]
           }
         }
       }
@@ -310,10 +326,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/guards/tsconfig.lib.json", "projects/guards/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/guards/**/*.ts",
+              "projects/guards/**/*.html"
+            ]
           }
         }
       }
@@ -345,10 +363,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/native/tsconfig.lib.json", "projects/native/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/native/**/*.ts",
+              "projects/native/**/*.html"
+            ]
           }
         }
       }
@@ -380,10 +400,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/authentication/tsconfig.lib.json", "projects/authentication/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/authentication/**/*.ts",
+              "projects/authentication/**/*.html"
+            ]
           }
         }
       }
@@ -415,10 +437,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": ["projects/oidc/tsconfig.lib.json", "projects/oidc/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/oidc/**/*.ts",
+              "projects/oidc/**/*.html"
+            ]
           }
         }
       }
