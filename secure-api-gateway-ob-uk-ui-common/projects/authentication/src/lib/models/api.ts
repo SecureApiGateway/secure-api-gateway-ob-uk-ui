@@ -4,7 +4,8 @@ interface AuthFormCallback {
   input: { name: string; value: string }[];
 }
 
-export module ApiReponses {
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace ApiReponses {
   export interface AuthLoginResponse {
     authId?: string;
     template?: string;
@@ -24,7 +25,8 @@ export module ApiReponses {
   }
 }
 
-export module ApiRequest {
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace ApiRequest {
   export interface IUserUpdateBody {
     givenName: string;
     mail: string;

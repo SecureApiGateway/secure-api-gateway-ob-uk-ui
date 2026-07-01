@@ -41,12 +41,12 @@ export class RedirectCallbackComponent implements Field, OnInit {
       });
 
       if (this.trackingCookie) {
-        var date = new Date();
+        const date = new Date();
         date.setTime(date.getTime() + 1 * 24 * 60 * 60 * 1000);
-        var pathArray = location.href.split('/');
-        var protocol = pathArray[0];
-        var host = pathArray[2];
-        var url = protocol + '//' + host;
+        const pathArray = location.href.split('/');
+        const protocol = pathArray[0];
+        const host = pathArray[2];
+        const url = protocol + '//' + host;
 
         //Rebuilding the URI to workaround AM bug: goto wasn't url encoded
         document.cookie =

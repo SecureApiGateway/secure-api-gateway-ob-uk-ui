@@ -59,6 +59,7 @@ export class ForgerockSplitFlapComponent implements OnInit, OnChanges {
 
   constructor(private _elementRef: ElementRef) {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {

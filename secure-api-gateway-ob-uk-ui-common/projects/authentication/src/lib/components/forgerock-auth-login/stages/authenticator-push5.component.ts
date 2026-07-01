@@ -10,5 +10,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class AuthenticatorPush5Component implements OnInit {
   constructor() {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 }

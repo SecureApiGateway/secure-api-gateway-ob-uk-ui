@@ -45,10 +45,13 @@ export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, 
     flip: 0
   };
   topFlipStyle = {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'transition-duration': '0'
   };
   bottomFlipStyle = {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'transition-duration': '0',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'transition-delay': '0'
   };
 

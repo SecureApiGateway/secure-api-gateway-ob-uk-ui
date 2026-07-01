@@ -23,6 +23,7 @@ import { ApiRequest } from '../../models';
     </ng-template>
   `
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ForgerockAuthPasswordContainer implements OnInit {
   user$: Observable<IUser> = this.store.pipe(select(selectUser));
   isLoading$: Observable<boolean> = this.store.pipe(select(selectIsPasswordSubmitting));

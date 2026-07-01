@@ -14,6 +14,7 @@ export class PermissionsComponent implements OnInit {
 
   constructor() {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
   getPermissionMock(name: string) {

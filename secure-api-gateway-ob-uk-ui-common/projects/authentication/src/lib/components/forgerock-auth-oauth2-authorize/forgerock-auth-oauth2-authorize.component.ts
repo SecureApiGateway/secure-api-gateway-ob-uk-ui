@@ -97,6 +97,7 @@ export class ForgerockAuthOauth2AuthorizeComponent implements OnInit {
         {
           withCredentials: true,
           headers: new HttpHeaders({
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             'Content-Type': 'application/json'
           })
         }

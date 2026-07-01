@@ -35,6 +35,7 @@ export class ConsentDevComponent implements OnInit {
   mocksDebtorAccount: any[] = [mock30, mock31,mock32,mock33,mock34,mock35,mock36,mock37];
   constructor(private cdr: ChangeDetectorRef) {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
   onFormSubmit(values: IConsentEventEmitter) {

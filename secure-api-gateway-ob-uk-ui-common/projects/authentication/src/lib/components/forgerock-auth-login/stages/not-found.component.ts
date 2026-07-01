@@ -19,5 +19,6 @@ export class NotFoundComponent implements OnInit {
   @Input() response: ApiReponses.AuthLoginResponse;
   @Output() formSubmit = new EventEmitter<any>();
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 }

@@ -42,6 +42,7 @@ export class DynamicItemComponent implements OnInit, OnChanges {
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {}
 
   ngOnChanges(changes: any) {

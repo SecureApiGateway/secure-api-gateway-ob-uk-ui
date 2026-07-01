@@ -120,7 +120,7 @@ describe('app:bank FilePaymentComponent', () => {
          "secondaryIdentification":"17508172"
       }
    ]
-};;
+};
     spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 

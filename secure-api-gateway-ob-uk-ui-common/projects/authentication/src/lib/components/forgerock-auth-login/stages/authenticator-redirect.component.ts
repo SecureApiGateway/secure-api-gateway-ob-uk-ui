@@ -25,5 +25,6 @@ export class AuthenticatorRedirectComponent extends StagesParentComponent implem
     window.location.href = redirectUrl;
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnDestroy(): void {}
 }

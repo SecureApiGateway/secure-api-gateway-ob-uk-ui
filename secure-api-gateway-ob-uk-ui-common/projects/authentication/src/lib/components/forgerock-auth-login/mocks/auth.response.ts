@@ -104,7 +104,7 @@ export const AuthenticatorPushRegistration4Response = {
         {
           name: 'message',
           value:
-            "require(['org/forgerock/openam/server/util/QRCodeReader'], function (QRCodeReader) {\n    QRCodeReader.createCode({\n        id: 'callback_1',\n        text: 'pushauth://push/forgerock:demo?a=aHR0cHM6Ly9hbS5pbnRlZy1vYi5mb3JnZXJvY2suZmluYW5jaWFsOjgwL2pzb24vdGVzdC9wdXNoL3Nucy9tZXNzYWdlP19hY3Rpb249YXV0aGVudGljYXRl&b=519387&r=aHR0cHM6Ly9hbS5pbnRlZy1vYi5mb3JnZXJvY2suZmluYW5jaWFsOjgwL2pzb24vdGVzdC9wdXNoL3Nucy9tZXNzYWdlP19hY3Rpb249cmVnaXN0ZXI&s=-EzIMv3Cc1Oqqc5p20bGwYlQSYOuYGJPtUqTKNA9eBM&c=AKgIElYuDzQJScHNTJK6gMe7nel-teswKK7JRqcjKFc&l=YW1sYmNvb2tpZT0wNQ&m=70a70297-17e4-4071-910b-6edf0b982bac1538128321635&issuer=Rm9yZ2VSb2Nr',\n        version: '20',\n        code: 'L'\n    });\n});"
+            'require([\'org/forgerock/openam/server/util/QRCodeReader\'], function (QRCodeReader) {\n    QRCodeReader.createCode({\n        id: \'callback_1\',\n        text: \'pushauth://push/forgerock:demo?a=aHR0cHM6Ly9hbS5pbnRlZy1vYi5mb3JnZXJvY2suZmluYW5jaWFsOjgwL2pzb24vdGVzdC9wdXNoL3Nucy9tZXNzYWdlP19hY3Rpb249YXV0aGVudGljYXRl&b=519387&r=aHR0cHM6Ly9hbS5pbnRlZy1vYi5mb3JnZXJvY2suZmluYW5jaWFsOjgwL2pzb24vdGVzdC9wdXNoL3Nucy9tZXNzYWdlP19hY3Rpb249cmVnaXN0ZXI&s=-EzIMv3Cc1Oqqc5p20bGwYlQSYOuYGJPtUqTKNA9eBM&c=AKgIElYuDzQJScHNTJK6gMe7nel-teswKK7JRqcjKFc&l=YW1sYmNvb2tpZT0wNQ&m=70a70297-17e4-4071-910b-6edf0b982bac1538128321635&issuer=Rm9yZ2VSb2Nr\',\n        version: \'20\',\n        code: \'L\'\n    });\n});'
         },
         { name: 'messageType', value: '4' }
       ]

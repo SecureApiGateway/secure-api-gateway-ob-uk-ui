@@ -34,10 +34,11 @@ export class AcceptComponent implements OnInit, AfterViewChecked {
     private messages: ForgerockMessagesService
   ) { }
 
-  @Output() formSubmit = new EventEmitter<String>()
+  @Output() formSubmit = new EventEmitter<string>()
 
   ngOnInit() {
     console.log("accept component")
+    // eslint-disable-next-line no-console
     console.table(this.response.decisionResponse)
     if (!this.response.decisionResponse) {
       return;

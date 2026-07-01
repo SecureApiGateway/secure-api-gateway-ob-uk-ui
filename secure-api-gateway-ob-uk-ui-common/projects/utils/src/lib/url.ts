@@ -12,11 +12,11 @@ export function encodeQueryData(data: { [key: string]: any } = {}): string {
   );
 }
 
-export function removeLeadingSlash(url: string = ''): string {
+export function removeLeadingSlash(url = ''): string {
   return url.replace(/^\/+/g, '');
 }
 
-export function replaceURLOrigin(url: string, newOrigin: string = ''): string {
+export function replaceURLOrigin(url: string, newOrigin = ''): string {
   const URLObject = new URL(url);
   return url.replace(URLObject.origin, newOrigin);
 }

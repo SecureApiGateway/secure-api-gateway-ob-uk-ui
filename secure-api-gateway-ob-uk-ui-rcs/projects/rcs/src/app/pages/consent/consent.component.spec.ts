@@ -84,6 +84,7 @@ describe('app:bank ConsentComponent', () => {
 
     expect(component.loading).toBeFalsy();
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     component.onFormSubmit();
 
@@ -101,6 +102,7 @@ describe('app:bank ConsentComponent', () => {
   });
 
   it('should not call postConsentDecision if no decisionApiUri specified', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     component.onFormSubmit();
 

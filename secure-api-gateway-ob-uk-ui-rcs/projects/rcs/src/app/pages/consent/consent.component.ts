@@ -133,6 +133,7 @@ export class ConsentComponent implements OnInit {
       .pipe(withErrorHandling)
       .subscribe(
         (data: ApiResponses.ConsentDecisionResponse) => {
+          // eslint-disable-next-line no-console
           console.table(data);
           if (data.consentJwt && data.redirectUri) {
             this.response.decisionResponse = data;
@@ -149,7 +150,7 @@ export class ConsentComponent implements OnInit {
 
   }
 
-  updateUserActions(accept: boolean = false, reject: boolean = false, cancel: boolean = false, redirectUri: string = null) {
+  updateUserActions(accept = false, reject = false, cancel = false, redirectUri: string = null) {
     if (!this.response.userActions) {
       this.response.userActions = {};
     }

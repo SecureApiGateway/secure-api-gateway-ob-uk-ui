@@ -52,6 +52,7 @@ export class ForgerockMainLayoutComponent implements OnInit, OnDestroy {
     });
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
   ngOnDestroy(): void {

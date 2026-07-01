@@ -25,6 +25,7 @@ export class ForgerockAuthApiService {
       )}/authenticate${encodeQueryData(queries)}`,
       body,
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.1'
       })
     );
@@ -35,6 +36,7 @@ export class ForgerockAuthApiService {
       `${this.configService.get('authenticationServer')}/json/sessions/?_action=logout`,
       {},
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.0'
       })
     );
@@ -67,6 +69,7 @@ export class ForgerockAuthApiService {
         realm
       )}/users/${username}`,
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.0'
       })
     );
@@ -79,6 +82,7 @@ export class ForgerockAuthApiService {
       )}/users/${username}`,
       body,
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.0'
       })
     );
@@ -91,6 +95,7 @@ export class ForgerockAuthApiService {
       )}/users/${username}?_action=changePassword`,
       body,
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.0'
       })
     );
@@ -115,6 +120,7 @@ export class ForgerockAuthApiService {
       )}/selfservice/userRegistration?_action=submitRequirements`,
       request,
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=1.0'
       })
     );
@@ -125,6 +131,7 @@ export class ForgerockAuthApiService {
       this.sessionInfoUrl,
       {},
       getDefaultHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Accept-API-Version': 'protocol=1.0,resource=2.0'
       })
     );
@@ -138,7 +145,7 @@ export class ForgerockAuthApiService {
   }
 }
 
-function prefixRealm(realm: string = ''): string {
+function prefixRealm(realm = ''): string {
   return realm[0] === '/' ? realm : `/${realm}`;
 }
 
@@ -146,6 +153,7 @@ function getDefaultHeaders(headers: { [key: string]: string } = {}) {
   return {
     withCredentials: true,
     headers: new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
       ...headers
     })

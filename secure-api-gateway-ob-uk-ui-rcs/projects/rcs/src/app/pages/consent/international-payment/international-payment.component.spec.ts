@@ -88,7 +88,7 @@ describe('app:bank InternationalPaymentComponent', () => {
          "secondaryIdentification":"17508172"
       }
    ]
-};;
+};
     spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 
@@ -114,7 +114,7 @@ describe('app:bank InternationalPaymentComponent', () => {
          "secondaryIdentification":"17508172"
       }
    ]
-};;
+};
     spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 

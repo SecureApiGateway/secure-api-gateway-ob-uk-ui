@@ -10,5 +10,6 @@ export class ConsentBoxComponent implements OnInit {
   @Input() items: Item[];
   constructor() {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 }

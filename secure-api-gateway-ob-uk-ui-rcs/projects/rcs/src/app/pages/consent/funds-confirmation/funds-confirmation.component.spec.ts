@@ -124,6 +124,7 @@ describe('app:bank FundsConfirmationComponent', () => {
   it('should emit formSubmit decision deny', () => {
 
     spyOn(component.formSubmit, 'emit');
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     component.response = responseObject
 
@@ -139,6 +140,7 @@ describe('app:bank FundsConfirmationComponent', () => {
   it('should emit formSubmit decision allow', () => {
 
     spyOn(component.formSubmit, 'emit');
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     component.response = responseObject
 

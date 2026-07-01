@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[programmaticInputFireEvent]'
 })
 export class ProgrammaticInputFireEventDirective implements OnInit {

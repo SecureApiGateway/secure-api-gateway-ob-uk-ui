@@ -54,6 +54,7 @@ export class DynamicComponent implements OnInit, OnChanges {
   dynamicTarget: ViewContainerRef;
   componentRef: ComponentRef<any>;
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
   }
 
