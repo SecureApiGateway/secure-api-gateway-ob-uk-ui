@@ -18,8 +18,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 
 import { ForgerockSharedModule } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/shared';
 import {CookieModule} from "ngx-cookie";
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<{}>>('Registered Reducers');
+export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<object>>('Registered Reducers');
 
 export function getReducers() {
   return rootReducer;

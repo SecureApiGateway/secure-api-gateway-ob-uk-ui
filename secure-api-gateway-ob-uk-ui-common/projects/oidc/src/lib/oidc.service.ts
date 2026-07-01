@@ -63,7 +63,6 @@ export function getHTTPOptions(options?: any) {
   return {
     withCredentials: true,
     headers: new HttpHeaders({
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json'
     }),
     ...options

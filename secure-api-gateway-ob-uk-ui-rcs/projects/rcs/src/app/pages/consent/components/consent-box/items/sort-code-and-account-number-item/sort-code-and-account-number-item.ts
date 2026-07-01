@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {OBCashAccount3} from "rcs/src/app/types/ob";
 
 @Component({
   selector: 'app-sort-code-and-account-number-item',
   templateUrl: './sort-code-and-account-number-item.component.html'
 })
-export class SortCodeAndAccountNumberItemComponent implements OnInit {
+export class SortCodeAndAccountNumberItemComponent {
   account: OBCashAccount3;
   cssClass: string;
   sortCodeLabel: string;
@@ -15,7 +15,4 @@ export class SortCodeAndAccountNumberItemComponent implements OnInit {
   constructor() {
   }
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {
-  }
 }

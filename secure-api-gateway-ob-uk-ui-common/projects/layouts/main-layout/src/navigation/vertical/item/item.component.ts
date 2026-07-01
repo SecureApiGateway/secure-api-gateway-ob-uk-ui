@@ -2,7 +2,6 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { IForgerockMainLayoutNavigationItem } from '../../../models';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'fuse-nav-vertical-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']

@@ -5,7 +5,6 @@ import { takeUntil } from 'rxjs/operators';
 import { ForgerockMainLayoutConfigService } from '../../../main-layout.config.service';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'fuse-nav-horizontal-collapsable',
   templateUrl: './collapsable.component.html',
   styleUrls: ['./collapsable.component.scss']

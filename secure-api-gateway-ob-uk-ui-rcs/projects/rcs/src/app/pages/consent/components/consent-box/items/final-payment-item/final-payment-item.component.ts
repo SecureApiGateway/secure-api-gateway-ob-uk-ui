@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src/app/types/ob';
 
 @Component({
   selector: 'app-final-payment-item',
   templateUrl: './final-payment-item.component.html'
 })
-export class FinalPaymentItemComponent implements OnInit {
+export class FinalPaymentItemComponent {
   finalPaymentLabel: string;
   finalPaymentDateLabel: string;
   finalPaymentAmountLabel: string;
@@ -19,6 +19,4 @@ export class FinalPaymentItemComponent implements OnInit {
 
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
@@ -26,15 +26,12 @@ import { IState } from '../../store/models';
     `
   ]
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ForgerockToolbarMenuContainer implements OnInit {
+export class ForgerockToolbarMenuContainer {
   connected$: Observable<boolean> = this.store.pipe(select(selectConnected));
   username$: Observable<string> = this.store.pipe(select(selectFullName));
 
   constructor(private store: Store<IState>) {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
 
   logout(e: Event) {
     this.store.dispatch(new LogoutRequestAction());

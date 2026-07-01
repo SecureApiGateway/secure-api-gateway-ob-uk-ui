@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -28,7 +28,7 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './mo
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ForgerockMainLayoutComponent implements OnInit, OnDestroy {
+export class ForgerockMainLayoutComponent implements OnDestroy {
   config$: Observable<IForgerockMainLayoutConfig> = this.configService.config;
   navigation$ = this.navigationService.onNavigationChanged;
   private _unsubscribeAll: Subject<any> = new Subject();
@@ -52,8 +52,6 @@ export class ForgerockMainLayoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 
   ngOnDestroy(): void {
     this._unsubscribeAll.next();

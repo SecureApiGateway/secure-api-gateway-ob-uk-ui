@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { permissionMocks } from './permissions';
 import { OBAccountPermissions } from '../../../../../src/app/types/OBAccountPermissions';
@@ -9,13 +9,11 @@ import { OBAccountPermissions } from '../../../../../src/app/types/OBAccountPerm
   styleUrls: ['./permissions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PermissionsComponent implements OnInit {
+export class PermissionsComponent {
   @Input() permissions: OBAccountPermissions[];
 
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 
   getPermissionMock(name: string) {
     return permissionMocks[name] || '';

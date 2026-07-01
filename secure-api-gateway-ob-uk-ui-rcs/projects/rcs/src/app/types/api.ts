@@ -17,7 +17,6 @@ export interface FRAccountWithBalance {
   balances: OBCashBalance1;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace ApiResponses {
   export interface ConsentDetailsResponse {
     redirectUri: string;

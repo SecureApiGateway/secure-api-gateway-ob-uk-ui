@@ -6,7 +6,6 @@ import { ForgerockMainLayoutConfigService } from '../../main-layout.config.servi
 import { IForgerockMainLayoutConfig } from '../../models';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'layout-container',
   template: `
     <ng-content></ng-content>

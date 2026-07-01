@@ -5,7 +5,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   ViewChild,
   ViewContainerRef
@@ -36,7 +35,7 @@ const log = debug('ForgerockAuthLogin:StagesComponent');
   styleUrls: ['./stages.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StagesComponent implements OnInit, OnChanges {
+export class StagesComponent implements OnChanges {
   constructor(protected route: ActivatedRoute, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   @Input() response: ApiReponses.AuthLoginResponse;
@@ -45,8 +44,6 @@ export class StagesComponent implements OnInit, OnChanges {
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 
   ngOnChanges(changes: any) {
     const authId = localStorage.getItem('AUTH_ID');

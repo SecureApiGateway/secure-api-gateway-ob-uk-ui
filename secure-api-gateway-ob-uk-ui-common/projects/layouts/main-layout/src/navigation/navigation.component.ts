@@ -10,7 +10,6 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 const log = debug('ForgerockMainLayoutNavigationComponent');
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'fuse-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],

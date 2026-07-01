@@ -43,8 +43,6 @@ export class CancelComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     console.log("cancel component")
-    // eslint-disable-next-line no-console
-    console.table(this.response.userActions.canceledByUser)
     if (this.response.userActions.canceledByUser === false) {
       this.displayError("Error canceling the consent")
     }else{

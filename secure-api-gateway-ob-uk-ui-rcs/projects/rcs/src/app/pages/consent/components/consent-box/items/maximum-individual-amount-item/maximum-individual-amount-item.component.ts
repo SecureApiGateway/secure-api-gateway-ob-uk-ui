@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MaximumIndividualAmount} from '../../../../../../../../src/app/types/ob';
 
 @Component({
   selector: 'app-maximum-individual-amount-item',
   templateUrl: './maximum-individual-amount-item.component.html'
 })
-export class MaximumIndividualAmountItemComponent implements OnInit {
+export class MaximumIndividualAmountItemComponent {
   label: string;
   amount: MaximumIndividualAmount;
 
@@ -15,6 +15,4 @@ export class MaximumIndividualAmountItemComponent implements OnInit {
 
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 }

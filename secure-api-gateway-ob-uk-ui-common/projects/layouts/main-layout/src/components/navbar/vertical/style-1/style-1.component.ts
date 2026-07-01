@@ -9,7 +9,6 @@ import { ForgerockLayoutSidebarService } from '../../../../sidebar/sidebar.servi
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'navbar-vertical-style-1',
   templateUrl: './style-1.component.html',
   styleUrls: ['./style-1.component.scss'],

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'forgerock-not-found',
@@ -6,9 +6,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./forgerock-not-found.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent {
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 }

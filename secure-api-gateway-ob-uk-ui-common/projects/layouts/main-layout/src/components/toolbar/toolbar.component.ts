@@ -17,7 +17,6 @@ import { IForgerockMainLayoutComponents } from '../../models';
 import { ForgerockMainLayoutComponentsToken } from '../../tokens';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']

@@ -3,7 +3,6 @@ import {
   ComponentFactoryResolver,
   Input,
   OnChanges,
-  OnInit,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -34,7 +33,7 @@ import {
   templateUrl: './dynamic-item.component.html',
   styleUrls: ['./dynamic-item.component.scss']
 })
-export class DynamicItemComponent implements OnInit, OnChanges {
+export class DynamicItemComponent implements OnChanges {
   @Input() item: Item;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -42,8 +41,6 @@ export class DynamicItemComponent implements OnInit, OnChanges {
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
 
   ngOnChanges(changes: any) {
     if (!changes.item || !changes.item.currentValue) return;

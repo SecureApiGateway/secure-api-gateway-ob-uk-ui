@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-key-value-item',
@@ -11,13 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
   `,
   styleUrls: ['./key-value.component.scss']
 })
-export class KeyValueItemComponent implements OnInit {
+export class KeyValueItemComponent {
   @Input() key: string;
   @Input() value: string;
   @Input() cssClass: string;
 
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 }

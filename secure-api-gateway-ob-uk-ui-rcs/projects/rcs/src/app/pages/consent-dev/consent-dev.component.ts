@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import mock1 from './mocks/account-access-consent-details';
 import mock2 from './mocks/vrp-payment-consent-details';
@@ -29,14 +29,12 @@ import { IConsentEventEmitter } from '../../types/consentItem';
   styleUrls: ['./consent-dev.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ConsentDevComponent implements OnInit {
+export class ConsentDevComponent {
   loading = false;
   mocks: any[] = [mock1, mock2, mock3, mock4, mock5, mock6, mock7, mock8, mock9, mock10, mock11];
   mocksDebtorAccount: any[] = [mock30, mock31,mock32,mock33,mock34,mock35,mock36,mock37];
   constructor(private cdr: ChangeDetectorRef) {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 
   onFormSubmit(values: IConsentEventEmitter) {
     console.log(`Submitted values: ${JSON.stringify(values)}`)

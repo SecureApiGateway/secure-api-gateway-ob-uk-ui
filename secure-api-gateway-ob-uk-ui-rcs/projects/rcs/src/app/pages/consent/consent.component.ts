@@ -133,8 +133,6 @@ export class ConsentComponent implements OnInit {
       .pipe(withErrorHandling)
       .subscribe(
         (data: ApiResponses.ConsentDecisionResponse) => {
-          // eslint-disable-next-line no-console
-          console.table(data);
           if (data.consentJwt && data.redirectUri) {
             this.response.decisionResponse = data;
             this.loading = false;

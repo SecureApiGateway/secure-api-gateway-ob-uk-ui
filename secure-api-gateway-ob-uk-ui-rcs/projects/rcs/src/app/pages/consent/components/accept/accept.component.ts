@@ -38,8 +38,6 @@ export class AcceptComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     console.log("accept component")
-    // eslint-disable-next-line no-console
-    console.table(this.response.decisionResponse)
     if (!this.response.decisionResponse) {
       return;
     }

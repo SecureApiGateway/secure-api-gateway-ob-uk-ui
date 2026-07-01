@@ -5,7 +5,6 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { ForgerockMainLayoutNavigationService } from '../../../../navigation/navigation.service';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'navbar-horizontal-style-1',
   templateUrl: './style-1.component.html',
   styleUrls: ['./style-1.component.scss'],

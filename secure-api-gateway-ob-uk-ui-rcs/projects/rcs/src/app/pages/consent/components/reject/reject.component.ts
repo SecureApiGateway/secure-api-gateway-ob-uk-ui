@@ -37,8 +37,6 @@ export class RejectComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     console.log("reject component")
-    // eslint-disable-next-line no-console
-    console.table(`reject: ${this.response.decisionResponse}`);
     if (!this.response.decisionResponse) {
       return;
     }

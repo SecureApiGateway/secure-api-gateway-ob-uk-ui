@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-date-item',
   templateUrl: './date-item.component.html'
 })
-export class DateItemComponent implements OnInit {
+export class DateItemComponent {
   label: string;
   date: Date;
   cssClass: string;
@@ -13,6 +13,4 @@ export class DateItemComponent implements OnInit {
 
   constructor() {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {}
 }
