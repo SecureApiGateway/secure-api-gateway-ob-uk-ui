@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import '@angular/material/theming';
 @import 'mixins/strings';
 
 @function mat-color($palette-primary, $hue: default, $opacity: null) {
@@ -235,10 +235,10 @@
   }
 }
 
-@mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
+@mixin _mat-theme-elevation($zValue, $theme, $opacity: 0.12) {
   $foreground: map-get($theme, foreground);
   $elevation-color: map-get($foreground, elevation);
-  $elevation-color-or-default: if($elevation-color == null, $mat-elevation-color, $elevation-color);
+  $elevation-color-or-default: if($elevation-color == null, black, $elevation-color);
   @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
 }
 

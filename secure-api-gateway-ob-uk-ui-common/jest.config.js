@@ -4,7 +4,7 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
   transform: {
-    '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular'
+    '^.+\\.(ts|js|mjs|html|svg)$': ['jest-preset-angular', { stringifyContentPathRegex: '\\.(html|svg)$' }]
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
   globals: {

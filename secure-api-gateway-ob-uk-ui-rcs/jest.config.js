@@ -4,7 +4,7 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
   transform: {
-    '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular'
+    '^.+\\.(ts|js|mjs|html|svg)$': ['jest-preset-angular', { stringifyContentPathRegex: '\\.(html|svg)$' }]
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
   globals: {
@@ -16,9 +16,7 @@ module.exports = {
   },
   globalSetup: 'jest-preset-angular/global-setup',
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
-  setupFilesAfterEnv: [
-    require.resolve('@angular-builders/jest/dist/jest-config/setup.js')
-  ],
+  setupFilesAfterEnv: ['jest-preset-angular/setup-jest'],
   moduleNameMapper: {
     'lodash-es/(.*)': 'lodash/$1',
     'lodash-es': 'lodash',
