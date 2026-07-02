@@ -8,14 +8,14 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import _get from 'lodash-es/get';
 
 import { IUser } from '../../store/models';
 import { ApiRequest } from '../../models';
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
 
-export const RegistrationValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+export const RegistrationValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const newPassword = control.get('newPassword');
   const repeatPassword = control.get('repeatPassword');
 

@@ -17,6 +17,7 @@ module.exports = {
     }
   },
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
+  setupFilesAfterEnv: ['jest-preset-angular/setup-jest'],
   modulePathIgnorePatterns: ['package.json'],
   moduleNameMapper: {
     'lodash-es/(.*)': 'lodash/$1',

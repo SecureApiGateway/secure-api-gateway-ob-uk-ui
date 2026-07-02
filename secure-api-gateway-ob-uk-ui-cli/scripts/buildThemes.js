@@ -78,7 +78,7 @@ async function build(project, customer) {
       `dist/${customer}`,
       "--extra-webpack-config",
       "webpack.extra.js",
-      ...(customer === PRINCIPAL_THEME ? ["--statsJson"] : [])
+      ...(customer === PRINCIPAL_THEME ? ["--stats-json"] : [])
     ]);
     await postBuild(project, customer);
   } catch (error) {
