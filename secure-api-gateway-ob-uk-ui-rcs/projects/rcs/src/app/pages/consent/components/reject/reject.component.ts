@@ -33,11 +33,10 @@ export class RejectComponent implements OnInit, AfterViewChecked {
     private messages: ForgerockMessagesService
   ) { }
 
-  @Output() formSubmit = new EventEmitter<String>()
+  @Output() formSubmit = new EventEmitter<string>()
 
   ngOnInit() {
     console.log("reject component")
-    console.table(`reject: ${this.response.decisionResponse}`);
     if (!this.response.decisionResponse) {
       return;
     }

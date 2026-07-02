@@ -4,7 +4,7 @@ interface AuthFormCallback {
   input: { name: string; value: string }[];
 }
 
-export module ApiReponses {
+export namespace ApiReponses {
   export interface AuthLoginResponse {
     authId?: string;
     template?: string;
@@ -24,7 +24,7 @@ export module ApiReponses {
   }
 }
 
-export module ApiRequest {
+export namespace ApiRequest {
   export interface IUserUpdateBody {
     givenName: string;
     mail: string;

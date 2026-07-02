@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
@@ -26,13 +26,12 @@ import { IState } from '../../store/models';
     `
   ]
 })
-export class ForgerockToolbarMenuContainer implements OnInit {
+export class ForgerockToolbarMenuContainer {
   connected$: Observable<boolean> = this.store.pipe(select(selectConnected));
   username$: Observable<string> = this.store.pipe(select(selectFullName));
 
   constructor(private store: Store<IState>) {}
 
-  ngOnInit(): void {}
 
   logout(e: Event) {
     this.store.dispatch(new LogoutRequestAction());

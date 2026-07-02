@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import _get from 'lodash-es/get';
 
@@ -15,7 +15,7 @@ import { StagesParentComponent } from './stages.parent.component';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthenticatorRedirectComponent extends StagesParentComponent implements OnInit, OnDestroy {
+export class AuthenticatorRedirectComponent extends StagesParentComponent implements OnInit {
   polling: Subscription;
 
   ngOnInit(): void {
@@ -25,5 +25,4 @@ export class AuthenticatorRedirectComponent extends StagesParentComponent implem
     window.location.href = redirectUrl;
   }
 
-  ngOnDestroy(): void {}
 }

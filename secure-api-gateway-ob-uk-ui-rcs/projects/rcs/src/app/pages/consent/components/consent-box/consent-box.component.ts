@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from '../../../../../../src/app/types/consentItem';
 
 @Component({
@@ -6,9 +6,8 @@ import { Item } from '../../../../../../src/app/types/consentItem';
   templateUrl: './consent-box.component.html',
   styleUrls: ['./consent-box.component.scss']
 })
-export class ConsentBoxComponent implements OnInit {
+export class ConsentBoxComponent {
   @Input() items: Item[];
   constructor() {}
 
-  ngOnInit() {}
 }

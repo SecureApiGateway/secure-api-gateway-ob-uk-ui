@@ -7,7 +7,6 @@ import { ForgerockMainLayoutNavigationService } from '../../navigation.service';
 import { IForgerockMainLayoutNavigationItem } from '../../../models';
 
 @Component({
-  // tslint:disable-next-line
   selector: 'fuse-nav-vertical-collapsable',
   templateUrl: './collapsable.component.html',
   styleUrls: ['./collapsable.component.scss']

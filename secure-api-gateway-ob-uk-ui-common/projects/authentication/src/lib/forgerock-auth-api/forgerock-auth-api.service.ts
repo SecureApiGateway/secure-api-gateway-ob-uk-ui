@@ -138,7 +138,7 @@ export class ForgerockAuthApiService {
   }
 }
 
-function prefixRealm(realm: string = ''): string {
+function prefixRealm(realm = ''): string {
   return realm[0] === '/' ? realm : `/${realm}`;
 }
 

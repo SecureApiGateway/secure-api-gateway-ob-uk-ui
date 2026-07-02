@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'forgerock-gdpr-denied-page',
@@ -26,8 +26,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ForgerockGDPRPageComponent implements OnInit {
+export class ForgerockGDPRPageComponent {
   constructor() {}
 
-  ngOnInit() {}
 }

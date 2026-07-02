@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src/app/types/ob';
 
 @Component({
   selector: 'app-instructed-amount-item',
   templateUrl: './instructed-amount-item.component.html'
 })
-export class InstructedAmountItemComponent implements OnInit {
+export class InstructedAmountItemComponent {
   label: string;
   amount: OBActiveOrHistoricCurrencyAndAmount;
 
@@ -15,5 +15,4 @@ export class InstructedAmountItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
 }

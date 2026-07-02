@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src/app/types/ob';
 import { Rate } from '../../../../../../../../src/app/types/api';
 
@@ -7,7 +7,7 @@ import { Rate } from '../../../../../../../../src/app/types/api';
   templateUrl: './rate-amount-item.component.html',
   styleUrls: ['./rate-amount-item.component.scss']
 })
-export class RateAmountItemComponent implements OnInit {
+export class RateAmountItemComponent {
   payload: any;
 
   amount: OBActiveOrHistoricCurrencyAndAmount;
@@ -17,7 +17,6 @@ export class RateAmountItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
 
   amountInOtherCurrent(amount: OBActiveOrHistoricCurrencyAndAmount, rate: number, currencyOfTransfer: string) {
     const toOtherCurrencyAmount = new OBActiveOrHistoricCurrencyAndAmount();

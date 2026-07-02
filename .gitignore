@@ -103,3 +103,5 @@ dist
 /securebanking-cli-ui/themes/
 .mongo
 .idea
+
+.polaris/

@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["@typescript-eslint", "@angular-eslint"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/array-type": "off",
+        "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "no-fallthrough": "error",
+        "no-restricted-imports": ["error", "rxjs/Rx"],
+        "quotes": ["warn", "single"],
+        "no-console": ["warn", { "allow": ["log", "warn", "error"] }],
+        "@typescript-eslint/member-ordering": "warn",
+        "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Component", "Container"] }],
+        "@angular-eslint/directive-class-suffix": "error",
+        "@angular-eslint/no-output-on-prefix": "error",
+        "@angular-eslint/no-input-rename": "error",
+        "@angular-eslint/no-output-rename": "error",
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "@angular-eslint/use-pipe-transform-interface": "error",
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": ["lib", "forgerock", "app"],
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": ["lib", "forgerock", "app"],
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+          },
+          {
+            "selector": "objectLiteralProperty",
+            "modifiers": ["requiresQuotes"],
+            "format": null
+          }
+        ]
+      }
+    },
+    {
+      "files": ["projects/layouts/main-layout/**/*.ts"],
+      "rules": {
+        "@angular-eslint/component-selector": "off"
+      }
+    },
+    {
+      "files": ["projects/authentication/src/lib/components/forgerock-auth-login/directives/**/*.ts"],
+      "rules": {
+        "@angular-eslint/directive-selector": "off"
+      }
+    },
+    {
+      "files": ["**/*.html"],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": ["@angular-eslint/template"],
+      "extends": ["plugin:@angular-eslint/template/recommended"]
+    }
+  ]
+}

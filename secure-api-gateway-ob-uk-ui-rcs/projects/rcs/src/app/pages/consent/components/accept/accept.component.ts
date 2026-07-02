@@ -34,11 +34,10 @@ export class AcceptComponent implements OnInit, AfterViewChecked {
     private messages: ForgerockMessagesService
   ) { }
 
-  @Output() formSubmit = new EventEmitter<String>()
+  @Output() formSubmit = new EventEmitter<string>()
 
   ngOnInit() {
     console.log("accept component")
-    console.table(this.response.decisionResponse)
     if (!this.response.decisionResponse) {
       return;
     }

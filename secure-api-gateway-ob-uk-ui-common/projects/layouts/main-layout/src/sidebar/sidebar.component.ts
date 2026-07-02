@@ -14,7 +14,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -80,7 +80,7 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
     private _fuseConfigService: ForgerockMainLayoutConfigService,
     private _fuseMatchMediaService: ForegerockLayoutMatchMediaService,
     private _fuseSidebarService: ForgerockLayoutSidebarService,
-    private _observableMedia: ObservableMedia,
+    private _observableMedia: MediaObserver,
     private _renderer: Renderer2
   ) {
     this.foldedAutoTriggerOnHover = true;

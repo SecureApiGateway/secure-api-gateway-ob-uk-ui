@@ -17,7 +17,7 @@ export interface FRAccountWithBalance {
   balances: OBCashBalance1;
 }
 
-export module ApiResponses {
+export namespace ApiResponses {
   export interface ConsentDetailsResponse {
     redirectUri: string;
     decisionApiUri: string;

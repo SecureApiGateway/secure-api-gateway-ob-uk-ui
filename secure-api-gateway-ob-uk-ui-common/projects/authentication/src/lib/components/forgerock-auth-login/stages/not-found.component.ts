@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 import { ApiReponses } from '../../../models';
 
@@ -13,11 +13,10 @@ import { ApiReponses } from '../../../models';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent {
   constructor() {}
 
   @Input() response: ApiReponses.AuthLoginResponse;
   @Output() formSubmit = new EventEmitter<any>();
 
-  ngOnInit() {}
 }

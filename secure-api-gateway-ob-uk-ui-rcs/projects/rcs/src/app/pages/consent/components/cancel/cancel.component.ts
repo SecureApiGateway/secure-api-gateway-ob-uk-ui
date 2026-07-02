@@ -39,11 +39,10 @@ export class CancelComponent implements OnInit, AfterViewChecked {
   ) {
   }
 
-  @Output() formSubmit = new EventEmitter<String>()
+  @Output() formSubmit = new EventEmitter<string>()
 
   ngOnInit() {
     console.log("cancel component")
-    console.table(this.response.userActions.canceledByUser)
     if (this.response.userActions.canceledByUser === false) {
       this.displayError("Error canceling the consent")
     }else{

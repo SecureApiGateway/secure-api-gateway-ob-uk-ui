@@ -1,15 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'forgerock-auth-profile',
   templateUrl: './forgerock-auth-profile.component.html',
   styleUrls: ['./forgerock-auth-profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   @Input() username: string;
   @Input() userFullName: string;
 
   constructor() {}
 
-  ngOnInit() {}
 }

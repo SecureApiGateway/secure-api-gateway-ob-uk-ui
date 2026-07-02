@@ -6,7 +6,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   ViewChild,
   ViewContainerRef,
@@ -42,7 +41,7 @@ const log = debug('consent:DynamicComponent');
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class DynamicComponent implements OnInit, OnChanges {
+export class DynamicComponent implements OnChanges {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
@@ -53,9 +52,6 @@ export class DynamicComponent implements OnInit, OnChanges {
   @ViewChild('dynamicTarget', {read: ViewContainerRef, static: true})
   dynamicTarget: ViewContainerRef;
   componentRef: ComponentRef<any>;
-
-  ngOnInit() {
-  }
 
   ngOnChanges(changes: any) {
     if (this.response.userActions?.acceptedByUser) {

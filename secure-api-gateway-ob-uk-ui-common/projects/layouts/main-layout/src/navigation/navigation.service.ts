@@ -107,7 +107,7 @@ export class ForgerockMainLayoutNavigationService {
 
   getCurrentNavigation(): any {
     if (!this._currentNavigationKey) {
-      console.warn(`The current navigation is not set.`);
+      console.warn('The current navigation is not set.');
 
       return;
     }

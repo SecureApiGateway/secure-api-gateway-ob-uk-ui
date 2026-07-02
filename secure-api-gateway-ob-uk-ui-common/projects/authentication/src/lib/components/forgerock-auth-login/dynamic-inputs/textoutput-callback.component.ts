@@ -33,7 +33,7 @@ export class TextOutputCallbackComponent implements Field, OnInit {
   constructor() {}
 
   ngOnInit() {
-    const qrcode = this.config.output[0].value.match(`(pushauth:[^']*)`);
+    const qrcode = this.config.output[0].value.match('(pushauth:[^\']*)');
     if (qrcode) {
       this.qrcode = qrcode[1];
     }

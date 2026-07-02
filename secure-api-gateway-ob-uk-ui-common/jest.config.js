@@ -1,8 +1,12 @@
-const esModules = ['lodash-es'].join('|');
-
 module.exports = {
+  preset: 'jest-preset-angular',
+  resolver: 'jest-preset-angular/build/resolvers/ng-jest-resolver.js',
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
+  transform: {
+    '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,

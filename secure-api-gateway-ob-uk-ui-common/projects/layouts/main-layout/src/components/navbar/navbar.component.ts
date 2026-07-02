@@ -6,7 +6,6 @@ import { ForgerockMainLayoutConfigService } from '../../main-layout.config.servi
 import { IForgerockMainLayoutConfig } from '../../models';
 
 @Component({
-  // tslint:disable-next-line
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],

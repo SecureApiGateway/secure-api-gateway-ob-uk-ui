@@ -9,7 +9,7 @@ import { ForgerockOIDCConfig } from './oidc.module';
 const log = debug('ApiService');
 
 export interface ExchangeCodeResponse {
-  originalRequest: String;
+  originalRequest: string;
 }
 
 @Injectable({

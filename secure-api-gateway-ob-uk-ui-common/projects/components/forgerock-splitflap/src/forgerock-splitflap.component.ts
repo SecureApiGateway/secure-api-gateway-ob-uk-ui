@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   ChangeDetectionStrategy,
   OnChanges,
@@ -48,7 +47,7 @@ const characterSizes: { [key in ISplitflapSizes]: number } = {
   styleUrls: ['./forgerock-splitflap.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ForgerockSplitFlapComponent implements OnInit, OnChanges {
+export class ForgerockSplitFlapComponent implements OnChanges {
   @Input() value = '';
   @Input() autoSize: boolean;
   @HostBinding('class') @Input() size: ISplitflapSizes;
@@ -59,7 +58,6 @@ export class ForgerockSplitFlapComponent implements OnInit, OnChanges {
 
   constructor(private _elementRef: ElementRef) {}
 
-  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.value) {

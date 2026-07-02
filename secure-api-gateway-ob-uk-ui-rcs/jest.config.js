@@ -1,18 +1,22 @@
-const esModules = ['lodash-es'].join('|');
-
 module.exports = {
+  preset: 'jest-preset-angular',
+  resolver: 'jest-preset-angular/build/resolvers/ng-jest-resolver.js',
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
+  transform: {
+    '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,
       isolatedModules: true
     }
   },
-  transformIgnorePatterns: [`node_modules/(?!${esModules})`],
-  transform: { '^.+\\.js$': 'babel-jest' },
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
   moduleNameMapper: {
+    'lodash-es/(.*)': 'lodash/$1',
+    'lodash-es': 'lodash',
     '@angular/(.*)': '<rootDir>/node_modules/@angular/$1',
     '@secureapigateway/secure-api-gateway-ob-uk-ui-common//(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',
     '@secureapigateway/secure-api-gateway-ob-uk-ui-common/(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',

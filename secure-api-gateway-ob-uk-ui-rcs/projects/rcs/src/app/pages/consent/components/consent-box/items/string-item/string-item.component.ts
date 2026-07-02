@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-string-item',
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
     ></app-key-value-item>
   `
 })
-export class StringItemComponent implements OnInit {
+export class StringItemComponent {
   @Input() payload: {
     label?: string;
     cssClass?: string;
@@ -20,5 +20,4 @@ export class StringItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
 }

@@ -32,7 +32,7 @@ export class AuthenticatorPush4Component extends StagesParentComponent implement
     super.ngOnInit();
   }
 
-  getSanitizedMailto(url: string = '') {
+  getSanitizedMailto(url = '') {
     return this.sanitizer.bypassSecurityTrustUrl(`mailto:${this.client.adminContact}`);
   }
 }

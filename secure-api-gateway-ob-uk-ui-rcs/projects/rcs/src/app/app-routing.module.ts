@@ -23,11 +23,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'consent',
-        loadChildren: 'rcs/src/app/pages/consent/consent.module#ConsentModule'
+        loadChildren: () => import('rcs/src/app/pages/consent/consent.module').then(m => m.ConsentModule)
       },
       {
         path: 'dev/consent',
-        loadChildren: 'rcs/src/app/pages/consent-dev/consent-dev.module#ConsentDevModule'
+        loadChildren: () => import('rcs/src/app/pages/consent-dev/consent-dev.module').then(m => m.ConsentDevModule)
       },
       {
         path: '404',

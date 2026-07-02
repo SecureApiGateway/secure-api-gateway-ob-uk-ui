@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Rate } from '../../../../../../../../src/app/types/api';
 
 @Component({
   selector: 'app-exchange-rate-item',
   templateUrl: './exchange-rate-item.component.html'
 })
-export class ExchangeRateItemComponent implements OnInit {
+export class ExchangeRateItemComponent {
   payload: {
     label: string;
     rate: Rate;
@@ -16,5 +16,4 @@ export class ExchangeRateItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
 }

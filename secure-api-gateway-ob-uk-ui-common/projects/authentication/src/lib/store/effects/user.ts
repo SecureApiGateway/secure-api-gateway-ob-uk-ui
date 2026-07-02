@@ -29,7 +29,7 @@ export class UserEffects {
     mergeMap(([action, session]: [IAction, ISession]) => {
       if (!session) {
         return throwError({
-          message: "session is missing, can't get user's profile"
+          message: 'session is missing, can\'t get user\'s profile'
         });
       }
       return this.api.getUserProfile(session.realm, session.username).pipe(
