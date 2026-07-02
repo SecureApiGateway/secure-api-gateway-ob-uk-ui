@@ -1,6 +1,6 @@
 module.exports = {
   preset: 'jest-preset-angular',
-  resolver: 'jest-preset-angular/build/resolvers/ng-jest-resolver.js',
+  resolver: '<rootDir>/jest.resolver.js',
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
   transform: {
@@ -10,14 +10,18 @@ module.exports = {
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,
-      isolatedModules: true
+      isolatedModules: true,
+      tsconfig: '<rootDir>/projects/rcs/tsconfig.spec.json'
     }
   },
+  globalSetup: 'jest-preset-angular/global-setup',
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
+  setupFilesAfterEnv: [
+    require.resolve('@angular-builders/jest/dist/jest-config/setup.js')
+  ],
   moduleNameMapper: {
     'lodash-es/(.*)': 'lodash/$1',
     'lodash-es': 'lodash',
-    '@angular/(.*)': '<rootDir>/node_modules/@angular/$1',
     '@secureapigateway/secure-api-gateway-ob-uk-ui-common//(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',
     '@secureapigateway/secure-api-gateway-ob-uk-ui-common/(.*)': '<rootDir>/../secure-api-gateway-ob-uk-ui-common/dist/$1',
     '@tests/(.*)': '<rootDir>/tests/$1',

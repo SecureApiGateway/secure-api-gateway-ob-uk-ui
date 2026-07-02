@@ -33,7 +33,7 @@ module.exports = async function run() {
       `dist/${theme}`,
       "--extra-webpack-config",
       "webpack.extra.js",
-      "--statsJson"
+      "--stats-json"
     ]);
 
     const distAppPath = path.join(PACKAGE_ROOT, `dist/${options.theme}`);
