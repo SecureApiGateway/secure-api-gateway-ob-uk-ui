@@ -6,8 +6,6 @@ COPY secure-api-gateway-ob-uk-ui-common/ /src/secure-api-gateway-ob-uk-ui-common
 COPY secure-api-gateway-ob-uk-ui-cli/ /src/secure-api-gateway-ob-uk-ui-cli/
 COPY secure-api-gateway-ob-uk-ui-rcs/ /src/secure-api-gateway-ob-uk-ui-rcs/
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
-
 RUN cd /src/secure-api-gateway-ob-uk-ui-common && npm ci --legacy-peer-deps && npm run build
 RUN cd /src/secure-api-gateway-ob-uk-ui-cli && npm ci
 RUN cd /src/secure-api-gateway-ob-uk-ui-rcs && NG_CLI_ANALYTICS=ci npm ci --legacy-peer-deps && npm run build.rcs.themes
