@@ -68,19 +68,5 @@ import { NotFoundComponent } from './not-found.component';
     ProgrammaticInputFireEventDirective,
     ExchanceCodeComponent
   ],
-  entryComponents: [
-    DataStore1Component,
-    UnknownStageComponent,
-    AuthenticatorPush3Component,
-    AuthenticatorPush4Component,
-    AuthenticatorPush5Component,
-    AuthenticatorPushRegistration2Component,
-    AuthenticatorPushRegistration3Component,
-    AuthenticatorPushRegistration4Component,
-    AuthenticatorPushRegistration5Component,
-    AuthenticatorRedirectComponent,
-    NotFoundComponent,
-    ExchanceCodeComponent
-  ]
 })
 export class LoginDynamicStagesModule {}

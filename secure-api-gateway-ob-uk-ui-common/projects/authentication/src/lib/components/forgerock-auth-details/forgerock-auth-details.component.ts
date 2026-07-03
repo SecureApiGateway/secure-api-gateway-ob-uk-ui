@@ -23,12 +23,14 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 })
 export class ForgerockAuthDetailsComponent implements OnInit, OnChanges {
   formGroup: FormGroup;
-  isDisabled: boolean = this.configService.get('featureFlags.disableProfileForm', false);
+  isDisabled: boolean;
   @Input() user: IUser;
   @Input() isLoading = false;
   @Output() formSubmit = new EventEmitter<ApiRequest.IUserUpdateBody>();
 
-  constructor(private configService: ForgerockConfigService) {}
+  constructor(private configService: ForgerockConfigService) {
+    this.isDisabled = this.configService.get('featureFlags.disableProfileForm', false);
+  }
 
   ngOnInit() {
     const givenName = _get(this.user, 'givenName[0]', '');

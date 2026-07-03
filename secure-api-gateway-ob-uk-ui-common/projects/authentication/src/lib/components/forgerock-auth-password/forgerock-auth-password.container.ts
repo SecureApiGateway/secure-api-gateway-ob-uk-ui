@@ -24,10 +24,13 @@ import { ApiRequest } from '../../models';
   `
 })
 export class ForgerockAuthPasswordContainer implements OnInit {
-  user$: Observable<IUser> = this.store.pipe(select(selectUser));
-  isLoading$: Observable<boolean> = this.store.pipe(select(selectIsPasswordSubmitting));
+  user$: Observable<IUser>;
+  isLoading$: Observable<boolean>;
 
-  constructor(private store: Store<IState>) {}
+  constructor(private store: Store<IState>) {
+    this.user$ = this.store.pipe(select(selectUser));
+    this.isLoading$ = this.store.pipe(select(selectIsPasswordSubmitting));
+  }
 
   ngOnInit(): void {
     let exists;

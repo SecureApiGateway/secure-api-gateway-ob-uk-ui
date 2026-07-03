@@ -9,9 +9,11 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockDevInfoComponent implements OnInit {
-  config: any = this.configService.config;
+  config: any;
 
-  constructor(private configService: ForgerockConfigService) {}
+  constructor(private configService: ForgerockConfigService) {
+    this.config = this.configService.config;
+  }
 
   ngOnInit() {
     console.log(this.configService.config);

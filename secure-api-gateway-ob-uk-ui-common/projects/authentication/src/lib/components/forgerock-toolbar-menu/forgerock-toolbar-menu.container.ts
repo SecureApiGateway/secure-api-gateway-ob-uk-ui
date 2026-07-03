@@ -27,10 +27,13 @@ import { IState } from '../../store/models';
   ]
 })
 export class ForgerockToolbarMenuContainer {
-  connected$: Observable<boolean> = this.store.pipe(select(selectConnected));
-  username$: Observable<string> = this.store.pipe(select(selectFullName));
+  connected$: Observable<boolean>;
+  username$: Observable<string>;
 
-  constructor(private store: Store<IState>) {}
+  constructor(private store: Store<IState>) {
+    this.connected$ = this.store.pipe(select(selectConnected));
+    this.username$ = this.store.pipe(select(selectFullName));
+  }
 
 
   logout(e: Event) {

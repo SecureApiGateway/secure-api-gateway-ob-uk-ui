@@ -14,7 +14,6 @@ const declarations = [ForgerockToolbarMenuComponent, ForgerockToolbarMenuContain
 
 @NgModule({
   declarations,
-  entryComponents: declarations,
   imports: [
     CommonModule,
     RouterModule,

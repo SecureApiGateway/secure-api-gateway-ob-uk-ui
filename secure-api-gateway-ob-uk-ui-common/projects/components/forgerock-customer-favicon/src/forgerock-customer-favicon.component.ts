@@ -17,7 +17,7 @@ import { ForgerockCustomerSVGComponent } from '@secureapigateway/secure-api-gate
 })
 export class ForgerockCustomerFaviconComponent extends ForgerockCustomerSVGComponent implements OnInit {
   defaultImgSrc = './assets/favicons/safari-pinned-tab.svg';
-  svg$: Observable<SafeHtml>;
+  declare svg$: Observable<SafeHtml>;
   // stream$: Observable<string> = this.store.pipe(select(selectors.selectFavicon));
   stream$: Observable<string> = of('');
   @Input() width: number | string = 32;

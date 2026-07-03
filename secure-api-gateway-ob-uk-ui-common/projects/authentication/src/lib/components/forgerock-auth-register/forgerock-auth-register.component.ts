@@ -30,7 +30,7 @@ function validateLowercase(c: FormControl) {
 })
 export class ForgerockAuthRegisterComponent implements OnInit {
   formGroup: FormGroup;
-  disableRegistration: boolean = this.configService.get('featureFlags.disableRegistration', false);
+  disableRegistration: boolean;
 
   constructor(
     private api: ForgerockAuthApiService,
@@ -40,7 +40,9 @@ export class ForgerockAuthRegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private configService: ForgerockConfigService
-  ) {}
+  ) {
+    this.disableRegistration = this.configService.get('featureFlags.disableRegistration', false);
+  }
 
   ngOnInit() {
     this.formGroup = new FormGroup({

@@ -29,8 +29,8 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './mo
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockMainLayoutComponent implements OnDestroy {
-  config$: Observable<IForgerockMainLayoutConfig> = this.configService.config;
-  navigation$ = this.navigationService.onNavigationChanged;
+  config$: Observable<IForgerockMainLayoutConfig>;
+  navigation$: Observable<{ key: string; navigation: IForgerockMainLayoutNavigation[] }>;
   private _unsubscribeAll: Subject<any> = new Subject();
   private latestPathnameClass = '';
 
@@ -40,6 +40,8 @@ export class ForgerockMainLayoutComponent implements OnDestroy {
     private router: Router,
     @Inject(DOCUMENT) private document: any
   ) {
+    this.config$ = this.configService.config;
+    this.navigation$ = this.navigationService.onNavigationChanged;
     this.router.events.pipe(takeUntil(this._unsubscribeAll)).subscribe(val => {
       if (val instanceof NavigationEnd) {
         const pathnameClass = _kebabCase(window.location.pathname) || 'root';

@@ -40,12 +40,14 @@ export const RegistrationValidator: ValidatorFn = (control: AbstractControl): Va
 })
 export class ForgerockAuthPasswordComponent implements OnInit, OnChanges {
   formGroup: FormGroup;
-  isDisabled: boolean = this.configService.get('featureFlags.disablePasswordForm', false);
+  isDisabled: boolean;
   @Input() user: IUser;
   @Input() isLoading = false;
   @Output() formSubmit = new EventEmitter<ApiRequest.IUserPasswordUpdateBody>();
 
-  constructor(private configService: ForgerockConfigService) {}
+  constructor(private configService: ForgerockConfigService) {
+    this.isDisabled = this.configService.get('featureFlags.disablePasswordForm', false);
+  }
 
   ngOnInit() {
     this.formGroup = new FormGroup(
