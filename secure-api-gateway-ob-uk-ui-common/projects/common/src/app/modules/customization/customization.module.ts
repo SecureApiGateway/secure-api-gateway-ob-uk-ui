@@ -77,7 +77,7 @@ export function getCustomReducers() {
   ]
 })
 export class ForgerockCustomizationModule {
-  static forRoot(config: ForgerockCustomizationFactory): ModuleWithProviders<any> {
+  static forRoot(config: ForgerockCustomizationFactory): ModuleWithProviders<ForgerockCustomizationModule> {
     return {
       ngModule: ForgerockCustomizationModule,
       providers: [

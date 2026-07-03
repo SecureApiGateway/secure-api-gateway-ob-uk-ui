@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentFactoryResolver,
   Input,
   OnChanges,
   ViewChild,
@@ -36,7 +35,7 @@ import {
 export class DynamicItemComponent implements OnChanges {
   @Input() item: Item;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor() {}
 
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
@@ -102,9 +101,8 @@ export class DynamicItemComponent implements OnChanges {
   }
 
   createComponent(componentInstance) {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentInstance);
     this.dynamicTarget.clear();
-    const componentRef = this.dynamicTarget.createComponent(componentFactory);
+    const componentRef = this.dynamicTarget.createComponent(componentInstance);
     return <any>componentRef.instance;
   }
 }

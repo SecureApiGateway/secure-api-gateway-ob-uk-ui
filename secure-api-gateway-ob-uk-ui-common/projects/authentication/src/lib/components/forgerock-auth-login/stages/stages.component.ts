@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ComponentFactoryResolver,
   EventEmitter,
   Input,
   OnChanges,
@@ -36,7 +35,7 @@ const log = debug('ForgerockAuthLogin:StagesComponent');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StagesComponent implements OnChanges {
-  constructor(protected route: ActivatedRoute, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(protected route: ActivatedRoute) {}
 
   @Input() response: ApiReponses.AuthLoginResponse;
   @Input() client: IConfigClient;
@@ -100,9 +99,8 @@ export class StagesComponent implements OnChanges {
 
   private loadComponent(componentInstance) {
     // Select, clear and inject the dynamic component with props data
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentInstance);
     this.dynamicTarget.clear();
-    const componentRef = this.dynamicTarget.createComponent(componentFactory);
+    const componentRef = this.dynamicTarget.createComponent(componentInstance);
     (<any>componentRef.instance).response = this.response;
     (<any>componentRef.instance).client = this.client;
     (<any>componentRef.instance).formSubmit = this.formSubmit;
