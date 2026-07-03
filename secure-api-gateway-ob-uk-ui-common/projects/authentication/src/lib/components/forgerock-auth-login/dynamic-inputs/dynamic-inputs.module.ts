@@ -43,16 +43,5 @@ import { FormDialogComponent } from './form-dialog.component';
     FormButtonComponent,
     FormDialogComponent
   ],
-  entryComponents: [
-    ChoiceCallbackComponent,
-    ConfirmationCallbackComponent,
-    NameCallbackComponent,
-    PasswordCallbackComponent,
-    HiddenValueCallbackComponent,
-    TextOutputCallbackComponent,
-    RedirectCallbackComponent,
-    FormButtonComponent,
-    FormDialogComponent
-  ]
 })
 export class LoginDynamicInputsModule {}

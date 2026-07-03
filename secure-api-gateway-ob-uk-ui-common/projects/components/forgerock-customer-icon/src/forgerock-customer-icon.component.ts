@@ -27,16 +27,16 @@ import { ForgerockCustomerSVGComponent } from '@secureapigateway/secure-api-gate
 })
 export class ForgerockCustomerIconComponent extends ForgerockCustomerSVGComponent implements OnInit {
   defaultImgSrc = './assets/logos/icon.svg';
-  svg$: Observable<SafeHtml>;
+  declare svg$: Observable<SafeHtml>;
   // stream$: Observable<string> = this.store.pipe(select(selectors.selectIcon));
   stream$: Observable<string> = of('');
   @HostBinding('style.width.px')
   @Input()
-  width: number | string = this.configService.get('client.iconWidth', 50);
+  declare width: number | string;
 
   @HostBinding('style.height.px')
   @Input()
-  height: number | string = this.configService.get('client.iconHeight', 50);
+  declare height: number | string;
 
   constructor(
     protected store: Store<any>,
@@ -45,5 +45,7 @@ export class ForgerockCustomerIconComponent extends ForgerockCustomerSVGComponen
     protected http: HttpClient
   ) {
     super(store, configService, sanitizer, http);
+    this.width = this.configService.get('client.iconWidth', 50);
+    this.height = this.configService.get('client.iconHeight', 50);
   }
 }

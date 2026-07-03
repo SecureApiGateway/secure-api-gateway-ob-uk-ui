@@ -54,22 +54,6 @@ import {
     AddressItemComponent,
     SortCodeAndAccountNumberItemComponent
   ],
-  entryComponents: [
-    StringItemComponent,
-    DateItemComponent,
-    InstructedAmountItemComponent,
-    MaximumIndividualAmountItemComponent,
-    FirstPaymentItemComponent,
-    NextPaymentItemComponent,
-    FinalPaymentItemComponent,
-    AccountNumberItemComponent,
-    ExchangeRateItemComponent,
-    RateAmountItemComponent,
-    DynamicItemComponent,
-    TransactionsPeriodItemComponent,
-    AddressItemComponent,
-    SortCodeAndAccountNumberItemComponent
-  ],
   exports: [ConsentBoxComponent]
 })
 export class ConsentBoxComponentModule {}

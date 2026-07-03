@@ -26,7 +26,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   connected$: Observable<boolean>;
   username$: Observable<string>;
   @Input() type: 'horizontal' | 'vertical' = 'vertical';
-  clientName: string = this.configService.get('client.name');
+  clientName: string;
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
   componentRef: ComponentRef<any>;
@@ -41,6 +41,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     private _components: IForgerockMainLayoutComponents
   ) {
     this._unsubscribeAll = new Subject();
+    this.clientName = this.configService.get('client.name');
   }
 
   /**

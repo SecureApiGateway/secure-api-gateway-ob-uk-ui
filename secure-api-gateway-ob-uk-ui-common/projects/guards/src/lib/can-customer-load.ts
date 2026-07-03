@@ -8,9 +8,11 @@ const log = debug('ForgerockCustomerCanAccessGuard');
 
 @Injectable()
 export class ForgerockCustomerCanAccessGuard implements CanLoad, CanActivate {
-  blacklist: string[] = this.configService.get('routeDenyList', []);
+  blacklist: string[];
 
-  constructor(private router: Router, private configService: ForgerockConfigService) {}
+  constructor(private router: Router, private configService: ForgerockConfigService) {
+    this.blacklist = this.configService.get('routeDenyList', []);
+  }
 
   // use on async route that we want to prevent from loading
   canLoad(route: Route): boolean {

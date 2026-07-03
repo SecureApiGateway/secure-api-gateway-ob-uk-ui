@@ -8,7 +8,6 @@ import { ForgerockConfirmDialogComponent } from './forgerock-confirm-dialog.comp
 @NgModule({
   imports: [CommonModule, MatDialogModule, MatButtonModule],
   declarations: [ForgerockConfirmDialogComponent],
-  entryComponents: [ForgerockConfirmDialogComponent],
   exports: [MatDialogModule, MatButtonModule]
 })
 export class ForgerockConfirmDialogModule {}

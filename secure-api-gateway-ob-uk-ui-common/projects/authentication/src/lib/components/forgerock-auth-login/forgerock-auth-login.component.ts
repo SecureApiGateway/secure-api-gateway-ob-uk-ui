@@ -36,8 +36,8 @@ const log = debug('ForgerockAuthLogin:ForgerockAuthLoginComponent');
 export class ForgerockAuthLoginComponent implements OnInit {
   response: ApiReponses.AuthLoginResponse;
   error: Error;
-  client: IConfigClient = this.configService.get('client');
-  disableRegistration: boolean = this.configService.get('featureFlags.disableRegistration', false);
+  client: IConfigClient;
+  disableRegistration: boolean;
 
   constructor(
     private api: ForgerockAuthApiService,
@@ -45,7 +45,10 @@ export class ForgerockAuthLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private messages: ForgerockMessagesService,
     private configService: ForgerockConfigService
-  ) {}
+  ) {
+    this.client = this.configService.get('client');
+    this.disableRegistration = this.configService.get('featureFlags.disableRegistration', false);
+  }
 
   ngOnInit() {
     // Get initial empty form

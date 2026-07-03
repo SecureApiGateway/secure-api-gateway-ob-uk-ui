@@ -18,7 +18,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
   fuseConfig: any;
   // fusePerfectScrollbarUpdateTimeout: any;
   navigation: any;
-  clientName: string = this.configService.get('client.name');
+  clientName: string;
 
   // private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
   private _unsubscribeAll: Subject<any>;
@@ -31,6 +31,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
     private configService: ForgerockConfigService
   ) {
     this._unsubscribeAll = new Subject();
+    this.clientName = this.configService.get('client.name');
   }
   /**
    * On init

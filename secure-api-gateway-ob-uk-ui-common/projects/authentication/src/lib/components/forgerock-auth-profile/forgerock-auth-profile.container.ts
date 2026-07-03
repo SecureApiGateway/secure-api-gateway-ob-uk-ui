@@ -16,10 +16,13 @@ import { first } from 'rxjs/operators';
   `
 })
 export class ProfileContainerComponent implements OnInit {
-  userFullName$: Observable<string> = this.store.pipe(select(selectFullName));
-  username$: Observable<string> = this.store.pipe(select(selectUsername));
+  userFullName$: Observable<string>;
+  username$: Observable<string>;
 
-  constructor(private store: Store<IState>) {}
+  constructor(private store: Store<IState>) {
+    this.userFullName$ = this.store.pipe(select(selectFullName));
+    this.username$ = this.store.pipe(select(selectUsername));
+  }
 
   ngOnInit(): void {
     let exists;

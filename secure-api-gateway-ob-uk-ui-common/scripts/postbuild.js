@@ -22,15 +22,17 @@ async function generateSecondaryEntryPackageJsons(version) {
       const subDir = path.join(pkgPath, subName);
       if (!await fs.pathExists(subDir)) continue;
       const subPkgPath = path.join(subDir, 'package.json');
-      if (typeof exportVal !== 'object' || !exportVal.es2015) continue;
-      // exportVal.es2015 is like "./fesm2015/pkg-sub.mjs" — extract just the filename
-      const es2015File = path.basename(exportVal.es2015);
-      if (!es2015File) continue;
+      // ng-packagr 16+ uses 'default' (fesm2022); ng-packagr 15 used 'es2015' (fesm2015)
+      const defaultEntry = exportVal.default || exportVal.es2015;
+      if (typeof exportVal !== 'object' || !defaultEntry) continue;
+      const bundleFile = path.basename(defaultEntry);
+      const bundleDir = path.dirname(defaultEntry).replace(/^\.\//, '');
+      if (!bundleFile) continue;
       const subPkg = {
         name: `${parentPkg.name}/${subName}`,
         version,
-        main: `../fesm2015/${es2015File}`,
-        module: `../fesm2015/${es2015File}`,
+        main: `../${bundleDir}/${bundleFile}`,
+        module: `../${bundleDir}/${bundleFile}`,
         typings: 'index.d.ts',
         sideEffects: false
       };
