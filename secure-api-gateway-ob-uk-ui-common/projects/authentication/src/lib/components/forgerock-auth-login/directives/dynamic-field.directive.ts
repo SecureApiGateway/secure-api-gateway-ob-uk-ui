@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   Input,
@@ -47,7 +46,7 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
 
   component: ComponentRef<Field>;
 
-  constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
+  constructor(private container: ViewContainerRef) {}
 
   ngOnChanges() {
     if (this.component) {
@@ -65,8 +64,7 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
         Supported types: ${supportedTypes}`
       );
     } else {
-      const component = this.resolver.resolveComponentFactory<Field>(components[this.config.type]);
-      this.component = this.container.createComponent(component);
+      this.component = this.container.createComponent<Field>(components[this.config.type]);
       this.component.instance.authId = this.authId;
       this.component.instance.config = this.config;
       this.component.instance.group = this.group;

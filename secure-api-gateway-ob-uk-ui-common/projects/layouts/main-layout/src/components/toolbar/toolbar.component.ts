@@ -6,8 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
   ComponentRef,
-  Inject,
-  ComponentFactoryResolver
+  Inject
 } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
@@ -36,7 +35,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private _fuseSidebarService: ForgerockLayoutSidebarService,
     private configService: ForgerockConfigService,
-    private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(ForgerockMainLayoutComponentsToken)
     private _components: IForgerockMainLayoutComponents
   ) {
@@ -49,9 +47,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     if (!this._components.toolbar) return;
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this._components.toolbar);
     this.dynamicTarget.clear();
-    this.componentRef = this.dynamicTarget.createComponent(componentFactory);
+    this.componentRef = this.dynamicTarget.createComponent(this._components.toolbar);
   }
 
   /**

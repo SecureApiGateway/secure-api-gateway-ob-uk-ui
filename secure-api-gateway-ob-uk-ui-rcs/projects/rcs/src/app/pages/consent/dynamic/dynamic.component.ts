@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ComponentFactoryResolver,
   ComponentRef,
   EventEmitter,
   Input,
@@ -42,7 +41,7 @@ const log = debug('consent:DynamicComponent');
   encapsulation: ViewEncapsulation.None
 })
 export class DynamicComponent implements OnChanges {
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor() {
   }
 
   // @Input() decisionResponse: ApiResponses.ConsentDecisionResponse;
@@ -123,9 +122,8 @@ export class DynamicComponent implements OnChanges {
 
   createComponent(componentInstance: any) {
     // Select, clear and inject the dynamic component with props data
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentInstance);
     this.dynamicTarget.clear();
-    this.componentRef = this.dynamicTarget.createComponent(componentFactory);
+    this.componentRef = this.dynamicTarget.createComponent(componentInstance);
     this.componentRef.instance.response = this.response;
     this.componentRef.instance.loading = this.loading;
     this.componentRef.instance.formSubmit = this.formSubmit;
