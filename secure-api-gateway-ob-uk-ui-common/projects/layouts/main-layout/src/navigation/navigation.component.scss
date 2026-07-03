@@ -1,11 +1,12 @@
 @import '../../../../utils/src/lib/scss/mixins/breakpoints';
 
 @mixin forgerock-main-layout-navigation-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $color: map-get($theme, color);
+  $primary: map-get($color, primary);
+  $accent: map-get($color, accent);
+  $warn: map-get($color, warn);
+  $background: map-get($color, background);
+  $foreground: map-get($color, foreground);
 
   fuse-navigation {
     display: flex;

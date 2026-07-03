@@ -1,14 +1,15 @@
 @import 'mixins/breakpoints';
 
 @mixin bank-consent-dynamic-theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
+  $color: map-get($theme, color);
+  $foreground: map-get($color, foreground);
+  $background: map-get($color, background);
   app-consent-dynamic {
     word-break: break-word;
     h1 {
       text-align: center;
     }
-    .mat-card {
+    .mat-mdc-card {
       min-width: 490px;
       padding: 40px;
       @include media-breakpoint-down('sm') {
@@ -113,7 +114,7 @@
 
     .merchant-logo img {
       max-width: 100px;
-      max-heigh: 100px;
+      max-height: 100px;
       margin: auto;
       justify-content: center;
     }
@@ -125,10 +126,8 @@
         height: 40px;
       }
     }
-    :host ::ng-deep .mat-radio-label {
+    :host ::ng-deep .mdc-label {
       width: 100%;
-    }
-    :host ::ng-deep .mat-radio-label-content {
       flex: 1;
     }
     :host ::ng-deep .button-cancel {

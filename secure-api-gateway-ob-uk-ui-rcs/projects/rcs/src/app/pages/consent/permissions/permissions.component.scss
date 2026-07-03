@@ -1,8 +1,9 @@
 @import '_variables';
 
 @mixin bank-consent-permission-theme($theme) {
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color: map-get($theme, color);
+  $background: map-get($color, background);
+  $accent: map-get($color, accent);
   app-account-permissions {
     mat-expansion-panel {
       box-shadow: none;

@@ -1,4 +1,4 @@
-@import '@angular/material/theming';
+@use '@angular/material' as mat;
 @import 'mixins/strings';
 
 @function mat-color($palette-primary, $hue: default, $opacity: null) {
@@ -7,12 +7,6 @@
   }
 
   $color: map-get($palette-primary, $hue);
-  // @warn $palette-primary;
-  // @warn $color;
-  // @warn $hue;
-  // @if $color == null {
-  //   @return null;
-  // }
 
   $opacity: if($opacity == null, opacity($color), $opacity);
 
@@ -72,29 +66,30 @@
 
 // Overwrite to be css vars compliant
 @mixin mat-sidenav-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $color: map-get($theme, color);
+  $primary: map-get($color, primary);
+  $accent: map-get($color, accent);
+  $warn: map-get($color, warn);
+  $background: map-get($color, background);
+  $foreground: map-get($color, foreground);
 
   // We use invert() here to have the darken the background color expected to be used. If the
   // background is light, we use a dark backdrop. If the background is dark,
   // we use a light backdrop.
-  $drawer-backdrop-color: mat-color($background, card, 0.6);
-  $drawer-background-color: mat-color($background, dialog);
-  $drawer-container-background-color: mat-color($background, background);
-  $drawer-push-background-color: mat-color($background, dialog);
-  $drawer-side-border: solid 1px mat-color($foreground, divider);
+  $drawer-backdrop-color: mat.get-color-from-palette($background, card, 0.6);
+  $drawer-background-color: mat.get-color-from-palette($background, dialog);
+  $drawer-container-background-color: mat.get-color-from-palette($background, background);
+  $drawer-push-background-color: mat.get-color-from-palette($background, dialog);
+  $drawer-side-border: solid 1px mat.get-color-from-palette($foreground, divider);
 
   .mat-drawer-container {
     background-color: $drawer-container-background-color;
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-drawer {
     background-color: $drawer-background-color;
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-drawer-push {
       background-color: $drawer-push-background-color;
@@ -134,25 +129,29 @@
 // Overwrite to be css vars compliant
 @mixin _mat-datepicker-color($palette) {
   .mat-calendar-body-selected {
-    background-color: mat-color($palette);
-    color: mat-color($palette, default-contrast);
+    background-color: mat.get-color-from-palette($palette);
+    color: mat.get-color-from-palette($palette, default-contrast);
   }
 
   .mat-calendar-body-disabled > .mat-calendar-body-selected {
-    background-color: mat-color($palette);
+    background-color: mat.get-color-from-palette($palette);
   }
 
   .mat-calendar-body-today.mat-calendar-body-selected {
-    box-shadow: inset 0 0 0 $mat-datepicker-selected-today-box-shadow-width mat-color($palette, default-contrast);
+    box-shadow: inset 0 0 0 1px mat.get-color-from-palette($palette, default-contrast);
   }
 }
 
 @mixin mat-datepicker-theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
+  $color: map-get($theme, color);
+  $primary: map-get($color, primary);
+  $accent: map-get($color, accent);
+  $warn: map-get($color, warn);
+  $foreground: map-get($color, foreground);
+  $background: map-get($color, background);
 
   .mat-calendar-arrow {
-    border-top-color: mat-color($foreground, icon);
+    border-top-color: mat.get-color-from-palette($foreground, icon);
   }
 
   // The prev/next buttons need a bit more specificity to
@@ -160,61 +159,61 @@
   .mat-datepicker-toggle,
   .mat-datepicker-content .mat-calendar-next-button,
   .mat-datepicker-content .mat-calendar-previous-button {
-    color: mat-color($foreground, icon);
+    color: mat.get-color-from-palette($foreground, icon);
   }
 
   .mat-calendar-table-header {
-    color: mat-color($foreground, hint-text);
+    color: mat.get-color-from-palette($foreground, hint-text);
   }
 
   .mat-calendar-table-header-divider::after {
-    background: mat-color($foreground, divider);
+    background: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-calendar-body-label {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-calendar-body-cell-content {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
     border-color: transparent;
   }
 
   .mat-calendar-body-disabled > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-    color: mat-color($foreground, disabled-text);
+    color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover,
   .cdk-keyboard-focused .mat-calendar-body-active,
   .cdk-program-focused .mat-calendar-body-active {
     & > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-      background-color: mat-color($background, hover);
+      background-color: mat.get-color-from-palette($background, hover);
     }
   }
 
   .mat-calendar-body-today:not(.mat-calendar-body-selected) {
     // Note: though it's not text, the border is a hint about the fact that this is today's date,
     // so we use the hint color.
-    border-color: mat-color($foreground, hint-text);
+    border-color: mat.get-color-from-palette($foreground, hint-text);
   }
 
   .mat-calendar-body-disabled > .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-    border-color: mat-color($foreground, hint-text);
+    border-color: mat.get-color-from-palette($foreground, hint-text);
   }
 
-  @include _mat-datepicker-color(map-get($theme, primary));
+  @include _mat-datepicker-color($primary);
 
   .mat-datepicker-content {
     @include _mat-theme-elevation(4, $theme);
-    background-color: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background-color: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-accent {
-      @include _mat-datepicker-color(map-get($theme, accent));
+      @include _mat-datepicker-color($accent);
     }
 
     &.mat-warn {
-      @include _mat-datepicker-color(map-get($theme, warn));
+      @include _mat-datepicker-color($warn);
     }
   }
 
@@ -223,23 +222,23 @@
   }
 
   .mat-datepicker-toggle-active {
-    color: mat-color(map-get($theme, primary));
+    color: mat.get-color-from-palette($primary);
 
     &.mat-accent {
-      color: mat-color(map-get($theme, accent));
+      color: mat.get-color-from-palette($accent);
     }
 
     &.mat-warn {
-      color: mat-color(map-get($theme, warn));
+      color: mat.get-color-from-palette($warn);
     }
   }
 }
 
 @mixin _mat-theme-elevation($zValue, $theme, $opacity: 0.12) {
-  $foreground: map-get($theme, foreground);
+  $foreground: map-get(map-get($theme, color), foreground);
   $elevation-color: map-get($foreground, elevation);
   $elevation-color-or-default: if($elevation-color == null, black, $elevation-color);
-  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+  @include mat.elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
 @function getTheme(
@@ -251,9 +250,9 @@
   $background-palette
 ) {
   @return (
-    primary: mat-palette($primary-palette),
-    accent: mat-palette($accent-palette, 600, 400, 700),
-    warn: mat-palette($warn-palette),
+    primary: mat.define-palette($primary-palette),
+    accent: mat.define-palette($accent-palette, 600, 400, 700),
+    warn: mat.define-palette($warn-palette),
     is-dark: $is-dark,
     test: $is-dark,
     foreground: $foreground-palette,
@@ -285,9 +284,9 @@
 
   // Create palette with custom CSS props (var(--something))
   $theme: (
-    primary: mat-palette(map-get($primary-css-vars, palette)),
-    accent: mat-palette(map-get($accent-css-vars, palette), 600, 400, 700),
-    warn: mat-palette(map-get($warn-css-vars, palette)),
+    primary: mat.define-palette(map-get($primary-css-vars, palette)),
+    accent: mat.define-palette(map-get($accent-css-vars, palette), 600, 400, 700),
+    warn: mat.define-palette(map-get($warn-css-vars, palette)),
     is-dark: $is-dark,
     foreground: map-get($foreground-css-vars, palette),
     background: map-get($background-css-vars, palette)

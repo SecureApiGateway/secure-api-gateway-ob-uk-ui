@@ -1,16 +1,28 @@
+@use '@angular/material' as mat;
 @import '_variables';
 @import 'all-theme';
 @import 'mixins/cssvars';
 
-$theme: getTheme($is-dark, $primary-palette, $accent-palette, $warn-palette, $foreground-palette, $background-palette);
-$primary: map-get($theme, primary);
-$accent: map-get($theme, accent);
-$warn: map-get($theme, warn);
-$background: map-get($theme, background);
-$foreground: map-get($theme, foreground);
+$_primary: mat.define-palette($primary-palette);
+$_accent: mat.define-palette($accent-palette, 600, 400, 700);
+$_warn: mat.define-palette($warn-palette);
+
+$theme: mat.define-dark-theme((
+  color: (
+    primary: $_primary,
+    accent: $_accent,
+    warn: $_warn,
+  ),
+  typography: $typography,
+  density: 0,
+));
+
+$primary: map-get(map-get($theme, color), primary);
+$accent: map-get(map-get($theme, color), accent);
+$warn: map-get(map-get($theme, color), warn);
 
 @include foregrock-material-theme($theme);
-@include angular-material-typography($typography);
+@include mat.all-component-typographies($typography);
 
 // CSS VARS
 $css-vars-use-native: true;
