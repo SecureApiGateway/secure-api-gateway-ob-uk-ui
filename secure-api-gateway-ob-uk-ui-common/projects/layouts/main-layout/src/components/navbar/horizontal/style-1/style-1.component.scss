@@ -8,11 +8,11 @@
   $background: map-get($color, background);
   $foreground: map-get($color, foreground);
 
-  $sidebar-bg-color: mat-color($background, dialog);
-  $sidebar-navbar-bg-color: mat-color($background, app-bar);
-  $menu-bg-color: mat-color($primary, 700);
-  $menu-color: mat-color(map-get($primary, 'contrast'), 700);
-  $color: mat-color($foreground, text);
+  $sidebar-bg-color: map-get($background, dialog);
+  $sidebar-navbar-bg-color: map-get($background, app-bar);
+  $menu-bg-color: map-get($primary, 700);
+  $menu-color: map-get(map-get($primary, 'contrast'), 700);
+  $color: map-get($foreground, text);
 
   navbar-horizontal-style-1 {
     padding: 0 16px;
@@ -32,12 +32,12 @@
 
     .nav-link {
       &.active {
-        background-color: mat-color($accent, 600) !important;
-        color: mat-color(map-get($accent, 'contrast'), 600) !important;
+        background-color: map-get($accent, 600) !important;
+        color: map-get(map-get($accent, 'contrast'), 600) !important;
       }
       &:hover {
-        background-color: mat-color($accent, 700) !important;
-        color: mat-color(map-get($accent, 'contrast'), 700) !important;
+        background-color: map-get($accent, 700) !important;
+        color: map-get(map-get($accent, 'contrast'), 700) !important;
       }
     }
   }

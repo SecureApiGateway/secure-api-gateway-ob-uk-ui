@@ -1,5 +1,3 @@
-@import '_variables';
-
 @mixin bank-consent-permission-theme($theme) {
   $color: map-get($theme, color);
   $background: map-get($color, background);
@@ -15,10 +13,10 @@
         }
       }
       :host ::ng-deep .mat-expansion-panel-content {
-        background-color: mat-color($background, background);
+        background-color: map-get($background, background);
         border-left-width: 3px;
         border-left-style: solid;
-        border-left-color: mat-color($accent);
+        border-left-color: map-get($accent, default);
       }
       :host ::ng-deep .mat-expansion-panel-body {
         padding: 13px;

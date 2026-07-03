@@ -16,7 +16,7 @@ export const environment = {
     iconWidth: 35,
     iconHeight: 39,
     logoWidth: 230,
-    logoHeight: 'auto'
+    logoHeight: '100%'
   },
   featureFlags: {
     disableProfileForm: false,

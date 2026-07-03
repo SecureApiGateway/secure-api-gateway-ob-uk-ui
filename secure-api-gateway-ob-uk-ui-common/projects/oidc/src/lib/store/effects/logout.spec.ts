@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
@@ -49,7 +49,7 @@ describe('LogoutEffect', () => {
     effects = TestBed.get(OIDCLogoutEffects);
   });
 
-  it('should return Success action', async(() => {
+  it('should return Success action', waitForAsync(() => {
     ApiServiceSpy = spyOn(apiService, 'logout').and.returnValue(of(true));
     routerSpy = spyOn(router, 'navigate');
 
@@ -63,7 +63,7 @@ describe('LogoutEffect', () => {
     });
   }));
 
-  it('should return Error action', async(() => {
+  it('should return Success action', waitForAsync(() => {
     ApiServiceSpy = spyOn(apiService, 'logout').and.returnValue(throwError('eee'));
 
     actions = new ReplaySubject(1);

@@ -74,7 +74,7 @@ export class InternationalPaymentComponent implements OnInit {
             }
         });
 
-        if(_get(this.response, "exchangeRateInformation")) {
+        if(_get(this.response, "exchangeRateInformation") && _get(this.response.initiation, "instructedAmount")) {
             this.amountConverted = calculateAmountConversion(this.response.exchangeRateInformation, this.response.currencyOfTransfer, this.response.initiation.instructedAmount)
             if(this.amountConverted !== undefined) {
                 this.paymentItems.push({
@@ -149,9 +149,9 @@ export class InternationalPaymentComponent implements OnInit {
 
         if(this.amountConverted !== undefined) {
             this.totalAmount = calculateTotalAmount(this.response.charges, this.amountConverted)
-        } else {
+        } else if (this.response.initiation?.instructedAmount) {
             this.totalAmount = {
-                amount: (Number(this.response.initiation.instructedAmount.amount) + Number(this.response.charges.amount)),
+                amount: (Number(this.response.initiation.instructedAmount.amount) + Number(this.response.charges?.amount ?? 0)),
                 currency: this.response.initiation.instructedAmount.currency
             }
         }

@@ -4,11 +4,11 @@
   $accent: map-get($color, accent);
 
   .secondary-text {
-    color: mat-color($foreground, secondary-text);
+    color: map-get($foreground, secondary-text);
   }
 
   a {
-    color: mat-color($accent);
+    color: map-get($accent, default);
     text-decoration: none;
 
     &:not(.mat-mdc-button):not(.mat-mdc-raised-button):not(.mat-mdc-icon-button) {

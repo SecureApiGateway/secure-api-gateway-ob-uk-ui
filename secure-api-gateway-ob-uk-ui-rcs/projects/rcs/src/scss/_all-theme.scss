@@ -1,13 +1,13 @@
 // Import library functions for theme creation.
 @use '@angular/material' as mat;
 // OVERWRITES SOME OF THE MAT COMPONENT MIXINS TO SUPPORT CSS VARS
-@import 'mixins/theme';
-@import 'mixins/cssvars';
+@use 'mixins/theme' as *;
+@use 'mixins/cssvars' as *;
 
-@import 'projects/rcs/src/app/pages/consent/dynamic/dynamic.component';
-@import 'projects/rcs/src/app/pages/consent/permissions/permissions.component';
-@import '@secureapigateway/secure-api-gateway-ob-uk-ui-common/layouts/main.scss';
-@import '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/main.scss';
+@use 'projects/rcs/src/app/pages/consent/dynamic/dynamic.component' as *;
+@use 'projects/rcs/src/app/pages/consent/permissions/permissions.component' as *;
+@use '@secureapigateway/secure-api-gateway-ob-uk-ui-common/layouts/main.scss' as *;
+@use '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/main.scss' as *;
 
 @mixin foregrock-material-theme($theme) {
   @include mat.core-theme($theme);

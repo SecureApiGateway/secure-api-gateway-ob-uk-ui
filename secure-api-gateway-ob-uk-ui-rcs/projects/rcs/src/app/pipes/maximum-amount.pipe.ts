@@ -11,6 +11,9 @@ export class MaximumAmountFormatPipe implements PipeTransform {
   }
 
   transform(amount: MaximumIndividualAmount): string {
+    if (!amount?.currency) {
+      return '';
+    }
     const local = this.translateService.getBrowserCultureLang() || 'en-UK';
     const formatter = new Intl.NumberFormat(local, {
       style: 'currency',
