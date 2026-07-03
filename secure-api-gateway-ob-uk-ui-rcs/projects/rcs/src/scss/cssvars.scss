@@ -1,5 +1,5 @@
-@import '_variables';
-@import 'mixins/cssvars';
+@use 'variables' as *;
+@use 'mixins/cssvars' as *;
 
 $cssVarsAndTheme: getCssVarsAndTheme(
   $is-dark,

@@ -1,24 +1,22 @@
 @use '@angular/material' as mat;
 
-$typography: mat.define-legacy-typography-config(
-  $input: mat.define-typography-level(16px, 1.125, 400)
-) !default;
+$typography: mat.m2-define-typography-config() !default;
 
 // $is-dark: false !default;
 // $primary-palette: mat.$blue-grey-palette !default;
 // $accent-palette: mat.$light-blue-palette !default;
-// $warn-palette: mat.$red-palette !default;
-// $foreground-palette: mat.$light-theme-foreground-palette !default;
-// $background-palette: mat.$light-theme-background-palette !default;
+// $warn-palette: mat.$m2-red-palette !default;
+// $foreground-palette: mat.$m2-light-theme-foreground-palette !default;
+// $background-palette: mat.$m2-light-theme-background-palette !default;
 
 $light-dividers: rgba(black, 0.12);
 $light-disabled-text: rgba(black, 0.38);
 $light-secondary-text: rgba(black, 0.54);
 
 $is-dark: true;
-$primary-palette: mat.$gray-palette;
-$accent-palette: mat.$deep-orange-palette;
-$warn-palette: mat.$red-palette;
+$primary-palette: mat.$m2-gray-palette;
+$accent-palette: mat.$m2-deep-orange-palette;
+$warn-palette: mat.$m2-red-palette;
 $foreground-palette: (
   base: white,
   divider: $light-dividers,
@@ -35,4 +33,4 @@ $foreground-palette: (
   slider-off: rgba(white, 0.3),
   slider-off-active: rgba(white, 0.3)
 );
-$background-palette: mat.$dark-theme-background-palette;
+$background-palette: mat.$m2-dark-theme-background-palette;

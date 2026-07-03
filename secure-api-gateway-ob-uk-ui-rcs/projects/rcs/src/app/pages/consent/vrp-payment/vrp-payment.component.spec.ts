@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VrpPaymentComponent } from './vrp-payment.component';
 import {CommonModule} from "@angular/common";
@@ -20,7 +20,7 @@ describe('VrpPaymentComponent', () => {
   let component: VrpPaymentComponent;
   let fixture: ComponentFixture<VrpPaymentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ VrpPaymentComponent ],
       imports: [

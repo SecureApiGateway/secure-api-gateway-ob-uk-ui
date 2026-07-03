@@ -9,11 +9,11 @@
   $foreground: map-get($color, foreground);
   $is-dark: map-get($theme, is-dark);
 
-  $primary-bg-color: mat-color($primary, 800);
-  $accent-bg-color: mat-color($accent, 800);
-  $warn-bg-color: mat-color($warn, 800);
-  $background-bg-color: mat-color($background, background);
-  $foreground-text-color: mat-color($foreground, text);
+  $primary-bg-color: map-get($primary, 800);
+  $accent-bg-color: map-get($accent, 800);
+  $warn-bg-color: map-get($warn, 800);
+  $background-bg-color: map-get($background, background);
+  $foreground-text-color: map-get($foreground, text);
 
   forgerock-alert {
     display: block;

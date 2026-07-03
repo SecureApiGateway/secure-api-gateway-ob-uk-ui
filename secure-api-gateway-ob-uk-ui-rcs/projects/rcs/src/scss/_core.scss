@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@import 'bootstrap';
-@import '_create-theme';
-// Include non-theme styles for core.
+@use 'bootstrap' as *;
+@use 'create-theme' as *;
 @include mat.core();

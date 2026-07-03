@@ -8,8 +8,8 @@
   $background: map-get($color, background);
   $foreground: map-get($color, foreground);
 
-  $appbar-bg-color: mat-color($primary, 800);
-  $appbar-color: mat-color(map-get($primary, 'contrast'), 800);
+  $appbar-bg-color: map-get($primary, 800);
+  $appbar-color: map-get(map-get($primary, 'contrast'), 800);
 
   mat-toolbar.app-bar {
     background-color: $appbar-bg-color;

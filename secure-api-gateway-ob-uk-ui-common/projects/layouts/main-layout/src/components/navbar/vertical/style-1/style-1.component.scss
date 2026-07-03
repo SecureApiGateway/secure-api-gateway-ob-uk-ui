@@ -8,13 +8,13 @@
   $background: map-get($color, background);
   $foreground: map-get($color, foreground);
 
-  $sidebar-bg-color: mat-color($background, dialog);
-  $sidebar-navbar-bg-color: mat-color($background, app-bar);
-  $appbar-bg-color: mat-color($primary, 800);
-  $appbar-color: mat-color(map-get($primary, 'contrast'), 800);
-  $sidenav-bg-color: mat-color($primary, 700);
-  $sidenav-color: mat-color(map-get($primary, 'contrast'), 700);
-  $color: mat-color($foreground, text);
+  $sidebar-bg-color: map-get($background, dialog);
+  $sidebar-navbar-bg-color: map-get($background, app-bar);
+  $appbar-bg-color: map-get($primary, 800);
+  $appbar-color: map-get(map-get($primary, 'contrast'), 800);
+  $sidenav-bg-color: map-get($primary, 700);
+  $sidenav-color: map-get(map-get($primary, 'contrast'), 700);
+  $color: map-get($foreground, text);
 
   forgerock-layout-sidebar {
     background-color: $sidebar-bg-color !important;
@@ -27,8 +27,8 @@
     .nav-link {
       color: $sidenav-color !important;
       &.active {
-        color: mat-color(map-get($accent, 'contrast'), 600) !important;
-        background-color: mat-color($accent, 600) !important;
+        color: map-get(map-get($accent, 'contrast'), 600) !important;
+        background-color: map-get($accent, 600) !important;
       }
     }
 

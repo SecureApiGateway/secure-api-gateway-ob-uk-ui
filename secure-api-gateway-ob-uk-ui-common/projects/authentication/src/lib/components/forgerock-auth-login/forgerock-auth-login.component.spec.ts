@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { CookieModule } from 'ngx-cookie';
 import { TranslateModule } from '@ngx-translate/core';
@@ -19,7 +19,7 @@ describe('app:forgerock ForgerockAuthLoginComponent', () => {
   let component: ForgerockAuthLoginComponent;
   let fixture: ComponentFixture<ForgerockAuthLoginComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthLoginComponent],
       imports: [

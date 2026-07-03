@@ -3,8 +3,8 @@
 // and point to the client styles.scss as style entry point
 // https://github.com/angular/angular-cli/issues/11451
 // @import "projects/bank/src/clients/hackathon/scss/variables";
-@import '_variables';
-@import '_core';
+@use 'variables' as *;
+@use 'core' as *;
 
 forgerock-customer-logo {
   display: block;

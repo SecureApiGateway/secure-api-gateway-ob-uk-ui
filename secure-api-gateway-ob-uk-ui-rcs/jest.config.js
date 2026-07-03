@@ -4,17 +4,13 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
   transform: {
-    '^.+\\.(ts|js|mjs|html|svg)$': ['jest-preset-angular', { stringifyContentPathRegex: '\\.(html|svg)$' }]
+    '^.+\\.(ts|js|mjs|html|svg)$': ['jest-preset-angular', {
+      stringifyContentPathRegex: '\\.(html|svg)$',
+      tsconfig: '<rootDir>/projects/rcs/tsconfig.spec.json',
+      allowSyntheticDefaultImports: true,
+    }]
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
-  globals: {
-    'ts-jest': {
-      allowSyntheticDefaultImports: true,
-      isolatedModules: true,
-      tsconfig: '<rootDir>/projects/rcs/tsconfig.spec.json'
-    }
-  },
-  globalSetup: 'jest-preset-angular/global-setup',
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
   setupFilesAfterEnv: ['jest-preset-angular/setup-jest'],
   moduleNameMapper: {

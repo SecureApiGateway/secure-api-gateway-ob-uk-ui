@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -23,7 +23,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
   const originMock = 'https://this-is-a-test-origin.com';
   const authorizationServer = 'https://as.aspsp.ui-integ.forgerock.financial';
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthOauth2AuthorizeComponent],
       imports: [
