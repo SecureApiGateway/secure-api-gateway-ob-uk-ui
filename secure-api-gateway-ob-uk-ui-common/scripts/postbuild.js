@@ -23,8 +23,9 @@ async function generateSecondaryEntryPackageJsons(version) {
       if (!await fs.pathExists(subDir)) continue;
       const subPkgPath = path.join(subDir, 'package.json');
       // ng-packagr 16+ uses 'default' (fesm2022); ng-packagr 15 used 'es2015' (fesm2015)
+      if (typeof exportVal !== 'object' || exportVal === null) continue;
       const defaultEntry = exportVal.default || exportVal.es2015;
-      if (typeof exportVal !== 'object' || !defaultEntry) continue;
+      if (!defaultEntry) continue;
       const bundleFile = path.basename(defaultEntry);
       const bundleDir = path.dirname(defaultEntry).replace(/^\.\//, '');
       if (!bundleFile) continue;
