@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { StagesParentComponent } from './stages.parent.component';
 
 @Component({
+  standalone: false,
   selector: 'app-authenticator-push4',
   template: `
     <h1 *ngIf="response.header">{{ response.header }}</h1>
@@ -32,7 +33,7 @@ export class AuthenticatorPush4Component extends StagesParentComponent implement
     super.ngOnInit();
   }
 
-  getSanitizedMailto(url = '') {
+  getSanitizedMailto() {
     return this.sanitizer.bypassSecurityTrustUrl(`mailto:${this.client.adminContact}`);
   }
 }

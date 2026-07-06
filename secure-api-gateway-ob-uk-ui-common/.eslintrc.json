@@ -25,6 +25,7 @@
         "quotes": ["warn", "single"],
         "no-console": ["warn", { "allow": ["log", "warn", "error"] }],
         "@typescript-eslint/member-ordering": "warn",
+        "@angular-eslint/prefer-standalone": "off",
         "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Component", "Container"] }],
         "@angular-eslint/directive-class-suffix": "error",
         "@angular-eslint/no-output-on-prefix": "error",
@@ -74,6 +75,12 @@
       "files": ["projects/authentication/src/lib/components/forgerock-auth-login/directives/**/*.ts"],
       "rules": {
         "@angular-eslint/directive-selector": "off"
+      }
+    },
+    {
+      "files": ["**/*.spec.ts", "**/test.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
       }
     },
     {

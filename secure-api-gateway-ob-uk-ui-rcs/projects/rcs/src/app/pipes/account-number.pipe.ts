@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { OBCashAccount3 } from '../../../src/app/types/ob';
 
 @Pipe({
+  standalone: false,
   name: 'AccountNumberFormat',
   pure: false
 })

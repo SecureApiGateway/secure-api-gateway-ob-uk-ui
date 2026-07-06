@@ -14,6 +14,7 @@ import {FormGroup} from "@angular/forms";
 import {ForgerockMessagesService} from "@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-messages";
 
 @Component({
+  standalone: false,
   selector: 'app-accept',
   templateUrl: './accept.component.html',
   styleUrls: ['./accept.component.scss']

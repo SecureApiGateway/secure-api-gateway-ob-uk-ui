@@ -10,7 +10,7 @@ import { ForgerockAuthRegisterModule } from './components/forgerock-auth-registe
 import { ForgerockAuthLoginModule } from './components/forgerock-auth-login/forgerock-auth-login.module';
 import { ForgerockAuthenticationRootEffects } from './store/effects/index';
 
-export const AUTH_REDUCERS_TOKEN = new InjectionToken<ActionReducerMap<any>>('authenticationReducers');
+export const AUTH_REDUCERS_TOKEN = new InjectionToken<ActionReducerMap<unknown>>('authenticationReducers');
 
 export function getAuthReducers() {
   return {

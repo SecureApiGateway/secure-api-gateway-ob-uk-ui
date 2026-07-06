@@ -16,6 +16,7 @@ import {ForgerockMessagesService} from "@secureapigateway/secure-api-gateway-ob-
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
+  standalone: false,
   selector: 'app-cancel',
   templateUrl: './cancel.component.html',
   styleUrls: ['./cancel.component.scss'],

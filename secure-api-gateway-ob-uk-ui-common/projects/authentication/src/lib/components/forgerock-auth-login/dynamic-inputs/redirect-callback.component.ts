@@ -7,6 +7,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-redirect-callback',
   template: `
     <h3>Redirect...</h3>
@@ -29,13 +30,13 @@ export class RedirectCallbackComponent implements Field, OnInit {
       this.config.output.forEach(entry => {
         switch (entry.name) {
           case 'redirectUrl':
-            this.redirectUrl = entry.value;
+            this.redirectUrl = entry.value as string;
             break;
           case 'redirectMethod':
-            this.redirectMethod = entry.value;
+            this.redirectMethod = entry.value as string;
             break;
           case 'trackingCookie':
-            this.trackingCookie = entry.value;
+            this.trackingCookie = entry.value as boolean;
             break;
         }
       });

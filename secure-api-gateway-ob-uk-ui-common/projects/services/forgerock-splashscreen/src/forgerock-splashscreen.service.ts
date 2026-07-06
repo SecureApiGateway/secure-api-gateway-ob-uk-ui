@@ -7,12 +7,12 @@ import { NavigationEnd, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ForgerockSplashscreenService {
-  splashScreenEl: any;
+  splashScreenEl: Element;
   player: AnimationPlayer;
   _init = false;
   constructor(
     private _animationBuilder: AnimationBuilder,
-    @Inject(DOCUMENT) private _document: any,
+    @Inject(DOCUMENT) private _document: Document,
     private _router: Router
   ) {}
 

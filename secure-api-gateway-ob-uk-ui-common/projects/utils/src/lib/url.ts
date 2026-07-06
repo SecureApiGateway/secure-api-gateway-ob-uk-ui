@@ -1,4 +1,4 @@
-export function encodeQueryData(data: { [key: string]: any } = {}): string {
+export function encodeQueryData(data: { [key: string]: unknown } = {}): string {
   const keys = Object.keys(data);
   if (!keys.length) return '';
 

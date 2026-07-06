@@ -9,6 +9,7 @@ import { IOauth2AuthorizeRestReponse, IAspspError } from '../../models';
 import { encodeQueryData, replaceURLOrigin } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/utils';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-oauth2-authorize-login',
   template: `
     <mat-card>
@@ -62,16 +63,16 @@ export class ForgerockAuthOauth2AuthorizeComponent implements OnInit {
         // so in this case we logout and redirect to /login
         try {
           await this.api.logout().toPromise();
-        } catch (error) {
+        } catch {
           // do nothing if 401
         }
       }
       this.isLoading = false;
       redirection = this.updateRedirectionGotoIfAuthorizationServer(redirection);
       this.router.navigateByUrl(redirection.pathname + redirection.search);
-    } catch (error) {
+    } catch (e: unknown) {
       this.isLoading = false;
-      this.error = error.message;
+      this.error = (e as Error).message;
       this.cdr.detectChanges();
     }
   }

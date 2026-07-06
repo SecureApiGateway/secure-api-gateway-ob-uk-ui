@@ -7,6 +7,7 @@ import { Item, ItemType, IConsentEventEmitter } from '../../../../../src/app/typ
 import { ConsentDecision } from '../../../../../src/app/types/ConsentDecision';
 
 @Component({
+  standalone: false,
   selector: 'app-consent-file-payment',
   templateUrl: './file-payment.component.html',
   styleUrls: ['./file-payment.component.scss'],

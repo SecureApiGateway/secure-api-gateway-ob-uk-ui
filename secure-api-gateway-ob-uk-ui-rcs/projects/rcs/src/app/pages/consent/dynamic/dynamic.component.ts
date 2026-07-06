@@ -6,6 +6,8 @@ import {
   Input,
   OnChanges,
   Output,
+  SimpleChanges,
+  Type,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation
@@ -14,6 +16,7 @@ import {throwError} from 'rxjs';
 import debug from 'debug';
 
 import {ApiResponses} from '../../../../../src/app/types/api';
+import {IConsentEventEmitter} from '../../../../../src/app/types/consentItem';
 import {SinglePaymentComponent} from '../single-payment/single-payment.component';
 import {AccountComponent} from '../account/account.component';
 import {IntentType} from '../../../../../src/app/types/IntentType';
@@ -33,7 +36,14 @@ import {CustomerInfoComponent} from "rcs/src/app/pages/consent/customer-info/cus
 
 const log = debug('consent:DynamicComponent');
 
+interface IConsentComponentInstance {
+  response: ApiResponses.ConsentDetailsResponse;
+  loading: boolean;
+  formSubmit: EventEmitter<IConsentEventEmitter>;
+}
+
 @Component({
+  standalone: false,
   selector: 'app-consent-dynamic',
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.scss'],
@@ -47,12 +57,12 @@ export class DynamicComponent implements OnChanges {
   // @Input() decisionResponse: ApiResponses.ConsentDecisionResponse;
   @Input() response: ApiResponses.ConsentDetailsResponse;
   @Input() loading: boolean;
-  @Output() formSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() formSubmit: EventEmitter<IConsentEventEmitter> = new EventEmitter<IConsentEventEmitter>();
   @ViewChild('dynamicTarget', {read: ViewContainerRef, static: true})
   dynamicTarget: ViewContainerRef;
-  componentRef: ComponentRef<any>;
+  componentRef: ComponentRef<unknown>;
 
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: SimpleChanges) {
     if (this.response.userActions?.acceptedByUser) {
       this.createComponent(AcceptComponent);
     } else if (this.response.userActions?.canceledByUser && this.response.userActions?.cancelRedirectUri) {
@@ -61,7 +71,7 @@ export class DynamicComponent implements OnChanges {
       this.createComponent(RejectComponent);
     }
     if (changes.loading && !changes.loading.firstChange) {
-      this.componentRef.instance.loading = changes.loading.currentValue;
+      (this.componentRef.instance as IConsentComponentInstance).loading = changes.loading.currentValue;
     }
     if (!changes.response || !changes.response.currentValue) {
       return;
@@ -120,12 +130,13 @@ export class DynamicComponent implements OnChanges {
     this.createComponent(componentInstance);
   }
 
-  createComponent(componentInstance: any) {
+  createComponent(componentInstance: Type<unknown>) {
     // Select, clear and inject the dynamic component with props data
     this.dynamicTarget.clear();
     this.componentRef = this.dynamicTarget.createComponent(componentInstance);
-    this.componentRef.instance.response = this.response;
-    this.componentRef.instance.loading = this.loading;
-    this.componentRef.instance.formSubmit = this.formSubmit;
+    const instance = this.componentRef.instance as IConsentComponentInstance;
+    instance.response = this.response;
+    instance.loading = this.loading;
+    instance.formSubmit = this.formSubmit;
   }
 }

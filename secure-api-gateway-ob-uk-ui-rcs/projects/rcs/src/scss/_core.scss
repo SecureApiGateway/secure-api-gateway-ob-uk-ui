@@ -1,4 +1,4 @@
 @use '@angular/material' as mat;
 @use 'bootstrap' as *;
 @use 'create-theme' as *;
-@include mat.core();
+@include mat.app-background();

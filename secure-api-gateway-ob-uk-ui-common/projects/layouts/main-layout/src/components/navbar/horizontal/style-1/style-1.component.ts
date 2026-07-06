@@ -5,15 +5,16 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { ForgerockMainLayoutNavigationService } from '../../../../navigation/navigation.service';
 
 @Component({
+  standalone: false,
   selector: 'navbar-horizontal-style-1',
   templateUrl: './style-1.component.html',
   styleUrls: ['./style-1.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy {
-  navigation: any;
+  navigation: unknown;
 
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(private _fuseNavigationService: ForgerockMainLayoutNavigationService) {
     this._unsubscribeAll = new Subject();

@@ -14,6 +14,7 @@ import _get from 'lodash-es/get';
 import _cloneDeep from 'lodash-es/cloneDeep';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-chart',
   template: `
     <canvas #chart></canvas>
@@ -42,7 +43,7 @@ export class ForgerockChartComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     Chart.pluginService.register({
-      beforeDraw: function(chart: any) {
+      beforeDraw: function(chart: Chart & { innerRadius: number }) {
         const centerConfig = _get(chart, 'options.elements.center');
         if (chart.config.type === 'doughnut' && centerConfig) {
           // Code from http://jsfiddle.net/nkzyx50o/

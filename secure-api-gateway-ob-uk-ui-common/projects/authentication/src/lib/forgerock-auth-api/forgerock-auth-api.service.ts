@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import _get from 'lodash-es/get';
 
 import { encodeQueryData } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/utils';
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
@@ -12,11 +11,11 @@ import { Params, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ForgerockAuthApiService {
+  constructor(private http: HttpClient, private configService: ForgerockConfigService, private router: Router) {}
+
   get sessionInfoUrl() {
     return `${this.configService.get('authenticationServer')}/json/sessions?_action=getSessionInfo`;
   }
-
-  constructor(private http: HttpClient, private configService: ForgerockConfigService, private router: Router) {}
 
   login(realm = this.configService.get('defaultRealm'), body, queries = {}) {
     return this.http.post(
@@ -72,7 +71,7 @@ export class ForgerockAuthApiService {
     );
   }
 
-  updateUserProfile(realm = this.configService.get('defaultRealm'), username = '', body: any = {}) {
+  updateUserProfile(realm = this.configService.get('defaultRealm'), username = '', body: object = {}) {
     return this.http.put(
       `${this.configService.get('authenticationServer')}/json/realms/root/realms${prefixRealm(
         realm
@@ -84,7 +83,7 @@ export class ForgerockAuthApiService {
     );
   }
 
-  updateUserPassword(realm = this.configService.get('defaultRealm'), username = '', body: any = {}) {
+  updateUserPassword(realm = this.configService.get('defaultRealm'), username = '', body: object = {}) {
     return this.http.post(
       `${this.configService.get('authenticationServer')}/json/realms/root/realms${prefixRealm(
         realm
@@ -96,7 +95,7 @@ export class ForgerockAuthApiService {
     );
   }
 
-  register(realm = this.configService.get('defaultRealm'), values: any) {
+  register(realm = this.configService.get('defaultRealm'), values: { username: string; firstname: string; lastname: string; email: string; password: string }) {
     const request = {
       input: {
         user: {
@@ -120,7 +119,7 @@ export class ForgerockAuthApiService {
     );
   }
 
-  getSession(): Observable<any> {
+  getSession(): Observable<unknown> {
     return this.http.post(
       this.sessionInfoUrl,
       {},

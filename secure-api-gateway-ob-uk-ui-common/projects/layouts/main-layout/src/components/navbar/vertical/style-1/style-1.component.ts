@@ -9,19 +9,20 @@ import { ForgerockLayoutSidebarService } from '../../../../sidebar/sidebar.servi
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
 
 @Component({
+  standalone: false,
   selector: 'navbar-vertical-style-1',
   templateUrl: './style-1.component.html',
   styleUrls: ['./style-1.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
-  fuseConfig: any;
-  // fusePerfectScrollbarUpdateTimeout: any;
-  navigation: any;
+  fuseConfig: unknown;
+  // fusePerfectScrollbarUpdateTimeout: unknown;
+  navigation: unknown;
   clientName: string;
 
   // private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(
     private _fuseConfigService: ForgerockMainLayoutConfigService,
@@ -30,8 +31,8 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
     private _router: Router,
     private configService: ForgerockConfigService
   ) {
-    this._unsubscribeAll = new Subject();
-    this.clientName = this.configService.get('client.name');
+    this._unsubscribeAll = new Subject<unknown>();
+    this.clientName = this.configService.get('client.name') as string;
   }
   /**
    * On init

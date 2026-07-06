@@ -9,15 +9,15 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   providedIn: 'root'
 })
 export class ForgerockMainLayoutNavigationService {
-  onItemCollapsed: Subject<any>;
-  onItemCollapseToggled: Subject<any>;
+  onItemCollapsed: Subject<IForgerockMainLayoutNavigationItem>;
+  onItemCollapseToggled: Subject<unknown>;
 
   private _onNavigationChanged: BehaviorSubject<{ key: string; navigation: IForgerockMainLayoutNavigationItem[] }>;
   private _onNavigationRegistered: BehaviorSubject<[string, IForgerockMainLayoutNavigationItem[]]>;
   private _onNavigationUnregistered: BehaviorSubject<string>;
 
   private _currentNavigationKey: string;
-  private _registry: { [key: string]: any } = {};
+  private _registry: { [key: string]: IForgerockMainLayoutNavigationItem[] } = {};
 
   /**
    * Constructor
@@ -47,11 +47,11 @@ export class ForgerockMainLayoutNavigationService {
     return this._onNavigationChanged.asObservable();
   }
 
-  get onNavigationRegistered(): Observable<any> {
+  get onNavigationRegistered(): Observable<[string, IForgerockMainLayoutNavigationItem[]]> {
     return this._onNavigationRegistered.asObservable();
   }
 
-  get onNavigationUnregistered(): Observable<any> {
+  get onNavigationUnregistered(): Observable<string> {
     return this._onNavigationUnregistered.asObservable();
   }
   register(key, navigation): void {
@@ -77,7 +77,7 @@ export class ForgerockMainLayoutNavigationService {
 
     this._onNavigationUnregistered.next(key);
   }
-  getNavigation(key): any {
+  getNavigation(key): IForgerockMainLayoutNavigationItem[] {
     if (!this._registry[key]) {
       console.warn(`The navigation with the key '${key}' doesn't exist in the registry.`);
 
@@ -87,7 +87,7 @@ export class ForgerockMainLayoutNavigationService {
     return this._registry[key];
   }
 
-  getFlatNavigation(navigation, flatNavigation: IForgerockMainLayoutNavigationItem[] = []): any {
+  getFlatNavigation(navigation: IForgerockMainLayoutNavigationItem[], flatNavigation: IForgerockMainLayoutNavigationItem[] = []): IForgerockMainLayoutNavigationItem[] {
     for (const item of navigation) {
       if (item.type === 'item') {
         flatNavigation.push(item);
@@ -105,7 +105,7 @@ export class ForgerockMainLayoutNavigationService {
     return flatNavigation;
   }
 
-  getCurrentNavigation(): any {
+  getCurrentNavigation(): IForgerockMainLayoutNavigationItem[] {
     if (!this._currentNavigationKey) {
       console.warn('The current navigation is not set.');
 
@@ -129,7 +129,7 @@ export class ForgerockMainLayoutNavigationService {
       navigation: this.getCurrentNavigation()
     });
   }
-  getNavigationItem(id, navigation = null): any | boolean {
+  getNavigationItem(id: string, navigation: IForgerockMainLayoutNavigationItem[] = null): IForgerockMainLayoutNavigationItem | boolean {
     if (!navigation) {
       navigation = this.getCurrentNavigation();
     }
@@ -151,7 +151,7 @@ export class ForgerockMainLayoutNavigationService {
     return false;
   }
 
-  getNavigationItemParent(id, navigation = null, parent = null): any {
+  getNavigationItemParent(id: string, navigation: IForgerockMainLayoutNavigationItem[] = null, parent: IForgerockMainLayoutNavigationItem[] | IForgerockMainLayoutNavigationItem = null): IForgerockMainLayoutNavigationItem[] | IForgerockMainLayoutNavigationItem | boolean {
     if (!navigation) {
       navigation = this.getCurrentNavigation();
       parent = navigation;
@@ -174,8 +174,8 @@ export class ForgerockMainLayoutNavigationService {
     return false;
   }
 
-  addNavigationItem(item, id): void {
-    const navigation: any[] = this.getCurrentNavigation();
+  addNavigationItem(item: IForgerockMainLayoutNavigationItem, id: string): void {
+    const navigation: IForgerockMainLayoutNavigationItem[] = this.getCurrentNavigation();
 
     if (id === 'end') {
       navigation.push(item);
@@ -187,9 +187,9 @@ export class ForgerockMainLayoutNavigationService {
       navigation.unshift(item);
     }
 
-    const parent: any = this.getNavigationItem(id);
+    const parent = this.getNavigationItem(id);
 
-    if (parent) {
+    if (parent && typeof parent !== 'boolean') {
       if (!parent.children) {
         parent.children = [];
       }
@@ -198,17 +198,22 @@ export class ForgerockMainLayoutNavigationService {
     }
   }
 
-  removeNavigationItem(id): void {
+  removeNavigationItem(id: string): void {
     const item = this.getNavigationItem(id);
 
     if (!item) {
       return;
     }
 
-    let parent = this.getNavigationItemParent(id);
+    const parentResult = this.getNavigationItemParent(id);
+    if (!parentResult || typeof parentResult === 'boolean') {
+      return;
+    }
 
-    parent = parent.children || parent;
+    const parent: IForgerockMainLayoutNavigationItem[] = Array.isArray(parentResult)
+      ? parentResult
+      : (parentResult.children || []);
 
-    parent.splice(parent.indexOf(item), 1);
+    parent.splice(parent.indexOf(item as IForgerockMainLayoutNavigationItem), 1);
   }
 }

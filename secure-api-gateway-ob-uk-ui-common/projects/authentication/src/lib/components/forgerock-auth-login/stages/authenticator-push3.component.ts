@@ -7,6 +7,7 @@ import { StagesParentComponent } from './stages.parent.component';
 const INTERVAL_POLLING = 20000;
 
 @Component({
+  standalone: false,
   selector: 'app-authenticator-push3',
   template: `
     <h1 *ngIf="response.header">{{ response.header }}</h1>

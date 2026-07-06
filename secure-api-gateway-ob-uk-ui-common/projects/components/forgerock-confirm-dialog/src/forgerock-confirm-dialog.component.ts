@@ -9,6 +9,7 @@ export interface ConfirmDialogData {
 }
 
 @Component({
+  standalone: false,
   selector: 'app-confirm-dialog',
   template: `
     <h2 mat-dialog-title>{{ data?.title || 'Please confirm' }}</h2>

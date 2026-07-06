@@ -4,15 +4,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiReponses } from '../../../models';
 import { IConfigClient } from '../../../models';
 
-@Directive()
+@Directive({ standalone: false })
 export class StagesParentComponent implements OnInit {
-  constructor() {}
-
   @Input() response: ApiReponses.AuthLoginResponse;
   @Input() client: IConfigClient;
-  @Output() formSubmit = new EventEmitter<any>();
+  @Output() formSubmit = new EventEmitter<unknown>();
 
   formGroup: FormGroup;
+
+  constructor() {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({});
@@ -23,15 +23,16 @@ export class StagesParentComponent implements OnInit {
     }
   }
 
-  getName(item: any) {
-    let name = item.input && item.input[0].name;
+  getName(item: unknown) {
+    const i = item as { input?: Array<{name: string}>; output?: Array<{name: string}> };
+    let name = i.input && i.input[0].name;
     if (!name) {
-      name = item.output && item.output[0].name;
+      name = i.output && i.output[0].name;
     }
     return name;
   }
 
-  createControl(config: any) {
+  createControl(config: unknown) {
     const value = this.getName(config);
     return new FormControl(value, [Validators.required]);
   }

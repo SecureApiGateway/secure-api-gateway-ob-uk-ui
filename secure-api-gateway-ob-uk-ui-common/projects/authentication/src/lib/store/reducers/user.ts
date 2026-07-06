@@ -71,14 +71,14 @@ export default function userReducer(state: IUserState = DEFAULT_STATE, action: I
       return {
         ...state,
         isFetching: false,
-        user: action.payload.user
+        user: action.payload.user as IUser
       };
     }
     case userTypes.USER_UPDATE_SUCCESS: {
       return {
         ...state,
         isUpdateSubmitting: false,
-        user: action.payload.user
+        user: action.payload.user as IUser
       };
     }
     case userTypes.USER_PASSWORD_SUCCESS: {

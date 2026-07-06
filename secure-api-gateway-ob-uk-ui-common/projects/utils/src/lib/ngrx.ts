@@ -4,17 +4,17 @@ import { EffectSources } from '@ngrx/effects';
 
 export const BOOTSTRAP_EFFECTS = new InjectionToken('Bootstrap Effects');
 
-export function bootstrapEffects(effects: Type<any>[], sources: EffectSources) {
+export function bootstrapEffects(effects: Type<unknown>[], sources: EffectSources) {
   return () => {
     effects.forEach(effect => sources.addEffects(effect));
   };
 }
 
-export function createInstances(...instances: any[]) {
+export function createInstances(...instances: unknown[]) {
   return instances;
 }
 
-export function provideBootstrapEffects(effects: Type<any>[]) {
+export function provideBootstrapEffects(effects: Type<unknown>[]) {
   return [
     effects,
     { provide: BOOTSTRAP_EFFECTS, deps: effects, useFactory: createInstances },

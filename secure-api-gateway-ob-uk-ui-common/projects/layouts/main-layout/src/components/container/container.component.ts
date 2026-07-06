@@ -6,6 +6,7 @@ import { ForgerockMainLayoutConfigService } from '../../main-layout.config.servi
 import { IForgerockMainLayoutConfig } from '../../models';
 
 @Component({
+  standalone: false,
   selector: 'layout-container',
   template: `
     <ng-content></ng-content>
@@ -24,16 +25,16 @@ import { IForgerockMainLayoutConfig } from '../../models';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class LayoutContainerComponent implements OnInit, OnDestroy {
-  public layoutConfig: IForgerockMainLayoutConfig;
-
   @HostBinding('style.max-width.px')
   width: number | undefined;
   @HostBinding('class.fluid') isFluid: boolean;
 
-  private _unsubscribeAll: Subject<any>;
+  public layoutConfig: IForgerockMainLayoutConfig;
+
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(private _configService: ForgerockMainLayoutConfigService) {
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<unknown>();
   }
 
   ngOnInit(): void {

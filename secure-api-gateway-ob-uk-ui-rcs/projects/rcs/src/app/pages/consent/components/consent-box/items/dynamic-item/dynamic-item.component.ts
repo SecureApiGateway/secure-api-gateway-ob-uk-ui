@@ -2,6 +2,8 @@ import {
   Component,
   Input,
   OnChanges,
+  SimpleChanges,
+  Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -28,6 +30,7 @@ import {
 } from "../../../../../../../../src/app/pages/consent/components/consent-box/items/sort-code-and-account-number-item/sort-code-and-account-number-item";
 
 @Component({
+  standalone: false,
   selector: 'app-dynamic-item',
   templateUrl: './dynamic-item.component.html',
   styleUrls: ['./dynamic-item.component.scss']
@@ -41,7 +44,7 @@ export class DynamicItemComponent implements OnChanges {
   dynamicTarget: ViewContainerRef;
 
 
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: SimpleChanges) {
     if (!changes.item || !changes.item.currentValue) return;
 
     this.create(changes.item.currentValue);
@@ -100,9 +103,9 @@ export class DynamicItemComponent implements OnChanges {
     component.payload = item.payload;
   }
 
-  createComponent(componentInstance) {
+  createComponent(componentInstance: Type<unknown>): { payload: unknown } {
     this.dynamicTarget.clear();
     const componentRef = this.dynamicTarget.createComponent(componentInstance);
-    return <any>componentRef.instance;
+    return componentRef.instance as { payload: unknown };
   }
 }

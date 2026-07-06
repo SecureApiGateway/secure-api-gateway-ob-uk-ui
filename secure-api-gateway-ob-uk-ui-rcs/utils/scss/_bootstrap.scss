@@ -1,4 +1,4 @@
-@import 'reset';
-@import 'normalize';
-@import 'scrollbars';
-@import 'mixins/breakpoints';
+@use 'reset' as *;
+@use 'normalize' as *;
+@use 'scrollbars' as *;
+@use 'mixins/breakpoints' as *;

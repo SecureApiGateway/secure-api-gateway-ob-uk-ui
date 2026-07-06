@@ -33,17 +33,18 @@ export const RegistrationValidator: ValidatorFn = (control: AbstractControl): Va
 };
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-password',
   templateUrl: './forgerock-auth-password.component.html',
   styleUrls: ['./forgerock-auth-password.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthPasswordComponent implements OnInit, OnChanges {
-  formGroup: FormGroup;
-  isDisabled: boolean;
   @Input() user: IUser;
   @Input() isLoading = false;
   @Output() formSubmit = new EventEmitter<ApiRequest.IUserPasswordUpdateBody>();
+  formGroup: FormGroup;
+  isDisabled: boolean;
 
   constructor(private configService: ForgerockConfigService) {
     this.isDisabled = this.configService.get('featureFlags.disablePasswordForm', false);
@@ -68,7 +69,11 @@ export class ForgerockAuthPasswordComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.isDisabled && changes.isLoading && !changes.isLoading.firstChange) {
-      changes.isLoading.currentValue ? this.formGroup.disable() : this.formGroup.enable();
+      if (changes.isLoading.currentValue) {
+        this.formGroup.disable();
+      } else {
+        this.formGroup.enable();
+      }
     }
   }
 

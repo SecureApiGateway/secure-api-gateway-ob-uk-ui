@@ -9,6 +9,7 @@ export interface FileUploadChangeObject {
 }
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customization-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],

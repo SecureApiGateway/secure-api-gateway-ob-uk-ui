@@ -1,14 +1,12 @@
-@mixin forgerock-utils-theme($theme) {
-  $color: map-get($theme, color);
-  $foreground: map-get($color, foreground);
-  $accent: map-get($color, accent);
+@use '@angular/material' as mat;
 
+@mixin forgerock-utils-theme($theme) {
   .secondary-text {
-    color: map-get($foreground, secondary-text);
+    color: mat.get-theme-color($theme, foreground, secondary-text);
   }
 
   a {
-    color: map-get($accent, default);
+    color: mat.get-theme-color($theme, accent, default);
     text-decoration: none;
 
     &:not(.mat-mdc-button):not(.mat-mdc-raised-button):not(.mat-mdc-icon-button) {

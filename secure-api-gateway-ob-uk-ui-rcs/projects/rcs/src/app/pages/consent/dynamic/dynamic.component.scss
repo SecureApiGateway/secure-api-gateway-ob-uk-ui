@@ -1,9 +1,7 @@
-@import 'mixins/breakpoints';
+@use '@angular/material' as mat;
+@use 'mixins/breakpoints' as *;
 
 @mixin bank-consent-dynamic-theme($theme) {
-  $color: map-get($theme, color);
-  $foreground: map-get($color, foreground);
-  $background: map-get($color, background);
   app-consent-dynamic {
     word-break: break-word;
     h1 {
@@ -20,11 +18,11 @@
     .divider {
       border-top-width: 1px;
       border-top-style: solid;
-      border-top-color: map-get($foreground, divider);
+      border-top-color: mat.get-theme-color($theme, foreground, divider);
       margin: 20px 0;
     }
     .title {
-      color: map-get($foreground, secondary-text);
+      color: mat.get-theme-color($theme, foreground, secondary-text);
       margin-bottom: 0.9em;
     }
     app-consent-box {
@@ -33,7 +31,7 @@
       }
     }
     :host ::ng-deep .secondary-text {
-      color: map-get($foreground, secondary-text);
+      color: mat.get-theme-color($theme, foreground, secondary-text);
     }
 
     .paymentButton {
@@ -49,7 +47,7 @@
     }
 
     .accounts > label {
-      border-top: solid 1px map-get($foreground, divider);
+      border-top: solid 1px mat.get-theme-color($theme, foreground, divider);
       padding: 15px 15px;
     }
 
@@ -63,7 +61,7 @@
     }
 
     .accounts > label:hover {
-      background-color: map-get($background, hover);
+      background-color: mat.get-theme-color($theme, background, hover);
     }
 
     .Aligner {
@@ -81,15 +79,15 @@
       margin-left: 0.7em;
       margin-top: 0.7em;
       margin-bottom: 0.7em;
-      border-top: solid 1px map-get($foreground, divider);
-      border-bottom: solid 1px map-get($foreground, divider);
+      border-top: solid 1px mat.get-theme-color($theme, foreground, divider);
+      border-bottom: solid 1px mat.get-theme-color($theme, foreground, divider);
       app-key-value-item:last-child {
         margin-bottom: 0;
       }
     }
 
     .consent-box {
-      background-color: map-get($background, background);
+      background-color: mat.get-theme-color($theme, background, background);
       padding: 15px;
       margin: 15px 0;
       border-radius: 5px;
@@ -100,7 +98,7 @@
     }
 
     .review-permissions > mat-accordion:first-child > .mat-expansion-panel {
-      background-color: map-get($background, background);
+      background-color: mat.get-theme-color($theme, background, background);
     }
 
     .review-permissions .mat-expansion-panel .mat-expansion-panel-body {

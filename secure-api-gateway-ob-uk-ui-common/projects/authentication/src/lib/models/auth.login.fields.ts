@@ -2,7 +2,7 @@ import { FormGroup } from '@angular/forms';
 
 export interface IOutput {
   name: string;
-  value: any;
+  value: unknown;
 }
 
 export interface IInput {

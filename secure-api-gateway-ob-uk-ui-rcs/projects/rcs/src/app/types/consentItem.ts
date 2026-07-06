@@ -18,7 +18,7 @@ export enum ItemType {
 
 export interface Item {
   type: ItemType;
-  payload: any;
+  payload: unknown;
 }
 
 export interface IConsentEventEmitter {

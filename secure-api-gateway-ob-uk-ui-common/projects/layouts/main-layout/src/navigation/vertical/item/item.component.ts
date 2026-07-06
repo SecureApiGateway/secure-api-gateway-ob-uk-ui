@@ -2,6 +2,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { IForgerockMainLayoutNavigationItem } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'fuse-nav-vertical-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']

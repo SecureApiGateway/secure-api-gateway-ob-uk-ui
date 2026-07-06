@@ -3,28 +3,46 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { ForgerockMainLayoutConfigService } from '../../../main-layout.config.service';
+import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigationItem } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'fuse-nav-horizontal-collapsable',
   templateUrl: './collapsable.component.html',
   styleUrls: ['./collapsable.component.scss']
 })
 export class FuseNavHorizontalCollapsableComponent implements OnInit, OnDestroy {
-  fuseConfig: any;
-  isOpen = false;
-
   @HostBinding('class')
   classes = 'nav-collapsable nav-item';
 
   @Input()
-  item: any;
+  item: IForgerockMainLayoutNavigationItem;
+
+  fuseConfig: IForgerockMainLayoutConfig;
+  isOpen = false;
 
   // Private
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(private _fuseConfigService: ForgerockMainLayoutConfigService) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
+  }
+
+  /**
+   * Open
+   */
+  @HostListener('mouseenter')
+  open(): void {
+    this.isOpen = true;
+  }
+
+  /**
+   * Close
+   */
+  @HostListener('mouseleave')
+  close(): void {
+    this.isOpen = false;
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -48,25 +66,5 @@ export class FuseNavHorizontalCollapsableComponent implements OnInit, OnDestroy 
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
-  }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Public methods
-  // -----------------------------------------------------------------------------------------------------
-
-  /**
-   * Open
-   */
-  @HostListener('mouseenter')
-  open(): void {
-    this.isOpen = true;
-  }
-
-  /**
-   * Close
-   */
-  @HostListener('mouseleave')
-  close(): void {
-    this.isOpen = false;
   }
 }

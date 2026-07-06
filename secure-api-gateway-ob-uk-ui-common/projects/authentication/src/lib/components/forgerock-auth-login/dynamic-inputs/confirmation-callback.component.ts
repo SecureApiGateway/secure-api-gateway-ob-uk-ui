@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-confirmation-callback',
   template: `
     <div [formGroup]="group" fxLayout="column" fxLayoutAlign="center center">
@@ -29,10 +30,10 @@ export class ConfirmationCallbackComponent implements Field, OnInit {
   authId: string;
   config: ICallback;
   group: FormGroup;
-  id: any = '';
+  id: unknown = '';
   prompt: string;
   messageType: number;
-  options: any;
+  options: unknown;
   optionType: number;
   defaultOption: number;
 
@@ -41,10 +42,10 @@ export class ConfirmationCallbackComponent implements Field, OnInit {
     this.config.output.forEach(entry => {
       switch (entry.name) {
         case 'prompt':
-          this.prompt = entry.value;
+          this.prompt = entry.value as string;
           break;
         case 'messageType':
-          this.prompt = entry.value;
+          this.prompt = entry.value as string;
           break;
         case 'options':
           this.options = entry.value;
@@ -59,7 +60,7 @@ export class ConfirmationCallbackComponent implements Field, OnInit {
     });
   }
 
-  public open(event, item) {
-    this.config.input[0].value = item;
+  public open(event: Event, item: unknown) {
+    this.config.input[0].value = item as string;
   }
 }

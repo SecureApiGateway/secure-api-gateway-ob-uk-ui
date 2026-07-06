@@ -5,6 +5,7 @@ import debug from 'debug';
 const log = debug('Pipe:forgerockDateFormat');
 
 @Pipe({
+  standalone: false,
   name: 'forgerockDateFormat',
   pure: false
 })

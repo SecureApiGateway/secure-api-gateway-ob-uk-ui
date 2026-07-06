@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   exportAs: 'passwordCallback',
   selector: 'app-password-callback',
   template: `

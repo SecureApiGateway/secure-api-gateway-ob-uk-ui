@@ -3,13 +3,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-dev-info',
   templateUrl: './forgerock-dev-info.component.html',
   styleUrls: ['./forgerock-dev-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockDevInfoComponent implements OnInit {
-  config: any;
+  config: unknown;
 
   constructor(private configService: ForgerockConfigService) {
     this.config = this.configService.config;

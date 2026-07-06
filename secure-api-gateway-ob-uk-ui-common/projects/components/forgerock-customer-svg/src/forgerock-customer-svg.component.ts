@@ -8,6 +8,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 import { HttpClient } from '@angular/common/http';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customer-logo',
   template: `
     <div [innerHTML]="svg$ | async"></div>
@@ -22,7 +23,7 @@ export class ForgerockCustomerSVGComponent implements OnInit {
   stream$: Observable<string>;
 
   constructor(
-    protected store: Store<any>,
+    protected store: Store<unknown>,
     protected configService: ForgerockConfigService,
     protected sanitizer: DomSanitizer,
     protected http: HttpClient

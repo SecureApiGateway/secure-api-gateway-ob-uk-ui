@@ -2,7 +2,7 @@ export interface ISession {
   latestAccessTime: string;
   maxIdleExpirationTime: string;
   maxSessionExpirationTime: string;
-  properties: any;
+  properties: unknown;
   realm: string;
   universalId: string;
   username: string;

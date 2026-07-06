@@ -9,6 +9,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 import { ForgerockAuthRedirectOIDCService } from './oidc.service';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-redirect-oidc',
   template: `
     <mat-progress-bar

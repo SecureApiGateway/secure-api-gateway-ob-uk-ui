@@ -7,6 +7,7 @@ import { ForgerockMainLayoutNavigationService } from '../../navigation.service';
 import { IForgerockMainLayoutNavigationItem } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'fuse-nav-vertical-collapsable',
   templateUrl: './collapsable.component.html',
   styleUrls: ['./collapsable.component.scss']
@@ -18,10 +19,10 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy {
 
   @HostBinding('class.open') public isOpen = false;
 
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(private _fuseNavigationService: ForgerockMainLayoutNavigationService, private _router: Router) {
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<unknown>();
   }
 
   /**

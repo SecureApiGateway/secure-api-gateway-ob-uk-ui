@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-profile',
   templateUrl: './forgerock-auth-profile.component.html',
   styleUrls: ['./forgerock-auth-profile.component.scss']

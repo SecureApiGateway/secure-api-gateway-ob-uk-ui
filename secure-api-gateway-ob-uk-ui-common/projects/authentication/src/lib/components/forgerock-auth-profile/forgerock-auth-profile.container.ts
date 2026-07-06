@@ -7,6 +7,7 @@ import { selectFullName, selectUsername, userActions } from '../../store/reducer
 import { first } from 'rxjs/operators';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-profile-container',
   template: `
     <forgerock-auth-profile

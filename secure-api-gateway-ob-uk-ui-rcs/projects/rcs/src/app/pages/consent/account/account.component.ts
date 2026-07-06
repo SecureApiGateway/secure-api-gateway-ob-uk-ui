@@ -15,6 +15,7 @@ function validateCheckboxRequired(c: FormControl) {
 }
 
 @Component({
+  standalone: false,
   selector: 'app-consent-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],

@@ -3,6 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { StagesParentComponent } from './stages.parent.component';
 
 @Component({
+  standalone: false,
   selector: 'app-authenticator-push-registration2',
   template: `
     <h1 *ngIf="response.header">{{ response.header }}</h1>

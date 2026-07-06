@@ -1,3 +1,5 @@
+import { Type } from '@angular/core';
+
 export interface IForgerockMainLayoutNavigationItem {
   id: string;
   type: 'item' | 'group' | 'collapsable';
@@ -9,7 +11,7 @@ export interface IForgerockMainLayoutNavigationItem {
   exactMatch?: boolean;
   externalUrl?: boolean;
   openInNewTab?: boolean;
-  function?: any;
+  function?: (...args: unknown[]) => unknown;
   badge?: {
     title?: string;
     translate?: string;
@@ -24,8 +26,8 @@ export interface IForgerockMainLayoutNavigation extends IForgerockMainLayoutNavi
 }
 
 export interface IForgerockMainLayoutNavigations {
-  main: IForgerockMainLayoutNavigation[];
   [key: string]: IForgerockMainLayoutNavigation[];
+  main: IForgerockMainLayoutNavigation[];
 }
 
 export interface IForgerockMainVerticalConfig {
@@ -36,6 +38,7 @@ export interface IForgerockMainVerticalConfig {
     folded: boolean;
     position: 'left' | 'right';
     variant?: string;
+    background?: string;
   };
   toolbar: {
     hidden: boolean;
@@ -54,6 +57,7 @@ export interface IForgerockMainHorizontalLayoutConfig {
     folded: boolean;
     position: 'left' | 'right';
     variant?: string;
+    background?: string;
   };
   toolbar: {
     hidden: boolean;
@@ -67,5 +71,5 @@ export interface IForgerockMainHorizontalLayoutConfig {
 export type IForgerockMainLayoutConfig = IForgerockMainVerticalConfig | IForgerockMainHorizontalLayoutConfig;
 
 export interface IForgerockMainLayoutComponents {
-  toolbar: any; // no idea how to represent a component instance
+  toolbar: Type<unknown>;
 }

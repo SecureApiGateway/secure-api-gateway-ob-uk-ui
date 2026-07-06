@@ -23,6 +23,7 @@ import { ForgerockMainLayoutConfigService } from '../main-layout.config.service'
 import { ForegerockLayoutMatchMediaService } from './match-media.service';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-layout-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
@@ -62,16 +63,16 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
   @Output()
   openedChanged: EventEmitter<boolean>;
 
+  @HostBinding('class.animations-enabled')
+  public _animationsEnabled: boolean;
+
   private _folded: boolean;
-  private _fuseConfig: any;
+  private _fuseConfig: unknown;
   private _wasActive: boolean;
   private _wasFolded: boolean;
   private _backdrop: HTMLElement | null = null;
   private _player: AnimationPlayer;
-  private _unsubscribeAll: Subject<any>;
-
-  @HostBinding('class.animations-enabled')
-  public _animationsEnabled: boolean;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(
     private _animationBuilder: AnimationBuilder,
@@ -93,7 +94,11 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
 
     this._animationsEnabled = false;
     this._folded = false;
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<unknown>();
+  }
+
+  get folded(): boolean {
+    return this._folded;
   }
 
   @Input()
@@ -148,8 +153,25 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
     this.foldedChanged.emit(this.folded);
   }
 
-  get folded(): boolean {
-    return this._folded;
+  @HostListener('mouseenter')
+  onMouseEnter(): void {
+    if (!this.foldedAutoTriggerOnHover) {
+      return;
+    }
+
+    this.unfoldTemporarily();
+  }
+
+  /**
+   * Mouseleave
+   */
+  @HostListener('mouseleave')
+  onMouseLeave(): void {
+    if (!this.foldedAutoTriggerOnHover) {
+      return;
+    }
+
+    this.foldTemporarily();
   }
 
   ngOnInit(): void {
@@ -180,6 +202,131 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
 
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
+  }
+
+  open(): void {
+    if (this.opened || this.isLockedOpen) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this._showSidebar();
+
+    this._showBackdrop();
+
+    this.opened = true;
+
+    this.openedChanged.emit(this.opened);
+
+    this._changeDetectorRef.markForCheck();
+  }
+
+  close(): void {
+    if (!this.opened || this.isLockedOpen) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this._hideBackdrop();
+
+    this.opened = false;
+
+    this.openedChanged.emit(this.opened);
+
+    this._hideSidebar();
+
+    this._changeDetectorRef.markForCheck();
+  }
+
+  toggleOpen(): void {
+    if (this.opened) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  /**
+   * Fold the sidebar permanently
+   */
+  fold(): void {
+    if (this.folded) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this.folded = true;
+
+    this._changeDetectorRef.markForCheck();
+  }
+
+  /**
+   * Unfold the sidebar permanently
+   */
+  unfold(): void {
+    if (!this.folded) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this.folded = false;
+
+    this._changeDetectorRef.markForCheck();
+  }
+
+  /**
+   * Toggle the sidebar fold/unfold permanently
+   */
+  toggleFold(): void {
+    if (this.folded) {
+      this.unfold();
+    } else {
+      this.fold();
+    }
+  }
+
+  /**
+   * Fold the temporarily unfolded sidebar back
+   */
+  foldTemporarily(): void {
+    if (!this.folded) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this.unfolded = false;
+
+    const styleValue = this.foldedWidth + 'px';
+
+    this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
+
+    this._changeDetectorRef.markForCheck();
+  }
+
+  /**
+   * Unfold the sidebar temporarily
+   */
+  unfoldTemporarily(): void {
+    if (!this.folded) {
+      return;
+    }
+
+    this._enableAnimations();
+
+    this.unfolded = true;
+
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
+
+    this._changeDetectorRef.markForCheck();
   }
 
   private _setupVisibility(): void {
@@ -356,147 +503,4 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
     this._changeDetectorRef.markForCheck();
   }
 
-  open(): void {
-    if (this.opened || this.isLockedOpen) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this._showSidebar();
-
-    this._showBackdrop();
-
-    this.opened = true;
-
-    this.openedChanged.emit(this.opened);
-
-    this._changeDetectorRef.markForCheck();
-  }
-  close(): void {
-    if (!this.opened || this.isLockedOpen) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this._hideBackdrop();
-
-    this.opened = false;
-
-    this.openedChanged.emit(this.opened);
-
-    this._hideSidebar();
-
-    this._changeDetectorRef.markForCheck();
-  }
-  toggleOpen(): void {
-    if (this.opened) {
-      this.close();
-    } else {
-      this.open();
-    }
-  }
-
-  @HostListener('mouseenter')
-  onMouseEnter(): void {
-    if (!this.foldedAutoTriggerOnHover) {
-      return;
-    }
-
-    this.unfoldTemporarily();
-  }
-
-  /**
-   * Mouseleave
-   */
-  @HostListener('mouseleave')
-  onMouseLeave(): void {
-    if (!this.foldedAutoTriggerOnHover) {
-      return;
-    }
-
-    this.foldTemporarily();
-  }
-
-  /**
-   * Fold the sidebar permanently
-   */
-  fold(): void {
-    if (this.folded) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this.folded = true;
-
-    this._changeDetectorRef.markForCheck();
-  }
-
-  /**
-   * Unfold the sidebar permanently
-   */
-  unfold(): void {
-    if (!this.folded) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this.folded = false;
-
-    this._changeDetectorRef.markForCheck();
-  }
-
-  /**
-   * Toggle the sidebar fold/unfold permanently
-   */
-  toggleFold(): void {
-    if (this.folded) {
-      this.unfold();
-    } else {
-      this.fold();
-    }
-  }
-
-  /**
-   * Fold the temporarily unfolded sidebar back
-   */
-  foldTemporarily(): void {
-    if (!this.folded) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this.unfolded = false;
-
-    const styleValue = this.foldedWidth + 'px';
-
-    this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
-    this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
-    this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
-
-    this._changeDetectorRef.markForCheck();
-  }
-
-  /**
-   * Unfold the sidebar temporarily
-   */
-  unfoldTemporarily(): void {
-    if (!this.folded) {
-      return;
-    }
-
-    this._enableAnimations();
-
-    this.unfolded = true;
-
-    this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
-    this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
-    this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
-
-    this._changeDetectorRef.markForCheck();
-  }
 }

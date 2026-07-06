@@ -3,6 +3,7 @@ import { FRAccountWithBalance } from '../../../../../../src/app/types/api';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-account-checkbox',
   templateUrl: './account-checkbox.component.html',
   styleUrls: ['./account-checkbox.component.scss']

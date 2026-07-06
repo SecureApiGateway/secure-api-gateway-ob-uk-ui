@@ -33,7 +33,7 @@ export default function sessionReducer(state: ISessionState = DEFAULT_STATE, act
       return {
         ...state,
         loading: false,
-        session: action.payload.session
+        session: action.payload.session as ISession
       };
     }
     case sessionTypes.SESSION_ERROR: {

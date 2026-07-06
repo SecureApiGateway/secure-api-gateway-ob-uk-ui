@@ -6,6 +6,7 @@ import { ForgerockMainLayoutConfigService } from '../../main-layout.config.servi
 import { IForgerockMainLayoutConfig } from '../../models';
 
 @Component({
+  standalone: false,
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -13,15 +14,15 @@ import { IForgerockMainLayoutConfig } from '../../models';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   _variant = 'vertical-style-1';
-  private _unsubscribeAll: Subject<any>;
   public layoutConfig: IForgerockMainLayoutConfig;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(
     private _elementRef: ElementRef,
     private _renderer: Renderer2,
     private configService: ForgerockMainLayoutConfigService
   ) {
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<unknown>();
   }
 
   get variant(): string {

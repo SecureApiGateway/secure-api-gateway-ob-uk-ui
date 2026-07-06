@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-name-callback',
   template: `
     <mat-form-field class="form-name-callback" [formGroup]="group">

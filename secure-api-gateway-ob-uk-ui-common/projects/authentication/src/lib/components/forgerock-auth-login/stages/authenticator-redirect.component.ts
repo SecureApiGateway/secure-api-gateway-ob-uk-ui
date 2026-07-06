@@ -5,6 +5,7 @@ import _get from 'lodash-es/get';
 import { StagesParentComponent } from './stages.parent.component';
 
 @Component({
+  standalone: false,
   selector: 'app-authenticator-redirect',
   template: `
     <h1 *ngIf="response.header">{{ response.header }}</h1>

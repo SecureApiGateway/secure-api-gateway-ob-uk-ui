@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-choice-callback',
   template: `
     <h2>{{ prompt }}</h2>
@@ -28,10 +29,10 @@ export class ChoiceCallbackComponent implements Field, OnInit {
   authId: string;
   config: ICallback;
   group: FormGroup;
-  id: any = '';
+  id: unknown = '';
   prompt: string;
   messageType: number;
-  options: any;
+  options: unknown;
   optionType: number;
   defaultOption: number;
   choices: string[];
@@ -42,13 +43,13 @@ export class ChoiceCallbackComponent implements Field, OnInit {
     this.config.output.forEach(entry => {
       switch (entry.name) {
         case 'prompt':
-          this.prompt = entry.value;
+          this.prompt = entry.value as string;
           break;
         case 'messageType':
-          this.prompt = entry.value;
+          this.prompt = entry.value as string;
           break;
         case 'choices':
-          this.choices = entry.value;
+          this.choices = entry.value as string[];
           break;
         case 'defaultChoice':
           this.defaultChoice = Number(entry.value);
@@ -57,7 +58,7 @@ export class ChoiceCallbackComponent implements Field, OnInit {
     });
   }
 
-  public open(event, item) {
-    this.config.input[0].value = item;
+  public open(event: Event, item: unknown) {
+    this.config.input[0].value = item as string;
   }
 }

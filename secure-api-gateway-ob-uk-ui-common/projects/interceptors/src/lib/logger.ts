@@ -9,7 +9,7 @@ const log = debug('bank:HTTP');
 export class LoggerInterceptor implements HttpInterceptor {
   constructor() {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
     const started = Date.now();
     let ok: string;
 
@@ -19,7 +19,7 @@ export class LoggerInterceptor implements HttpInterceptor {
         // Succeeds when there is a response; ignore other events
         event => (ok = event instanceof HttpResponse ? 'succeeded' : ''),
         // Operation failed; error is an HttpErrorResponse
-        error => (ok = 'failed')
+        () => (ok = 'failed')
       ),
       // Log when response observable either completes or errors
       finalize(() => {

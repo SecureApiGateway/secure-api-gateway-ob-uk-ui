@@ -23,7 +23,7 @@ export class IsOIDCConnectedGuard implements CanActivate {
     protected configService: ForgerockConfigService
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | any {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     let isConnected;
     this.store
       .pipe(select(selectOIDCConnected))
@@ -34,8 +34,8 @@ export class IsOIDCConnectedGuard implements CanActivate {
     return isConnected
       ? of(true)
       : this.auth.getUser().pipe(
-          map((data: any) => this.success(data)),
-          catchError(() => this.error(state))
+          map((data: IOIDCUser) => this.success(data)),
+          catchError(() => this.error())
         );
   }
 
@@ -45,7 +45,7 @@ export class IsOIDCConnectedGuard implements CanActivate {
     return true;
   }
 
-  error(state: RouterStateSnapshot): Observable<boolean> {
+  error(): Observable<boolean> {
     log('error');
     this.auth.getAuthRedirection().subscribe(function(data) {
       window.location.href = data.toString();

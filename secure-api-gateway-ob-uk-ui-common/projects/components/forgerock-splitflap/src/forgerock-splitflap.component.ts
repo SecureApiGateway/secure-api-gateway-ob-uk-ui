@@ -7,8 +7,6 @@ import {
   HostBinding,
   ElementRef
 } from '@angular/core';
-import _merge from 'lodash-es/merge';
-
 const emptyChar = '\xa0';
 const fillWithEmptyChar = (value: string | number, length: number) =>
   String(value)
@@ -34,6 +32,7 @@ const characterSizes: { [key in ISplitflapSizes]: number } = {
 };
 
 @Component({
+  standalone: false,
   selector: 'forgerock-splitflap',
   template: `
     <forgerock-splitflap-character

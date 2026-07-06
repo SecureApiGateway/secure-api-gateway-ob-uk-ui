@@ -10,6 +10,7 @@ import { ForgerockMainLayoutNavigationService } from './navigation/navigation.se
 import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './models';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-main-layout',
   template: `
     <!-- VERTICAL LAYOUT 1 -->
@@ -31,14 +32,14 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './mo
 export class ForgerockMainLayoutComponent implements OnDestroy {
   config$: Observable<IForgerockMainLayoutConfig>;
   navigation$: Observable<{ key: string; navigation: IForgerockMainLayoutNavigation[] }>;
-  private _unsubscribeAll: Subject<any> = new Subject();
+  private _unsubscribeAll: Subject<unknown> = new Subject();
   private latestPathnameClass = '';
 
   constructor(
     private configService: ForgerockMainLayoutConfigService,
     private navigationService: ForgerockMainLayoutNavigationService,
     private router: Router,
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.config$ = this.configService.config;
     this.navigation$ = this.navigationService.onNavigationChanged;

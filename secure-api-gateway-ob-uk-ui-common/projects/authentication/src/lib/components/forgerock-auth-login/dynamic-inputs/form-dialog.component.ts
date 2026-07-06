@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
+  standalone: false,
   selector: 'app-form-dialog',
   template: `
     <h1 mat-dialog-title>{{ data.reason }}</h1>
@@ -14,7 +15,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   `
 })
 export class FormDialogComponent {
-  constructor(public dialogRef: MatDialogRef<FormDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(public dialogRef: MatDialogRef<FormDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: { reason: string; message: string }) {}
 
   onNoClick(): void {
     this.dialogRef.close();

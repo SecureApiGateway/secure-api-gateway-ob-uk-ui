@@ -9,6 +9,7 @@ import {OBActiveOrHistoricCurrencyAndAmount} from "rcs/src/app/types/ob";
 import {isExchangeCurrency, calculateAmountConversion, calculateTotalAmount} from "rcs/src/app/utils/utils";
 
 @Component({
+    standalone: false,
     selector: 'app-consent-international-payment',
     templateUrl: './international-payment.component.html',
     styleUrls: ['./international-payment.component.scss'],

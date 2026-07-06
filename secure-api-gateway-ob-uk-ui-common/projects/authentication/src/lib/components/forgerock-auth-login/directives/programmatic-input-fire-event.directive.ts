@@ -1,10 +1,11 @@
 import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: '[programmaticInputFireEvent]'
 })
 export class ProgrammaticInputFireEventDirective implements OnInit {
-  nativeElement: any;
+  nativeElement: HTMLElement;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
     this.nativeElement = this.elementRef.nativeElement;

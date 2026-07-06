@@ -1,12 +1,10 @@
-@import '../../../../utils/src/lib/scss/mixins/breakpoints';
-
 @mixin forgerock-main-layout-navigation-theme($theme) {
-  $color: map-get($theme, color);
-  $primary: map-get($color, primary);
-  $accent: map-get($color, accent);
-  $warn: map-get($color, warn);
-  $background: map-get($color, background);
-  $foreground: map-get($color, foreground);
+  $color: map.get($theme, color);
+  $primary: map.get($color, primary);
+  $accent: map.get($color, accent);
+  $warn: map.get($color, warn);
+  $background: map.get($color, background);
+  $foreground: map.get($color, foreground);
 
   fuse-navigation {
     display: flex;
@@ -80,11 +78,11 @@
           }
 
           &:hover {
-            background-color: map-get($background, hover);
+            background-color: map.get($background, hover);
           }
 
           .mat-ripple-element {
-            background-color: map-get($background, hover);
+            background-color: map.get($background, hover);
           }
 
           &.active {

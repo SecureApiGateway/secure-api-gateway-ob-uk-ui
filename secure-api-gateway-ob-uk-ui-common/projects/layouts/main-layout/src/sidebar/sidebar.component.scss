@@ -1,4 +1,4 @@
-@import '../../../../utils/src/lib/scss/mixins/breakpoints';
+@use '../../../../utils/src/lib/scss/mixins/breakpoints' as *;
 
 forgerock-layout-sidebar {
   display: flex;

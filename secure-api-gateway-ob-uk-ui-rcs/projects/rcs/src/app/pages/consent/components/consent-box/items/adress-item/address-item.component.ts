@@ -5,6 +5,7 @@ import _get from 'lodash-es/get';
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
+  standalone: false,
   selector: 'app-adress-item',
   templateUrl: './address-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,7 +14,7 @@ export class AddressItemComponent implements OnInit {
   label: string
   cssClass: string;
   address: Address;
-  payload: any;
+  payload: { address: Address; label: string };
   items: Item[] = [];
 
   constructor(private translate: TranslateService) {
