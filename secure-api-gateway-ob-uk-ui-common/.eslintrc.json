@@ -26,6 +26,7 @@
         "no-console": ["warn", { "allow": ["log", "warn", "error"] }],
         "@typescript-eslint/member-ordering": "warn",
         "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/prefer-inject": "off",
         "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Component", "Container"] }],
         "@angular-eslint/directive-class-suffix": "error",
         "@angular-eslint/no-output-on-prefix": "error",

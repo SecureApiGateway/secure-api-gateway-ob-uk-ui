@@ -42,6 +42,7 @@
         "prefer-const": "error",
         "radix": "error",
         "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/prefer-inject": "off",
         "@angular-eslint/component-class-suffix": "error",
         "@angular-eslint/directive-class-suffix": "error",
         "@angular-eslint/no-output-on-prefix": "error",

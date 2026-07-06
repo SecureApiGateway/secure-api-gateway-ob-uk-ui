@@ -1,6 +1,5 @@
 module.exports = {
   preset: 'jest-preset-angular',
-  resolver: 'jest-preset-angular/build/resolvers/ng-jest-resolver.js',
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
   testRunner: 'jest-jasmine2',
   transform: {
