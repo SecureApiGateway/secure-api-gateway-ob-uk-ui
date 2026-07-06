@@ -12,8 +12,8 @@ describe('ForgerockConfigService', () => {
       imports: [HttpClientTestingModule],
       providers: [ForgerockConfigService]
     });
-    service = TestBed.get(ForgerockConfigService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(ForgerockConfigService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => httpMock.verify());

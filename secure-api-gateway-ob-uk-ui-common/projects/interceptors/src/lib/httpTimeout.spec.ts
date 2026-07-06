@@ -17,8 +17,8 @@ describe('TimeoutInterceptor', () => {
           { provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true }
         ]
       });
-      httpMock = TestBed.get(HttpTestingController);
-      httpClient = TestBed.get(HttpClient);
+      httpMock = TestBed.inject(HttpTestingController);
+      httpClient = TestBed.inject(HttpClient);
     });
 
     afterEach(() => httpMock.verify());

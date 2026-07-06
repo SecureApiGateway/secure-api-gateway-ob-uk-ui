@@ -44,9 +44,9 @@ describe('LogoutEffect', () => {
         provideMockActions(() => actions)
       ]
     });
-    apiService = TestBed.get(ForgerockAuthRedirectOIDCService);
-    router = TestBed.get(Router);
-    effects = TestBed.get(OIDCLogoutEffects);
+    apiService = TestBed.inject(ForgerockAuthRedirectOIDCService);
+    router = TestBed.inject(Router);
+    effects = TestBed.inject(OIDCLogoutEffects);
   });
 
   it('should return Success action', waitForAsync(() => {

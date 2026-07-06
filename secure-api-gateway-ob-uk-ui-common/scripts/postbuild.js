@@ -16,6 +16,18 @@ async function generateSecondaryEntryPackageJsons(version) {
     if (!await fs.pathExists(parentPkgPath)) continue;
     const parentPkg = await fs.readJson(parentPkgPath);
     const exports = parentPkg.exports || {};
+
+    // Add main/module to the primary package.json entry (for jest resolution)
+    const primaryExport = exports['.'];
+    if (primaryExport && typeof primaryExport === 'object') {
+      const primaryDefault = primaryExport.default || primaryExport.es2015;
+      if (primaryDefault && !parentPkg.main) {
+        parentPkg.main = primaryDefault;
+        parentPkg.module = primaryDefault;
+        await fs.outputJson(parentPkgPath, parentPkg, { spaces: 2 });
+      }
+    }
+
     for (const [exportKey, exportVal] of Object.entries(exports)) {
       if (exportKey === '.' || exportKey === './package.json') continue;
       const subName = exportKey.replace(/^\.\//, '');

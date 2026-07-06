@@ -49,7 +49,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
     fixture = TestBed.createComponent(ForgerockAuthOauth2AuthorizeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    forgerockConfigService = TestBed.get(ForgerockConfigService);
+    forgerockConfigService = TestBed.inject(ForgerockConfigService);
     delete global.window.location;
     global.window = Object.create(window);
     global.window.location = {

@@ -15,8 +15,8 @@ describe('ForgerockCustomerCanAccessGuard', () => {
       imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule],
       providers: [ForgerockCustomerCanAccessGuard, ForgerockConfigService]
     });
-    guard = TestBed.get(ForgerockCustomerCanAccessGuard);
-    router = TestBed.get(Router);
+    guard = TestBed.inject(ForgerockCustomerCanAccessGuard);
+    router = TestBed.inject(Router);
   });
 
   describe('isAccessGranted', () => {
