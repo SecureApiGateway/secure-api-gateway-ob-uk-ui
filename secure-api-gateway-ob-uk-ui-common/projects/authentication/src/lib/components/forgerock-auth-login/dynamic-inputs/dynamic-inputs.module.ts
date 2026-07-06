@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeComponent } from 'angularx-qrcode';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,7 +22,7 @@ import { FormDialogComponent } from './form-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
-    QRCodeModule,
+    QRCodeComponent,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

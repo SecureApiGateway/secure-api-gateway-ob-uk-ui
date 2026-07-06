@@ -4,6 +4,7 @@ import { permissionMocks } from './permissions';
 import { OBAccountPermissions } from '../../../../../src/app/types/OBAccountPermissions';
 
 @Component({
+  standalone: false,
   selector: 'app-account-permissions',
   templateUrl: './permissions.component.html',
   styleUrls: ['./permissions.component.scss'],

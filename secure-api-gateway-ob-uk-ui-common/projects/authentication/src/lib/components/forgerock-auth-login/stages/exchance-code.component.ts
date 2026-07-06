@@ -4,6 +4,7 @@ import { StagesParentComponent } from './stages.parent.component';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-exchance-code',
   template: `
     <h3>Redirect...</h3>

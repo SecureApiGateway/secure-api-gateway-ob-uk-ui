@@ -5,6 +5,7 @@ import {
   Input,
   OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -27,6 +28,7 @@ import { ExchanceCodeComponent } from './exchance-code.component';
 const log = debug('ForgerockAuthLogin:StagesComponent');
 
 @Component({
+  standalone: false,
   selector: 'app-stages',
   template: `
     <ng-template #dynamicTarget></ng-template>
@@ -35,16 +37,16 @@ const log = debug('ForgerockAuthLogin:StagesComponent');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StagesComponent implements OnChanges {
-  constructor(protected route: ActivatedRoute) {}
-
   @Input() response: ApiReponses.AuthLoginResponse;
   @Input() client: IConfigClient;
-  @Output() formSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() formSubmit: EventEmitter<unknown> = new EventEmitter<unknown>();
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
 
+  constructor(protected route: ActivatedRoute) {}
 
-  ngOnChanges(changes: any) {
+
+  ngOnChanges(changes: SimpleChanges) {
     const authId = localStorage.getItem('AUTH_ID');
     if (authId) {
       //If we got an auth ID, it means we were in a middle of an OIDC authentication journey, waiting for the code.
@@ -101,8 +103,8 @@ export class StagesComponent implements OnChanges {
     // Select, clear and inject the dynamic component with props data
     this.dynamicTarget.clear();
     const componentRef = this.dynamicTarget.createComponent(componentInstance);
-    (<any>componentRef.instance).response = this.response;
-    (<any>componentRef.instance).client = this.client;
-    (<any>componentRef.instance).formSubmit = this.formSubmit;
+    (componentRef.instance as unknown as { response: ApiReponses.AuthLoginResponse }).response = this.response;
+    (componentRef.instance as unknown as { client: IConfigClient }).client = this.client;
+    (componentRef.instance as unknown as { formSubmit: EventEmitter<unknown> }).formSubmit = this.formSubmit;
   }
 }

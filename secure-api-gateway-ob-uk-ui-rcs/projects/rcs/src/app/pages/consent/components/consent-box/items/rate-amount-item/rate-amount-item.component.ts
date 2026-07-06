@@ -3,12 +3,19 @@ import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src
 import { Rate } from '../../../../../../../../src/app/types/api';
 
 @Component({
+  standalone: false,
   selector: 'app-rate-amount-item',
   templateUrl: './rate-amount-item.component.html',
   styleUrls: ['./rate-amount-item.component.scss']
 })
 export class RateAmountItemComponent {
-  payload: any;
+  payload: {
+    amount: OBActiveOrHistoricCurrencyAndAmount;
+    rate: Rate;
+    label: string;
+    currencyOfTransfer: string;
+    cssClass?: string;
+  };
 
   amount: OBActiveOrHistoricCurrencyAndAmount;
   rate: Rate;

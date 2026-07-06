@@ -1,36 +1,23 @@
-@import 'mixins/breakpoints';
+@use '@angular/material' as mat;
+@use 'mixins/breakpoints' as *;
 
 @mixin forgerock-alert-component-theme($theme) {
-  $color: map-get($theme, color);
-  $primary: map-get($color, primary);
-  $accent: map-get($color, accent);
-  $warn: map-get($color, warn);
-  $background: map-get($color, background);
-  $foreground: map-get($color, foreground);
-  $is-dark: map-get($theme, is-dark);
-
-  $primary-bg-color: map-get($primary, 800);
-  $accent-bg-color: map-get($accent, 800);
-  $warn-bg-color: map-get($warn, 800);
-  $background-bg-color: map-get($background, background);
-  $foreground-text-color: map-get($foreground, text);
-
   forgerock-alert {
     display: block;
     padding: 20px;
-    background-color: $background-bg-color;
-    color: $foreground-text-color;
+    background-color: mat.get-theme-color($theme, background, background);
+    color: mat.get-theme-color($theme, foreground, text);
 
     &.primary {
-      background-color: $primary-bg-color;
+      background-color: mat.get-theme-color($theme, primary, 800);
       color: white;
     }
     &.accent {
-      background-color: $accent-bg-color;
+      background-color: mat.get-theme-color($theme, accent, 800);
       color: white;
     }
     &.warn {
-      background-color: $warn-bg-color;
+      background-color: mat.get-theme-color($theme, warn, 800);
       color: white;
     }
   }

@@ -14,6 +14,7 @@ import { ForgerockAuthApiService } from '../../forgerock-auth-api/forgerock-auth
 const log = debug('ForgerockAuthLogin:ForgerockAuthLoginComponent');
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-login',
   template: `
     <mat-card>
@@ -52,7 +53,7 @@ export class ForgerockAuthLoginComponent implements OnInit {
 
   ngOnInit() {
     // Get initial empty form
-    this.signin().subscribe((data: any) => this.updateLoginForm(data), this.onLoginError);
+    this.signin().subscribe((data: ApiReponses.AuthLoginResponse) => this.updateLoginForm(data), this.onLoginError);
   }
 
   displayError(er: string) {

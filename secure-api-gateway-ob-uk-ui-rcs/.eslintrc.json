@@ -5,11 +5,7 @@
       "files": ["**/*.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": [
-          "projects/rcs/tsconfig.app.json",
-          "projects/rcs/tsconfig.spec.json"
-        ],
-        "createDefaultProgram": true
+        "project": ["tsconfig.eslint.json"]
       },
       "plugins": ["@typescript-eslint", "@angular-eslint"],
       "extends": [
@@ -26,7 +22,7 @@
         "@typescript-eslint/no-empty-interface": "error",
         "@typescript-eslint/prefer-function-type": "error",
         "@typescript-eslint/no-shadow": "error",
-        "@typescript-eslint/no-throw-literal": "error",
+        "@typescript-eslint/only-throw-error": "error",
         "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
         "@typescript-eslint/unified-signatures": "error",
         "@typescript-eslint/naming-convention": "off",
@@ -45,6 +41,7 @@
         "no-var": "error",
         "prefer-const": "error",
         "radix": "error",
+        "@angular-eslint/prefer-standalone": "off",
         "@angular-eslint/component-class-suffix": "error",
         "@angular-eslint/directive-class-suffix": "error",
         "@angular-eslint/no-output-on-prefix": "error",
@@ -68,6 +65,12 @@
             "style": "camelCase"
           }
         ]
+      }
+    },
+    {
+      "files": ["**/test.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
       }
     },
     {

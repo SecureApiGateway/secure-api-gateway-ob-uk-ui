@@ -6,6 +6,7 @@ import { FileUploadChangeObject } from '../file-upload/file-upload.component';
 import { AddLogoAction, AddIconAction, AddFaviconAction } from '../../store/reducers/files';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customization-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],

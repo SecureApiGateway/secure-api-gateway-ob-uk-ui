@@ -15,19 +15,27 @@ import { IForgerockMainLayoutConfig } from './models';
   providedIn: 'root'
 })
 export class ForgerockMainLayoutConfigService {
-  private _configSubject: BehaviorSubject<any>;
+  private _configSubject: BehaviorSubject<IForgerockMainLayoutConfig>;
   private readonly _defaultConfig: IForgerockMainLayoutConfig;
 
   constructor(
     private _platform: Platform,
     private _router: Router,
-    @Inject(DOCUMENT) private _document: any,
+    @Inject(DOCUMENT) private _document: Document,
     @Inject(ForgerockMainLayoutConfigToken)
     private _config: IForgerockMainLayoutConfig
   ) {
     this._defaultConfig = _config;
 
     this._init();
+  }
+
+  get config(): Observable<IForgerockMainLayoutConfig> {
+    return this._configSubject.asObservable();
+  }
+
+  get defaultConfig(): IForgerockMainLayoutConfig {
+    return this._defaultConfig;
   }
 
   set config(value) {
@@ -40,12 +48,30 @@ export class ForgerockMainLayoutConfigService {
     this._configSubject.next(config);
   }
 
-  get config(): any | Observable<IForgerockMainLayoutConfig> {
+  setConfig(value, opts = { emitEvent: true }): void {
+    let config = this._configSubject.getValue();
+
+    config = _merge({}, config, value);
+
+    if (opts.emitEvent === true) {
+      this._configSubject.next(config);
+    }
+  }
+
+  getConfig(): Observable<IForgerockMainLayoutConfig> {
     return this._configSubject.asObservable();
   }
 
-  get defaultConfig(): IForgerockMainLayoutConfig {
-    return this._defaultConfig;
+  resetToDefaults(): void {
+    this._configSubject.next(_cloneDeep(this._defaultConfig));
+  }
+
+  applyBoxed(config: IForgerockMainLayoutConfig) {
+    if ((config.width as unknown) === 'boxed') {
+      this._document.body.classList.add('boxed');
+    } else {
+      this._document.body.classList.remove('boxed');
+    }
   }
 
   private _init(): void {
@@ -64,31 +90,5 @@ export class ForgerockMainLayoutConfigService {
         this._configSubject.next(config);
       }
     });
-  }
-
-  setConfig(value, opts = { emitEvent: true }): void {
-    let config = this._configSubject.getValue();
-
-    config = _merge({}, config, value);
-
-    if (opts.emitEvent === true) {
-      this._configSubject.next(config);
-    }
-  }
-
-  getConfig(): Observable<any> {
-    return this._configSubject.asObservable();
-  }
-
-  resetToDefaults(): void {
-    this._configSubject.next(_cloneDeep(this._defaultConfig));
-  }
-
-  applyBoxed(config) {
-    if (config.width === 'boxed') {
-      this._document.body.classList.add('boxed');
-    } else {
-      this._document.body.classList.remove('boxed');
-    }
   }
 }

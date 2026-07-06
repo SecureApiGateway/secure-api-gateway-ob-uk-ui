@@ -13,6 +13,7 @@ import {ApiResponses} from "../../../../../../src/app/types/api";
 import {ForgerockMessagesService} from "@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-messages";
 
 @Component({
+  standalone: false,
   selector: 'app-reject',
   templateUrl: './reject.component.html',
   styleUrls: ['./reject.component.scss']

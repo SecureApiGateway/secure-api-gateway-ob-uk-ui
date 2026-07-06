@@ -9,9 +9,8 @@ import {
   ChangeDetectorRef,
   OnDestroy
 } from '@angular/core';
-import _merge from 'lodash-es/merge';
-
 @Component({
+  standalone: false,
   selector: 'forgerock-splitflap-character',
   template: `
     <div class="back top">{{ nextCharacter }}</div>
@@ -29,9 +28,6 @@ import _merge from 'lodash-es/merge';
 export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, OnDestroy {
   @Input() size: string;
   @Input() theme = 'dark';
-  @HostBinding('class') get class() {
-    return `${this.size} ${this.theme}`;
-  }
   @Input() value: string;
   @Input() deck = '\xa0ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,.-!:;';
   @Input() time = 0.05;
@@ -39,7 +35,7 @@ export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, 
   character = '';
   nextCharacter = '';
   moveToCharacter = '';
-  timeout: any;
+  timeout: ReturnType<typeof setTimeout> | null;
   transitionTime: string;
   flipClass = {
     flip: 0
@@ -53,6 +49,10 @@ export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, 
   };
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
+
+  @HostBinding('class') get class() {
+    return `${this.size} ${this.theme}`;
+  }
 
   ngOnInit() {
     this.transitionTime = String(this.time) + 's';

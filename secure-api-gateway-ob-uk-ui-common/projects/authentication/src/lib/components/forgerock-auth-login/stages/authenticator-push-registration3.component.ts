@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import _get from 'lodash-es/get';
 
 import { StagesParentComponent } from './stages.parent.component';
 
@@ -11,6 +10,7 @@ interface IStoreAsset {
 }
 
 @Component({
+  standalone: false,
   selector: 'app-authenticator-push-registration3',
   template: `
     <h1 *ngIf="response.header">{{ response.header }}</h1>

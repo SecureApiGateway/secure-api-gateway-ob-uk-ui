@@ -9,7 +9,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('ForgerockCustomerCanAccessGuard', () => {
   let guard: ForgerockCustomerCanAccessGuard;
   let router: Router;
-  let configService: ForgerockConfigService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -18,7 +17,6 @@ describe('ForgerockCustomerCanAccessGuard', () => {
     });
     guard = TestBed.get(ForgerockCustomerCanAccessGuard);
     router = TestBed.get(Router);
-    configService = TestBed.get(ForgerockConfigService);
   });
 
   describe('isAccessGranted', () => {

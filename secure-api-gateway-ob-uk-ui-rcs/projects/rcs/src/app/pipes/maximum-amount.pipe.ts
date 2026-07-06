@@ -3,6 +3,7 @@ import {MaximumIndividualAmount} from '../../../src/app/types/ob';
 import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
+  standalone: false,
   name: 'MaximumAmountFormat',
   pure: false
 })

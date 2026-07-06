@@ -25,7 +25,7 @@ export class ForgerockAuthRedirectOIDCService {
     return this.http.get(`${this._config.backendURL}/api/user/`, options);
   }
 
-  getAuthRedirection(redirectUri = '/'): Observable<ArrayBuffer> {
+  getAuthRedirection(redirectUri = '/'): Observable<string> {
     log('getAuthRedirection ' + `${this._config.backendURL}/api/user/initiate-login?originUrl=` + redirectUri);
     const options = getHTTPOptions({
       responseType: 'text'
@@ -59,7 +59,12 @@ export class ForgerockAuthRedirectOIDCService {
   }
 }
 
-export function getHTTPOptions(options?: any) {
+export function getHTTPOptions(): { withCredentials: boolean; headers: HttpHeaders };
+export function getHTTPOptions(options: { responseType: 'text' }): { withCredentials: boolean; headers: HttpHeaders; responseType: 'text' };
+export function getHTTPOptions(options: { responseType: 'arraybuffer' }): { withCredentials: boolean; headers: HttpHeaders; responseType: 'arraybuffer' };
+export function getHTTPOptions(options: { responseType: 'blob' }): { withCredentials: boolean; headers: HttpHeaders; responseType: 'blob' };
+export function getHTTPOptions(options: { responseType: 'json' }): { withCredentials: boolean; headers: HttpHeaders; responseType: 'json' };
+export function getHTTPOptions(options?: { responseType?: string }) {
   return {
     withCredentials: true,
     headers: new HttpHeaders({

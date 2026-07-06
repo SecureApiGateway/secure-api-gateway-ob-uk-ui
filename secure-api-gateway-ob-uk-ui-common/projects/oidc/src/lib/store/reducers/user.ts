@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { IOIDCModuleState, IOIDCUser, IOIDCUserState } from '../../models';
 import _get from 'lodash-es/get';
 
-import { OIDCLogoutTypes } from './logout';
+import { OIDCLogoutTypes, ForgerockOIDCLogoutSuccessAction, ForgerockOIDCLogoutErrorAction } from './logout';
 
 export const OIDCUserTypes = {
   USER_GET_REQUEST: 'USER_GET_REQUEST',
@@ -26,14 +26,16 @@ export class ForgerockOIDCGetUserErrorAction implements Action {
 export type ActionsUnion =
   | ForgerockOIDCGetUserRequestAction
   | ForgerockOIDCGetUserSuccessAction
-  | ForgerockOIDCGetUserErrorAction;
+  | ForgerockOIDCGetUserErrorAction
+  | ForgerockOIDCLogoutSuccessAction
+  | ForgerockOIDCLogoutErrorAction;
 
 export const DEFAULT_STATE: IOIDCUserState = {
   isFetching: false,
   user: null
 };
 
-export default function userReducer(state: IOIDCUserState = DEFAULT_STATE, action: any): IOIDCUserState {
+export default function userReducer(state: IOIDCUserState = DEFAULT_STATE, action: ActionsUnion): IOIDCUserState {
   switch (action.type) {
     case OIDCUserTypes.USER_GET_REQUEST: {
       return {
@@ -45,7 +47,7 @@ export default function userReducer(state: IOIDCUserState = DEFAULT_STATE, actio
       return {
         ...state,
         isFetching: false,
-        user: action.payload.user
+        user: (action as ForgerockOIDCGetUserSuccessAction).payload.user
       };
     }
     case OIDCUserTypes.USER_GET_ERROR: {

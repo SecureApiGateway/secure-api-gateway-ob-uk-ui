@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 import { ForgerockCustomerSVGComponent } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/forgerock-customer-svg';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customer-favicon',
   template: `
     <div [innerHTML]="svg$ | async"></div>
@@ -16,15 +17,16 @@ import { ForgerockCustomerSVGComponent } from '@secureapigateway/secure-api-gate
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockCustomerFaviconComponent extends ForgerockCustomerSVGComponent implements OnInit {
+  @Input() width: number | string = 32;
+  @Input() height: number | string = 32;
+
   defaultImgSrc = './assets/favicons/safari-pinned-tab.svg';
   declare svg$: Observable<SafeHtml>;
   // stream$: Observable<string> = this.store.pipe(select(selectors.selectFavicon));
   stream$: Observable<string> = of('');
-  @Input() width: number | string = 32;
-  @Input() height: number | string = 32;
 
   constructor(
-    protected store: Store<any>,
+    protected store: Store<unknown>,
     protected configService: ForgerockConfigService,
     protected sanitizer: DomSanitizer,
     protected http: HttpClient

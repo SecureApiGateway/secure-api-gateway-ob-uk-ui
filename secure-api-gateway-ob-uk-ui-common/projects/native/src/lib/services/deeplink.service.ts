@@ -27,7 +27,7 @@ export class ForgerockNativeDeepLinkService {
     }
     console.log('Launch url: ', ret);
 
-    App.addListener('appUrlOpen', (data: any) => {
+    App.addListener('appUrlOpen', (data: { url: string }) => {
       console.log('App opened with URL: ' + data.url);
       const url = new URL(data.url);
       console.log(url, url.pathname + url.search);
@@ -40,7 +40,7 @@ export class ForgerockNativeDeepLinkService {
       });
     });
 
-    App.addListener('appRestoredResult', (data: any) => {
+    App.addListener('appRestoredResult', (data: unknown) => {
       console.log('Restored state:', data);
     });
   }

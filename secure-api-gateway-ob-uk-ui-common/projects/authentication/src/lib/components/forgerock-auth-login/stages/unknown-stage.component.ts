@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StagesParentComponent } from './stages.parent.component';
 
 @Component({
+  standalone: false,
   selector: 'app-unknown-stage',
   template: `
     <form [formGroup]="formGroup" (ngSubmit)="submit()">

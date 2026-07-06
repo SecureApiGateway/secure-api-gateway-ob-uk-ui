@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-date-item',
   templateUrl: './date-item.component.html'
 })
@@ -9,7 +10,7 @@ export class DateItemComponent {
   date: Date;
   cssClass: string;
 
-  payload: any;
+  payload: { date: Date; label: string; cssClass: string };
 
   constructor() {}
 

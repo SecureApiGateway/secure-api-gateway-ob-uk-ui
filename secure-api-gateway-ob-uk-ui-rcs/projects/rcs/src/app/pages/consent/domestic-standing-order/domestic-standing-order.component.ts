@@ -7,6 +7,7 @@ import { Item, ItemType, IConsentEventEmitter } from '../../../../../src/app/typ
 import { ConsentDecision } from '../../../../../src/app/types/ConsentDecision';
 
 @Component({
+  standalone: false,
   selector: 'app-consent-domestic-standing-order-payment',
   templateUrl: './domestic-standing-order.component.html',
   styleUrls: ['./domestic-standing-order.component.scss'],

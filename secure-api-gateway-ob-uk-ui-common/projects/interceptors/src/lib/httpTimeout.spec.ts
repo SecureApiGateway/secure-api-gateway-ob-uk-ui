@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { TimeoutInterceptor, FORGEROCK_HTTP_TIMEOUT_TOKEN, DEFAULT_HTTP_TIMEOUT } from './httpTimeout';
 

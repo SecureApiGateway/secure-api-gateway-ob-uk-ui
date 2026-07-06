@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-toolbar-menu',
   templateUrl: './forgerock-toolbar-menu.component.html'
 })

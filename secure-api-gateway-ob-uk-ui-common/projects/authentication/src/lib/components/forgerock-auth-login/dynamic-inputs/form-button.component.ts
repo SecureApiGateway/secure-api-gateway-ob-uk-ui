@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-form-button',
   template: `
     <section class="form-button" [formGroup]="group">

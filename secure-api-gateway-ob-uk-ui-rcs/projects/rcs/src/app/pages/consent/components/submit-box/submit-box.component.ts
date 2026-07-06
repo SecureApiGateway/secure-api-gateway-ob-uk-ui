@@ -5,6 +5,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {ForgerockConfirmDialogComponent} from "@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/forgerock-confirm-dialog";
 
 @Component({
+  standalone: false,
   selector: 'app-submit-box',
   templateUrl: './submit-box.component.html',
   styleUrls: ['./submit-box.component.scss']
@@ -16,8 +17,8 @@ export class SubmitBoxComponent implements OnInit {
   @Input() proceedLabel: string;
   @Input() form: FormGroup;
 
-  @Output() accept = new EventEmitter<any>();
-  @Output() deny = new EventEmitter<any>();
+  @Output() accept = new EventEmitter<void>();
+  @Output() deny = new EventEmitter<void>();
 
   constructor(public dialog: MatDialog, private translate: TranslateService) {}
 

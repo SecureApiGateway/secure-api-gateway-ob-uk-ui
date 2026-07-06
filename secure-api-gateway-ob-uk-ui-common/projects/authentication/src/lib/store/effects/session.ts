@@ -9,8 +9,6 @@ import { ForgerockAuthApiService } from '../../forgerock-auth-api/forgerock-auth
 
 @Injectable()
 export class SessionEffects {
-  constructor(private api: ForgerockAuthApiService, private actions$: Actions) {}
-
   request$ = createEffect(() =>
     this.actions$.pipe(
       ofType(sessionTypes.SESSION_REQUEST),
@@ -22,4 +20,6 @@ export class SessionEffects {
       )
     )
   );
+
+  constructor(private api: ForgerockAuthApiService, private actions$: Actions) {}
 }

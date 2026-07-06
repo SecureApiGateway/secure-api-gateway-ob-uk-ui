@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src/app/types/ob';
 
 @Component({
+  standalone: false,
   selector: 'app-final-payment-item',
   templateUrl: './final-payment-item.component.html'
 })
@@ -15,7 +16,14 @@ export class FinalPaymentItemComponent {
 
   cssClass: string;
 
-  payload: any;
+  payload: {
+    finalPaymentLabel: string;
+    finalPaymentDateLabel: string;
+    finalPaymentAmountLabel: string;
+    finalPaymentDate: Date;
+    finalPaymentAmount: OBActiveOrHistoricCurrencyAndAmount;
+    cssClass?: string;
+  };
 
   constructor() {}
 

@@ -8,6 +8,7 @@ import _get from 'lodash-es/get';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
+  standalone: false,
   selector: 'app-vrp-payment',
   templateUrl: './vrp-payment.component.html',
   styleUrls: ['./vrp-payment.component.scss'],

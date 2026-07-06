@@ -8,6 +8,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ForgerockMessagesService} from "@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-messages";
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   template: `
     <router-outlet></router-outlet>
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
 
     }
   constructor(
-    @Inject(DOCUMENT) private document: any,
+    @Inject(DOCUMENT) private document: Document,
     private splashscreenService: ForgerockSplashscreenService,
     private translateService: TranslateService,
     private platform: Platform,

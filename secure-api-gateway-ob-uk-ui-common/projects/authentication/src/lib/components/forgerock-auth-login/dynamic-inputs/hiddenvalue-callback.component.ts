@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-hiddenvalue-callback',
   template: `
     <div class="dynamic-field form-hiddenvalue-callback" [formGroup]="group">

@@ -9,6 +9,7 @@ import {CustomerInfo} from '../../../../../src/app/types/CustomerInfo';
 import {MatCheckboxChange} from "@angular/material/checkbox";
 
 @Component({
+  standalone: false,
   selector: 'app-customer-info',
   templateUrl: './customer-info.component.html',
   styleUrls: ['./customer-info.component.scss'],

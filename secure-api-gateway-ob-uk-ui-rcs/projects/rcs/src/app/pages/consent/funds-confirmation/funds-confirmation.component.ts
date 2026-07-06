@@ -7,6 +7,7 @@ import {IConsentEventEmitter, Item, ItemType} from '../../../../../src/app/types
 import {ConsentDecision} from '../../../../../src/app/types/ConsentDecision';
 
 @Component({
+  standalone: false,
   selector: 'app-consent-funds-confirmation',
   templateUrl: './funds-confirmation.component.html',
   styleUrls: ['./funds-confirmation.component.scss'],

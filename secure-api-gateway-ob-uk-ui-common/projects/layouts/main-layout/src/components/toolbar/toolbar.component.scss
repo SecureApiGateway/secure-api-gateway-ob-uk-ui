@@ -1,15 +1,6 @@
-@import '../../../../../utils/src/lib/scss/mixins/breakpoints';
-
 @mixin forgerock-main-layout-toolbar-theme($theme) {
-  $color: map-get($theme, color);
-  $primary: map-get($color, primary);
-  $accent: map-get($color, accent);
-  $warn: map-get($color, warn);
-  $background: map-get($color, background);
-  $foreground: map-get($color, foreground);
-
-  $appbar-bg-color: map-get($primary, 800);
-  $appbar-color: map-get(map-get($primary, 'contrast'), 800);
+  $appbar-bg-color: mat.get-theme-color($theme, primary, 800);
+  $appbar-color: mat.get-theme-color($theme, primary, default-contrast);
 
   mat-toolbar.app-bar {
     background-color: $appbar-bg-color;

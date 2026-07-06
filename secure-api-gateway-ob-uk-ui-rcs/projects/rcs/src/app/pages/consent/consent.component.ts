@@ -12,6 +12,7 @@ import jwtDecode from "jwt-decode";
 import {ConsentDecision} from "../../../../src/app/types/ConsentDecision";
 
 @Component({
+  standalone: false,
   selector: 'app-consent',
   templateUrl: './consent.component.html',
   styleUrls: ['./consent.component.scss'],
@@ -88,13 +89,9 @@ export class ConsentComponent implements OnInit {
             this.cdr.detectChanges();
           }
         },
-        (er: any) => {
+        (er: string) => {
           console.log(er);
-          if (er.redirectUri != null) {
-            window.location.href = er.redirectUri;
-          } else {
-            this.displayError(er);
-          }
+          this.displayError(er);
         }
       );
     console.log("end consent component")
@@ -141,7 +138,7 @@ export class ConsentComponent implements OnInit {
             window.location.href = data.redirectUri;
           }
         },
-        (er: any) => {
+        (er: string) => {
           this.displayError(er);
         }
       );
@@ -163,7 +160,7 @@ export class ConsentComponent implements OnInit {
   }
 }
 
-function withErrorHandling(obs: Observable<any>) {
+function withErrorHandling<T>(obs: Observable<T>): Observable<T> {
   return obs.pipe(
     retry(2),
     catchError((er: HttpErrorResponse) => {
@@ -174,7 +171,7 @@ function withErrorHandling(obs: Observable<any>) {
   );
 }
 
-function withErrorHandlingForRCSBadRequest(obs: Observable<any>) {
+function withErrorHandlingForRCSBadRequest<T>(obs: Observable<T>): Observable<T> {
   return obs.pipe(
     catchError((er: HttpErrorResponse) => {
       const apiError = _get(er, 'error.Message');

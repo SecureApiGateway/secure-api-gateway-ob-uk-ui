@@ -12,7 +12,7 @@ module.exports = {
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|date-fns/esm)'],
   setupFiles: ['<rootDir>/tests/mocks/matchMedia.js'],
-  setupFilesAfterEnv: ['jest-preset-angular/setup-jest'],
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   moduleNameMapper: {
     'lodash-es/(.*)': 'lodash/$1',
     'lodash-es': 'lodash',

@@ -23,6 +23,7 @@ function validateLowercase(c: FormControl) {
 }
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-register',
   templateUrl: './forgerock-auth-register.component.html',
   styleUrls: ['./forgerock-auth-register.component.scss'],
@@ -80,7 +81,7 @@ export class ForgerockAuthRegisterComponent implements OnInit {
       .register(realm, this.formGroup.value)
       .pipe(retry(3), withErrorHandling)
       .subscribe(
-        data => {
+        () => {
           this.messages.success(this.translate.instant('REGISTER.SUCCESS'));
           this.formGroup.reset();
           this.router.navigate(['/login'], {

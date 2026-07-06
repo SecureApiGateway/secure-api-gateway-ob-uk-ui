@@ -1,25 +1,17 @@
-@mixin forgerock-gdpr-theme($theme) {
-  $color: map-get($theme, color);
-  $primary: map-get($color, primary);
-  $primaryContrast: map-get($primary, contrast);
-  $accent: map-get($color, accent);
-  $accentContrast: map-get($accent, contrast);
-  $warn: map-get($color, warn);
-  $background: map-get($color, background);
-  $foreground: map-get($color, foreground);
-  $is-dark: map-get($theme, is-dark);
+@use '@angular/material' as mat;
 
+@mixin forgerock-gdpr-theme($theme) {
   div[role='dialog'] {
     &.cc-window {
-      background-color: map-get($primary, 800) !important;
-      color: map-get($primaryContrast, 800) !important;
+      background-color: mat.get-theme-color($theme, primary, 800) !important;
+      color: mat.get-theme-color($theme, primary, default-contrast) !important;
       .cc-deny {
-        color: map-get($primaryContrast, 800) !important;
+        color: mat.get-theme-color($theme, primary, default-contrast) !important;
       }
 
       .cc-allow {
-        background-color: map-get($accent, 800) !important;
-        color: map-get($accentContrast, 800) !important;
+        background-color: mat.get-theme-color($theme, accent, 800) !important;
+        color: mat.get-theme-color($theme, accent, default-contrast) !important;
       }
     }
   }

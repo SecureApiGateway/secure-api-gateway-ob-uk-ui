@@ -4,6 +4,7 @@ import { AmountFormatPipe } from '../../../src/app/pipes/amount.pipe';
 import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
+  standalone: false,
   name: 'BalanceFormat',
   pure: false
 })

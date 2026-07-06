@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+@import '../../../../../utils/src/lib/scss/mixins/breakpoints';
 @import './components/toolbar/toolbar.component';
 @import './components/navbar/vertical/style-1/style-1.component';
 @import './components/navbar/horizontal/style-1/style-1.component.scss';

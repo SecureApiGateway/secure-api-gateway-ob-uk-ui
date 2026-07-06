@@ -3,6 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { StagesParentComponent } from './stages.parent.component';
 
 @Component({
+  standalone: false,
   selector: 'app-data-store1',
   template: `
     <h1>{{ 'STAGES.' + response.stage + '.TITLE' | translate }}</h1>

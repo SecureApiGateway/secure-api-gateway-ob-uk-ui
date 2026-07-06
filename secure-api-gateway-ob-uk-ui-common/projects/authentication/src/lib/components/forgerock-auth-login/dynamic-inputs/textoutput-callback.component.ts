@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Field, ICallback } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-textoutput-callback',
   template: `
     <div *ngIf="config.output[1].value !== '4'">
@@ -33,7 +34,7 @@ export class TextOutputCallbackComponent implements Field, OnInit {
   constructor() {}
 
   ngOnInit() {
-    const qrcode = this.config.output[0].value.match('(pushauth:[^\']*)');
+    const qrcode = (this.config.output[0].value as string).match('(pushauth:[^\']*)');
     if (qrcode) {
       this.qrcode = qrcode[1];
     }

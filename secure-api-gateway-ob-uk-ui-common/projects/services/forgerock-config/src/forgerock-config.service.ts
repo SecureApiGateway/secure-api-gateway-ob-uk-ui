@@ -7,11 +7,15 @@ import _get from 'lodash-es/get';
   providedIn: 'root'
 })
 export class ForgerockConfigService {
-  private _config: any = {};
+  private _config: unknown = {};
 
   constructor(private http: HttpClient) {}
 
-  fetchAndMerge(defaultEnvironement: any = {}) {
+  get config() {
+    return this._config;
+  }
+
+  fetchAndMerge(defaultEnvironement: unknown = {}) {
     return this.http
       .get('deployment-settings.json')
       .toPromise()
@@ -19,11 +23,7 @@ export class ForgerockConfigService {
       .catch(() => (this._config = defaultEnvironement));
   }
 
-  get(key: string, defaultReturn?: any) {
+  get(key: string, defaultReturn?: unknown) {
     return _get(this.config, key, defaultReturn);
-  }
-
-  get config() {
-    return this._config;
   }
 }

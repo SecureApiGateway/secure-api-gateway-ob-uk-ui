@@ -6,6 +6,7 @@ import { ForgerockCssVarsService, IPalette } from '../../services/cssvars.servic
 import { filter } from 'rxjs/operators';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customization-palette-background',
   templateUrl: './palette-background.component.html',
   styleUrls: ['../palette/palette.component.scss'],

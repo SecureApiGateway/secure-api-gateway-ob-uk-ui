@@ -3,7 +3,7 @@ import { throwError, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import _get from 'lodash-es/get';
 
-export function withErrorHandling(obs: Observable<any>): Observable<HttpErrorResponse> {
+export function withErrorHandling<T>(obs: Observable<T>): Observable<T> {
   return obs.pipe(
     catchError((er: HttpErrorResponse) => {
       const errorMessage = _get(er, 'error.Message') || _get(er, 'error.message') || _get(er, 'message');

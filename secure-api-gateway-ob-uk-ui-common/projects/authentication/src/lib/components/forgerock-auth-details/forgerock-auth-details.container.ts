@@ -8,6 +8,7 @@ import { selectUser, userActions, selectIsUpdateSubmitting } from '../../store/r
 import { ApiRequest } from '../../models';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-auth-details-container',
   template: `
     <ng-container *ngIf="user$ | async as user; else loading">

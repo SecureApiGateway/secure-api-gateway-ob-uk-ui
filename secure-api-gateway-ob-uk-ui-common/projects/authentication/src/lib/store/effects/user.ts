@@ -14,19 +14,11 @@ import { ForgerockMessagesService } from '@secureapigateway/secure-api-gateway-o
 
 @Injectable()
 export class UserEffects {
-  constructor(
-    private api: ForgerockAuthApiService,
-    private actions$: Actions,
-    private store: Store<IState>,
-    private message: ForgerockMessagesService,
-    private translate: TranslateService
-  ) {}
-
   getProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userTypes.USER_GET_REQUEST),
       withLatestFrom(this.store.select(selectSession)),
-      mergeMap(([action, session]: [IAction, ISession]) => {
+      mergeMap(([, session]: [IAction, ISession]) => {
         if (!session) {
           return throwError({
             message: 'session is missing, can\'t get user\'s profile'
@@ -45,7 +37,7 @@ export class UserEffects {
       ofType(userTypes.USER_UPDATE_REQUEST),
       withLatestFrom(this.store.select(selectSession)),
       mergeMap(([action, session]: [IAction, ISession]) =>
-        this.api.updateUserProfile(session.realm, session.username, action.payload.form).pipe(
+        this.api.updateUserProfile(session.realm, session.username, action.payload.form as object).pipe(
           map((user: IUser) => {
             this.message.success(this.translate.instant('PROFILE.UPDATE_SUCCESS'));
             return userActions.userSetSuccess(user);
@@ -64,7 +56,7 @@ export class UserEffects {
       ofType(userTypes.USER_PASSWORD_REQUEST),
       withLatestFrom(this.store.select(selectSession)),
       mergeMap(([action, session]: [IAction, ISession]) =>
-        this.api.updateUserPassword(session.realm, session.username, action.payload.form).pipe(
+        this.api.updateUserPassword(session.realm, session.username, action.payload.form as object).pipe(
           map(() => {
             this.message.success(this.translate.instant('PROFILE.PASSWORD_UPDATE_SUCCESS'));
             return userActions.userPasswordSuccess();
@@ -77,4 +69,12 @@ export class UserEffects {
       )
     )
   );
+
+  constructor(
+    private api: ForgerockAuthApiService,
+    private actions$: Actions,
+    private store: Store<IState>,
+    private message: ForgerockMessagesService,
+    private translate: TranslateService
+  ) {}
 }

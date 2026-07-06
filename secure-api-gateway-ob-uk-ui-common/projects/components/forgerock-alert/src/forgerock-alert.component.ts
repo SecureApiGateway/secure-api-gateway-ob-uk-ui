@@ -1,6 +1,7 @@
 import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-alert',
   // styleUrls: ['./forgerock-alert.component.scss'],
   template: `

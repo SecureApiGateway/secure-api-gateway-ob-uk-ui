@@ -3,6 +3,7 @@ import { FRAccountWithBalance } from '../../../../../../src/app/types/api';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-account-selection',
   templateUrl: './account-selection.component.html',
   styleUrls: ['./account-selection.component.scss']

@@ -1,4 +1,4 @@
-@import '../../../../../utils/src/lib/scss/mixins/breakpoints';
+@use '../../../../../utils/src/lib/scss/mixins/breakpoints' as *;
 
 :host {
   max-width: 500px;

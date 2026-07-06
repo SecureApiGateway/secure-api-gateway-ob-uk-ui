@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OBActiveOrHistoricCurrencyAndAmount } from '../../../../../../../../src/app/types/ob';
 
 @Component({
+  standalone: false,
   selector: 'app-next-payment-item',
   templateUrl: './next-payment-item.component.html'
 })
@@ -18,7 +19,16 @@ export class NextPaymentItemComponent {
 
   cssClass: string;
 
-  payload: any;
+  payload: {
+    nextPaymentLabel: string;
+    nextPaymentDateLabel: string;
+    nextPaymentAmountLabel: string;
+    frequencyLabel: string;
+    nextPaymentDate: Date;
+    nextPaymentAmount: OBActiveOrHistoricCurrencyAndAmount;
+    frequency: string;
+    cssClass?: string;
+  };
 
   constructor() {}
 

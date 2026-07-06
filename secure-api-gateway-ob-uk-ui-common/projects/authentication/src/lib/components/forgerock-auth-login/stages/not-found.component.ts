@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
 import { ApiReponses } from '../../../models';
 
 @Component({
+  standalone: false,
   selector: 'app-not-found',
   template: `
     <h2>Sorry</h2>
@@ -14,9 +15,8 @@ import { ApiReponses } from '../../../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotFoundComponent {
-  constructor() {}
-
   @Input() response: ApiReponses.AuthLoginResponse;
-  @Output() formSubmit = new EventEmitter<any>();
+  @Output() formSubmit = new EventEmitter<unknown>();
 
+  constructor() {}
 }

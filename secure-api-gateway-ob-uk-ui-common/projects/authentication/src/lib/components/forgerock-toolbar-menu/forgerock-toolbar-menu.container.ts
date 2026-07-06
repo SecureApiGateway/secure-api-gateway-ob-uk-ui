@@ -7,13 +7,14 @@ import { selectConnected, selectFullName } from '../../store/reducers/user';
 import { IState } from '../../store/models';
 
 @Component({
+  standalone: false,
   // tslint:disable-next-line
   selector: 'forgerock-toolbar-menu-container',
   template: `
     <forgerock-toolbar-menu
       [username]="username$ | async"
       [connected]="connected$ | async"
-      (logout)="logout($event)"
+      (logout)="logout()"
     ></forgerock-toolbar-menu>
   `,
   styles: [
@@ -36,7 +37,7 @@ export class ForgerockToolbarMenuContainer {
   }
 
 
-  logout(e: Event) {
+  logout() {
     this.store.dispatch(new LogoutRequestAction());
   }
 }

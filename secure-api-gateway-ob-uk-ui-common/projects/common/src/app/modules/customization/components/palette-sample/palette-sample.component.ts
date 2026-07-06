@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'forgerock-customization-palette-sample',
   templateUrl: './palette-sample.component.html',
   styleUrls: ['./palette-sample.component.scss'],

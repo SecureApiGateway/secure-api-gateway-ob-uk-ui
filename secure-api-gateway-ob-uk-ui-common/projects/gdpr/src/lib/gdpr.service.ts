@@ -31,17 +31,17 @@ export class ForgerockGDPRService {
     });
   }
 
-  init(): void {
-    this.ccService.getConfig().cookie.domain = this.configService.get('cookieDomain');
-    this.ccService.destroy(); //remove previous cookie bar (with default messages)
-    this.ccService.init(this.ccService.getConfig()); // update config with translated messages
-  }
-
   get hasAnswered() {
     return this.ccService.hasAnswered();
   }
 
   get hasConsented() {
     return this.ccService.hasConsented();
+  }
+
+  init(): void {
+    this.ccService.getConfig().cookie.domain = this.configService.get('cookieDomain');
+    this.ccService.destroy(); //remove previous cookie bar (with default messages)
+    this.ccService.init(this.ccService.getConfig()); // update config with translated messages
   }
 }

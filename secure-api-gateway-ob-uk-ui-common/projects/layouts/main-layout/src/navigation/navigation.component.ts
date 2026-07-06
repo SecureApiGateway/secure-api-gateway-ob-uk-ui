@@ -10,6 +10,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 const log = debug('ForgerockMainLayoutNavigationComponent');
 
 @Component({
+  standalone: false,
   selector: 'fuse-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
@@ -20,15 +21,15 @@ export class ForgerockMainLayoutNavigationComponent implements OnInit {
   layout = 'vertical';
 
   @Input()
-  navigation: any;
+  navigation: IForgerockMainLayoutNavigationItem[];
 
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(
     private _fuseNavigationService: ForgerockMainLayoutNavigationService,
     private configService: ForgerockConfigService
   ) {
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<unknown>();
   }
   ngOnInit(): void {
     this.navigation = this.filterNavigationWithRouteDenyList(

@@ -16,21 +16,22 @@ import { IForgerockMainLayoutComponents } from '../../models';
 import { ForgerockMainLayoutComponentsToken } from '../../tokens';
 
 @Component({
+  standalone: false,
   selector: 'toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
+  @Input() type: 'horizontal' | 'vertical' = 'vertical';
+  @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
+  dynamicTarget: ViewContainerRef;
   rightNavbar: boolean;
   connected$: Observable<boolean>;
   username$: Observable<string>;
-  @Input() type: 'horizontal' | 'vertical' = 'vertical';
   clientName: string;
-  @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
-  dynamicTarget: ViewContainerRef;
-  componentRef: ComponentRef<any>;
+  componentRef: ComponentRef<unknown>;
 
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<unknown>;
 
   constructor(
     private _fuseSidebarService: ForgerockLayoutSidebarService,
@@ -38,8 +39,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     @Inject(ForgerockMainLayoutComponentsToken)
     private _components: IForgerockMainLayoutComponents
   ) {
-    this._unsubscribeAll = new Subject();
-    this.clientName = this.configService.get('client.name');
+    this._unsubscribeAll = new Subject<unknown>();
+    this.clientName = this.configService.get('client.name') as string;
   }
 
   /**

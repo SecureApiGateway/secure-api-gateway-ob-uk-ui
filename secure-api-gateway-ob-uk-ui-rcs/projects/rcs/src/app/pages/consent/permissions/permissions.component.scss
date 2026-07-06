@@ -1,7 +1,6 @@
+@use '@angular/material' as mat;
+
 @mixin bank-consent-permission-theme($theme) {
-  $color: map-get($theme, color);
-  $background: map-get($color, background);
-  $accent: map-get($color, accent);
   app-account-permissions {
     mat-expansion-panel {
       box-shadow: none;
@@ -13,10 +12,10 @@
         }
       }
       :host ::ng-deep .mat-expansion-panel-content {
-        background-color: map-get($background, background);
+        background-color: mat.get-theme-color($theme, background, background);
         border-left-width: 3px;
         border-left-style: solid;
-        border-left-color: map-get($accent, default);
+        border-left-color: mat.get-theme-color($theme, accent, default);
       }
       :host ::ng-deep .mat-expansion-panel-body {
         padding: 13px;

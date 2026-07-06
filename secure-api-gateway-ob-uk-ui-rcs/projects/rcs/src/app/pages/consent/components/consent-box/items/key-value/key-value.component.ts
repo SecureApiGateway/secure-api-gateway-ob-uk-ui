@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-key-value-item',
   template: `
     <div *ngIf="value" class="string-consent-box-item {{ cssClass }}">

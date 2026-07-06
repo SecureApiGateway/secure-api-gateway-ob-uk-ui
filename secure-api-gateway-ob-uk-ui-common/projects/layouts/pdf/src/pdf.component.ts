@@ -2,13 +2,14 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { DOCUMENT } from '@angular/common';
 
 @Component({
+  standalone: false,
   selector: 'app-pdf-layout',
   templateUrl: './pdf.component.html',
   styleUrls: ['./pdf.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PDFLayoutComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private document: any) {}
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit() {
     this.document.body.classList.add('pdf');

@@ -26,7 +26,7 @@ export abstract class IsConnectedGuard implements CanActivate {
     protected messages: ForgerockMessagesService
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<boolean> | boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     log('canActivate', route, state);
     return this.api.getSession().pipe(
       map(this.success.bind(this, route, state)),

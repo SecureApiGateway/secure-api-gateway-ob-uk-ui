@@ -7,6 +7,7 @@ import { Item, ItemType, IConsentEventEmitter } from '../../../../../src/app/typ
 import { ConsentDecision } from '../../../../../src/app/types/ConsentDecision';
 
 @Component({
+  standalone: false,
   selector: 'app-consent-domestic-schedule-payment',
   templateUrl: './domestic-schedule-payment.component.html',
   styleUrls: ['./domestic-schedule-payment.component.scss'],

@@ -22,8 +22,10 @@ import mock36 from './mocks/debtorAccountProvided/international-standing-order-c
 import mock37 from './mocks/debtorAccountProvided/file-payment-consent-details';
 
 import { IConsentEventEmitter } from '../../types/consentItem';
+import { ApiResponses } from '../../types/api';
 
 @Component({
+  standalone: false,
   selector: 'app-consent-dev',
   templateUrl: './consent-dev.component.html',
   styleUrls: ['./consent-dev.component.scss'],
@@ -31,8 +33,8 @@ import { IConsentEventEmitter } from '../../types/consentItem';
 })
 export class ConsentDevComponent {
   loading = false;
-  mocks: any[] = [mock1, mock2, mock3, mock4, mock5, mock6, mock7, mock8, mock9, mock10, mock11];
-  mocksDebtorAccount: any[] = [mock30, mock31,mock32,mock33,mock34,mock35,mock36,mock37];
+  mocks: ApiResponses.ConsentDetailsResponse[] = [mock1, mock2, mock3, mock4, mock5, mock6, mock7, mock8, mock9, mock10, mock11];
+  mocksDebtorAccount: ApiResponses.ConsentDetailsResponse[] = [mock30, mock31,mock32,mock33,mock34,mock35,mock36,mock37];
   constructor(private cdr: ChangeDetectorRef) {}
 
 
