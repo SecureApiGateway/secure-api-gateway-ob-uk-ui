@@ -11,7 +11,7 @@ RUN cd /src/secure-api-gateway-ob-uk-ui-cli && npm ci
 RUN cd /src/secure-api-gateway-ob-uk-ui-rcs && NG_CLI_ANALYTICS=ci npm ci --legacy-peer-deps && npm run build.rcs.themes
 
 # Stage 2 - the production environment
-FROM nginx:1.13.9-alpine
+FROM nginx:1.27-alpine
 
 EXPOSE 80
 
