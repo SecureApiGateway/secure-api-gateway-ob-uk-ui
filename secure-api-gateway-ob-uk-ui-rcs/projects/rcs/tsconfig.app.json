@@ -7,6 +7,5 @@
     "src/main.ts",
     "src/polyfills.ts"
   ],
-  "exclude": ["src/test.ts", "**/*.spec.ts"],
-  "paths": {}
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

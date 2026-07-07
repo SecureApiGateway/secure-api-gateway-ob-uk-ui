@@ -1,3 +1,6 @@
+/**
+ * @jest-environment-options {"url": "https://this-is-a-test-origin.com/"}
+ */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -50,11 +53,6 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     forgerockConfigService = TestBed.inject(ForgerockConfigService);
-    delete global.window.location;
-    global.window = Object.create(window);
-    global.window.location = {
-      origin: originMock
-    };
   });
 
   it('should create', () => {

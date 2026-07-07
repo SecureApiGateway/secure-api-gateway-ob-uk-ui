@@ -4,8 +4,8 @@
 @use 'mixins/theme' as *;
 @use 'mixins/cssvars' as *;
 
-@use 'projects/rcs/src/app/pages/consent/dynamic/dynamic.component' as *;
-@use 'projects/rcs/src/app/pages/consent/permissions/permissions.component' as *;
+@use '../app/pages/consent/dynamic/dynamic.component' as *;
+@use '../app/pages/consent/permissions/permissions.component' as *;
 @use '@secureapigateway/secure-api-gateway-ob-uk-ui-common/layouts/main.scss' as *;
 @use '@secureapigateway/secure-api-gateway-ob-uk-ui-common/components/main.scss' as *;
 
