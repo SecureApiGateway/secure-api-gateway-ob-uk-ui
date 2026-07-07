@@ -63,7 +63,7 @@ describe('app:bank DomesticSchedulePaymentComponent', () => {
   });
 
   it('should emit formSubmit decision deny by default', () => {
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
 
     component.submit();
 
@@ -87,7 +87,7 @@ describe('app:bank DomesticSchedulePaymentComponent', () => {
       }
    ]
 };
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 
     component.submit(false);
@@ -112,7 +112,7 @@ describe('app:bank DomesticSchedulePaymentComponent', () => {
       }
    ]
 };
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 
     component.submit(true);

@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { SimpleLayoutComponent } from './simple.component';
 
@@ -10,7 +10,7 @@ describe('app:forgerock SimpleLayoutComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SimpleLayoutComponent],
-      imports: [RouterTestingModule.withRoutes([])]
+      providers: [provideRouter([])]
     }).compileComponents();
   }));
 

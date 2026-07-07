@@ -4,7 +4,7 @@ import { CookieModule } from 'ngx-cookie';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
 import { LoginDynamicStagesModule } from './stages/stages.module';
@@ -23,7 +23,6 @@ describe('app:forgerock ForgerockAuthLoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthLoginComponent],
       imports: [
-        RouterTestingModule.withRoutes([]),
         StoreModule.forRoot({}),
         CommonModule,
         TranslateModule.forRoot({}),
@@ -35,7 +34,8 @@ describe('app:forgerock ForgerockAuthLoginComponent', () => {
         ForgerockAuthApiModule,
         ForgerockConfigModule,
         ForgerockCustomerLogoModule
-      ]
+      ],
+      providers: [provideRouter([])]
     }).compileComponents();
   }));
 

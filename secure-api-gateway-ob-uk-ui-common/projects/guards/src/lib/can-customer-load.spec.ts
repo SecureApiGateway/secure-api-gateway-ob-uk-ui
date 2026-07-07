@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, provideRouter } from '@angular/router';
 
 import { ForgerockCustomerCanAccessGuard } from './can-customer-load';
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
@@ -12,8 +11,8 @@ describe('ForgerockCustomerCanAccessGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule],
-      providers: [ForgerockCustomerCanAccessGuard, ForgerockConfigService]
+      imports: [HttpClientTestingModule],
+      providers: [provideRouter([]), ForgerockCustomerCanAccessGuard, ForgerockConfigService]
     });
     guard = TestBed.inject(ForgerockCustomerCanAccessGuard);
     router = TestBed.inject(Router);
@@ -27,7 +26,7 @@ describe('ForgerockCustomerCanAccessGuard', () => {
 
     it('should return false and navigate to /404 when URL is blacklisted', () => {
       guard.blacklist = ['blocked-route'];
-      const navigateSpy = spyOn(router, 'navigate');
+      const navigateSpy = jest.spyOn(router, 'navigate');
       expect(guard.isAccessGranted('blocked-route')).toBe(false);
       expect(navigateSpy).toHaveBeenCalledWith(['/404']);
     });
@@ -47,7 +46,7 @@ describe('ForgerockCustomerCanAccessGuard', () => {
 
     it('should deny access when route path is blacklisted', () => {
       guard.blacklist = ['forbidden'];
-      spyOn(router, 'navigate');
+      jest.spyOn(router, 'navigate');
       const result = guard.canLoad({ path: 'forbidden' });
       expect(result).toBe(false);
     });
@@ -63,7 +62,7 @@ describe('ForgerockCustomerCanAccessGuard', () => {
 
     it('should deny access when URL is blacklisted', () => {
       guard.blacklist = ['forbidden'];
-      spyOn(router, 'navigate');
+      jest.spyOn(router, 'navigate');
       const routeSnapshot: any = {};
       const stateSnapshot: any = { url: '/forbidden' };
       expect(guard.canActivate(routeSnapshot, stateSnapshot)).toBe(false);

@@ -4,7 +4,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -30,7 +30,6 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthOauth2AuthorizeComponent],
       imports: [
-        RouterTestingModule.withRoutes([]),
         StoreModule.forRoot({}),
         CommonModule,
         TranslateModule.forRoot({}),
@@ -44,7 +43,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
         ForgerockCustomerLogoModule,
         ForgerockAlertModule
       ],
-      providers: [ForgerockConfigService]
+      providers: [provideRouter([]), ForgerockConfigService]
     }).compileComponents();
   }));
 
@@ -66,7 +65,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
       )}%2Foauth2%2Fauthorize%3Fresponse_type%3Dcode%2520id_token%26client_id%3Db61ab83a-a6f1-44c3-90c3-b514c93a9421%26state%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26redirect_uri%3Dhttps%253A%252F%252Fwww.google.com%26nonce%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26scope%3Dopenid%2520accounts%26request%3DeyJraWQiOi`
     );
 
-    spyOn(forgerockConfigService, 'get').and.returnValue(authorizationServer);
+    jest.spyOn(forgerockConfigService, 'get').mockReturnValue(authorizationServer);
     const newURL = component.updateRedirectionGotoIfAuthorizationServer(toTest);
     expect(newURL.toString()).toEqual(
       `https://bank.ui-integ.forgerock.financial/login?goto=${encodeURIComponent(
@@ -82,7 +81,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
       )}%2Foauth2%2Fauthorize%3Fresponse_type%3Dcode%2520id_token%26client_id%3Db61ab83a-a6f1-44c3-90c3-b514c93a9421%26state%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26redirect_uri%3Dhttps%253A%252F%252Fwww.google.com%26nonce%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26scope%3Dopenid%2520accounts%26request%3DeyJraWQiOi`
     );
 
-    spyOn(forgerockConfigService, 'get').and.returnValue(authorizationServer);
+    jest.spyOn(forgerockConfigService, 'get').mockReturnValue(authorizationServer);
     const newURL = component.updateRedirectionGotoIfAuthorizationServer(toTest);
     expect(newURL.toString()).toEqual(toTest.toString());
   });
@@ -94,7 +93,7 @@ describe('app:forgerock ForgerockAuthOauth2AuthorizeComponent', () => {
       )}%2Foauth2%2Fauthorize%3Fresponse_type%3Dcode%2520id_token%26client_id%3Db61ab83a-a6f1-44c3-90c3-b514c93a9421%26state%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26redirect_uri%3Dhttps%253A%252F%252Fwww.google.com%26nonce%3D10d260bf-a7d9-444a-92d9-7b7a5f088208%26scope%3Dopenid%2520accounts%26request%3DeyJraWQiOi`
     );
 
-    spyOn(forgerockConfigService, 'get').and.returnValue(authorizationServer);
+    jest.spyOn(forgerockConfigService, 'get').mockReturnValue(authorizationServer);
     const newURL = component.updateRedirectionGotoIfAuthorizationServer(toTest);
     expect(newURL.toString()).toEqual(toTest.toString());
   });

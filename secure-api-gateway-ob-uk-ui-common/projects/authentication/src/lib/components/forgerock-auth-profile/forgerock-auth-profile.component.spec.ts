@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
@@ -17,7 +17,6 @@ describe('app:forgerock ProfileComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([]),
         StoreModule.forRoot({}),
         CommonModule,
         TranslateModule.forRoot({}),
@@ -25,7 +24,8 @@ describe('app:forgerock ProfileComponent', () => {
         MatTabsModule,
         ForgerockCustomerLogoModule
       ],
-      declarations: [ProfileComponent, ProfileContainerComponent]
+      declarations: [ProfileComponent, ProfileContainerComponent],
+      providers: [provideRouter([])]
     }).compileComponents();
   }));
 
