@@ -75,10 +75,7 @@ async function build(project, customer) {
       "--configuration",
       customer,
       "--output-path",
-      `dist/${customer}`,
-      "--extra-webpack-config",
-      "webpack.extra.js",
-      ...(customer === PRINCIPAL_THEME ? ["--stats-json"] : [])
+      `dist/${customer}`
     ]);
     await postBuild(project, customer);
   } catch (error) {
@@ -103,8 +100,8 @@ async function updateAngularJson(configPath, projectName, customers) {
     if (customerConfig) return;
 
     const newConfig = {
-      main: `projects/${projectName}/src/index.build.ts`,
-      polyfills: `projects/${projectName}/src/index.build.ts`,
+      browser: `projects/${projectName}/src/index.build.ts`,
+      polyfills: [`projects/${projectName}/src/index.build.ts`],
       stylePreprocessorOptions: {
         includePaths: [
           `themes/${customer}/apps/analytics/scss`,
@@ -116,12 +113,8 @@ async function updateAngularJson(configPath, projectName, customers) {
       optimization: true,
       outputHashing: "none",
       sourceMap: false,
-      extractCss: true,
-      projectNamedChunks: false,
-      aot: false,
-      extractLicenses: false,
-      vendorChunk: false,
-      buildOptimizer: false
+      namedChunks: false,
+      extractLicenses: false
     };
 
     _set(

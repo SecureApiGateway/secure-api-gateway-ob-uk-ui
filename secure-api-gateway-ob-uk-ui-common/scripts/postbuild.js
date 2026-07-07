@@ -20,7 +20,7 @@ async function generateSecondaryEntryPackageJsons(version) {
     // Add main/module to the primary package.json entry (for jest resolution)
     const primaryExport = exports['.'];
     if (primaryExport && typeof primaryExport === 'object') {
-      const primaryDefault = primaryExport.default || primaryExport.es2015;
+      const primaryDefault = primaryExport.default;
       if (primaryDefault && !parentPkg.main) {
         parentPkg.main = primaryDefault;
         parentPkg.module = primaryDefault;
@@ -41,12 +41,14 @@ async function generateSecondaryEntryPackageJsons(version) {
       const bundleFile = path.basename(defaultEntry);
       const bundleDir = path.dirname(defaultEntry).replace(/^\.\//, '');
       if (!bundleFile) continue;
+      // Resolve typings path from the parent exports map (relative to the sub-package dir)
+      const typingsRelative = exportVal.types ? `../${exportVal.types.replace(/^\.\//, '')}` : undefined;
       const subPkg = {
         name: `${parentPkg.name}/${subName}`,
         version,
         main: `../${bundleDir}/${bundleFile}`,
         module: `../${bundleDir}/${bundleFile}`,
-        typings: 'index.d.ts',
+        ...(typingsRelative ? { typings: typingsRelative } : {}),
         sideEffects: false
       };
       await fs.outputJson(subPkgPath, subPkg, { spaces: 2 });

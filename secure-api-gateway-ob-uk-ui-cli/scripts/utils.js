@@ -143,6 +143,20 @@ function exec(options, cmd, args) {
   });
 }
 
+function parseEsbuildStats(stats) {
+  const outputs = stats.outputs || {};
+  const result = {};
+  for (const [filePath] of Object.entries(outputs)) {
+    const name = filePath.split('/').pop();
+    if (/^main-[^.]+\.js$/.test(name)) result.main = name;
+    else if (/^polyfills-[^.]+\.js$/.test(name)) result.polyfills = name;
+    else if (/^scripts-[^.]+\.js$/.test(name)) result.scripts = name;
+    else if (/^runtime-[^.]+\.js$/.test(name)) result.runtime = name;
+    else if (/^styles-[^.]+\.css$/.test(name)) result.styles = name;
+  }
+  return result;
+}
+
 async function postBuild(app, customer) {
   const forgerockAppPath = path.join(PACKAGE_ROOT, `dist/forgerock`);
   const forgerockAppStats = path.join(forgerockAppPath, "stats.json");
@@ -151,7 +165,11 @@ async function postBuild(app, customer) {
   await fs.access(forgerockAppPath);
   await fs.access(forgerockAppStats);
   // get the assets that we need to include in our index.html
-  const { assetsByChunkName } = await fs.readJson(forgerockAppStats);
+  const statsJson = await fs.readJson(forgerockAppStats);
+  // Support both webpack (assetsByChunkName) and esbuild (outputs) stats formats
+  const assetsByChunkName = statsJson.assetsByChunkName
+    ? statsJson.assetsByChunkName
+    : parseEsbuildStats(statsJson);
 
   if (customer === "forgerock") {
     // extract forgerock conf and write file
