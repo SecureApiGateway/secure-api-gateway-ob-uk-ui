@@ -1,7 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -24,7 +24,6 @@ describe('app:forgerock ForgerockAuthPasswordComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthPasswordComponent],
       imports: [
-        RouterTestingModule.withRoutes([]),
         StoreModule.forRoot({}),
         CommonModule,
         TranslateModule.forRoot({}),
@@ -38,7 +37,8 @@ describe('app:forgerock ForgerockAuthPasswordComponent', () => {
         MatInputModule,
         MatProgressBarModule,
         ForgerockAuthProfileModule
-      ]
+      ],
+      providers: [provideRouter([])]
     }).compileComponents();
   }));
 

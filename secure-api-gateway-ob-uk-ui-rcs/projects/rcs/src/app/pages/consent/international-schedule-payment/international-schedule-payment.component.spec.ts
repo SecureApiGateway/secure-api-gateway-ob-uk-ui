@@ -63,7 +63,7 @@ describe('app:bank InternationalSchedulePaymentComponent', () => {
   });
 
   it('should emit formSubmit decision deny by default', () => {
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
 
     component.submit();
 
@@ -88,7 +88,7 @@ describe('app:bank InternationalSchedulePaymentComponent', () => {
       }
    ]
 };
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 
     component.submit(false);
@@ -114,7 +114,7 @@ describe('app:bank InternationalSchedulePaymentComponent', () => {
       }
    ]
 };
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
     component.form.controls['selectedAccount'].setValue(debtorAccount);
 
     component.submit(true);

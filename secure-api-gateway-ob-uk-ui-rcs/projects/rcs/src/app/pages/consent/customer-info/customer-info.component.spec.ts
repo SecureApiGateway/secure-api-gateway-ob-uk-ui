@@ -46,7 +46,7 @@ describe('CustomerInfoComponent', () => {
   });
 
   it('should emit formSubmit decision deny by default', () => {
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
 
     component.submit();
     fixture.detectChanges();
@@ -57,7 +57,7 @@ describe('CustomerInfoComponent', () => {
   });
 
   it('should emit formSubmit decision deny', () => {
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
 
     component.submit(false);
     fixture.detectChanges();
@@ -68,7 +68,7 @@ describe('CustomerInfoComponent', () => {
   });
 
   it('should emit formSubmit decision allow', () => {
-    spyOn(component.formSubmit, 'emit');
+    jest.spyOn(component.formSubmit, 'emit');
 
     component.submit(true);
     fixture.detectChanges();

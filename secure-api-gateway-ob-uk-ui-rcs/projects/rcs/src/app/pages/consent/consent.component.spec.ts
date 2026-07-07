@@ -1,7 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -32,7 +32,6 @@ describe('app:bank ConsentComponent', () => {
       declarations: [ConsentComponent, DynamicComponent],
       imports: [
         ForgerockSharedModule,
-        RouterTestingModule.withRoutes([]),
         CommonModule,
         MatSharedModule,
         TranslateSharedModule,
@@ -46,7 +45,7 @@ describe('app:bank ConsentComponent', () => {
         AccountSelectionComponentModule,
         AccountCheckboxModule
       ],
-      providers: [ApiService]
+      providers: [provideRouter([]), ApiService]
     }).compileComponents();
   }));
 
@@ -54,7 +53,7 @@ describe('app:bank ConsentComponent', () => {
     fixture = TestBed.createComponent(ConsentComponent);
     component = fixture.componentInstance;
     apiService = fixture.debugElement.injector.get(ApiService);
-    postConsentDecisionSpy = spyOn(apiService, 'postConsentDecision').and.callThrough();
+    postConsentDecisionSpy = jest.spyOn(apiService, 'postConsentDecision');
 
     fixture.detectChanges();
   });

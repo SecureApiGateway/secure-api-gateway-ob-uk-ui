@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -28,7 +28,6 @@ describe('app:forgerock ForgerockAuthRegisterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ForgerockAuthRegisterComponent],
       imports: [
-        RouterTestingModule.withRoutes([]),
         StoreModule.forRoot({}),
         TranslateModule.forRoot({}),
         NoopAnimationsModule,
@@ -45,7 +44,8 @@ describe('app:forgerock ForgerockAuthRegisterComponent', () => {
         MatCheckboxModule,
         ForgerockCustomerLogoModule,
         ForgerockMessagesModule
-      ]
+      ],
+      providers: [provideRouter([])]
     }).compileComponents();
   }));
 

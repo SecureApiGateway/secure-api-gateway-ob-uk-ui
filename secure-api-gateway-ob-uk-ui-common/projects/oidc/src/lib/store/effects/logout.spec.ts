@@ -6,12 +6,17 @@ import { throwError } from 'rxjs';
 import { of } from 'rxjs';
 
 import { OIDCLogoutEffects } from './logout';
-import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie';
 import { CookieModule } from 'ngx-cookie';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Router } from '@angular/router';
+import { Router, provideRouter, Routes } from '@angular/router';
+import { Component } from '@angular/core';
+
+@Component({ standalone: false, template: '' })
+class StubComponent {}
+
+const routes: Routes = [{ path: '**', component: StubComponent }];
 import { ForgerockAuthRedirectOIDCService } from '../../oidc.service';
 import { ForgerockOIDCConfigToken } from '../../tokens';
 import {
@@ -30,8 +35,10 @@ describe('LogoutEffect', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, CookieModule.forRoot(), RouterTestingModule.withRoutes([]), CommonModule],
+      imports: [HttpClientTestingModule, CookieModule.forRoot(), CommonModule],
+      declarations: [StubComponent],
       providers: [
+        provideRouter(routes),
         {
           provide: ForgerockOIDCConfigToken,
           useValue: {
@@ -50,8 +57,8 @@ describe('LogoutEffect', () => {
   });
 
   it('should return Success action', waitForAsync(() => {
-    ApiServiceSpy = spyOn(apiService, 'logout').and.returnValue(of(true));
-    routerSpy = spyOn(router, 'navigate');
+    ApiServiceSpy = jest.spyOn(apiService, 'logout').mockReturnValue(of(true));
+    routerSpy = jest.spyOn(router, 'navigate');
 
     actions = new ReplaySubject(1);
     actions.next(new ForgerockOIDCLogoutRequestAction());
@@ -64,7 +71,7 @@ describe('LogoutEffect', () => {
   }));
 
   it('should return Success action', waitForAsync(() => {
-    ApiServiceSpy = spyOn(apiService, 'logout').and.returnValue(throwError('eee'));
+    ApiServiceSpy = jest.spyOn(apiService, 'logout').mockReturnValue(throwError('eee'));
 
     actions = new ReplaySubject(1);
     actions.next(new ForgerockOIDCLogoutRequestAction());

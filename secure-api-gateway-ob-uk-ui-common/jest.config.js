@@ -1,7 +1,6 @@
 module.exports = {
   preset: 'jest-preset-angular',
   testPathIgnorePatterns: ['/node_modules/', '/src/test\\.ts$'],
-  testRunner: 'jest-jasmine2',
   transform: {
     '^.+\\.(ts|js|mjs|html|svg)$': ['jest-preset-angular', {
       stringifyContentPathRegex: '\\.(html|svg)$',
