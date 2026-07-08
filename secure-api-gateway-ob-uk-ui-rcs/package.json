@@ -72,12 +72,12 @@
     "ngx-cookieconsent": "^8.0.0",
     "polyfill-array-includes": "^2.0.0",
     "rxjs": "^7.4.0",
-    "sass": "~1.77.0",
+    "sass": "~1.101.0",
     "sass-loader": "^8.0.2",
-    "stream": "0.0.2",
+    "stream": "0.0.3",
     "tslib": "^2.3.0",
     "url-polyfill": "^1.1.8",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.16.0"
   },
   "devDependencies": {
     "@angular-builders/jest": "~21.0.4",
