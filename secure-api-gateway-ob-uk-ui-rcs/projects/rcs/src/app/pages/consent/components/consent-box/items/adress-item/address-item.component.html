@@ -2,7 +2,7 @@
   <span *ngIf="label" class="key title">{{ label }}</span>
   <div *ngFor="let item of items">
     <div class="string-consent-box-item {{ item.payload.cssClass }}">
-      <span fxFlex></span>
+      <span class="spacer"></span>
       <span class="value">{{ item.payload.value }}</span>
     </div>
   </div>

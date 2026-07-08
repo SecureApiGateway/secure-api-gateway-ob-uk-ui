@@ -1,5 +1,5 @@
 <div *ngIf="payload.amount" class="rate-amount-consent-box-item {{ payload.cssClass }}">
-  <span class="title">{{ payload.label | translate }}</span> <span fxFlex></span>
+  <span class="title">{{ payload.label | translate }}</span> <span class="spacer"></span>
   {{ amountInOtherCurrent(payload.amount, payload.rate.exchangeRate, payload.currencyOfTransfer) | AmountFormat }} <-
   {{ payload.amount | AmountFormat }}
 </div>

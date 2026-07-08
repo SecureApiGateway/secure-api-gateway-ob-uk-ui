@@ -2,7 +2,8 @@ const path = require("path");
 const child_process = require("child_process");
 const fs = require("fs-extra");
 const _merge = require("lodash/merge");
-const terminal = require("@angular-devkit/core").terminal;
+const colors = require("yoctocolors-cjs");
+const terminal = { blue: colors.blue, yellow: colors.yellow };
 const mergedirs = require("merge-dirs").default;
 const { generateIndexHtml } = require("./indexHtml/index");
 

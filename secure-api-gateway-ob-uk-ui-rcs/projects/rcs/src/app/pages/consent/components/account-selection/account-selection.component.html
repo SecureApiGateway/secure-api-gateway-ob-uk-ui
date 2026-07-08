@@ -3,8 +3,8 @@
   <mat-card-content>
     <div class="consent-box accounts" [formGroup]="form">
       <mat-radio-group class="accounts example-radio-group" formControlName="selectedAccount">
-        <label fxLayout="row" *ngFor="let account of accounts">
-          <div fxFlex>
+        <label class="account-row" *ngFor="let account of accounts">
+          <div class="account-info">
             <div class="account Aligner">
               <div>
                 <div>{{ account.account?.nickname }}</div>
@@ -16,9 +16,9 @@
                 </div>
               </div>
 
-              <span fxFlex></span>
+              <span class="spacer"></span>
               <div class="Aligner">
-                <mat-radio-button fxFlex class="Aligner-item" [value]="account.account"></mat-radio-button>
+                <mat-radio-button class="Aligner-item" [value]="account.account"></mat-radio-button>
               </div>
             </div>
           </div>

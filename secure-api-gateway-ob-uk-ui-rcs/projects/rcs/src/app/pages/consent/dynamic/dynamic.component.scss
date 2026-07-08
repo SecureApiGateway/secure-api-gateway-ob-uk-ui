@@ -74,6 +74,11 @@
       height: 100%;
     }
 
+    .sub-row--column {
+      display: flex;
+      flex-direction: column;
+    }
+
     .sub-row {
       padding: 0.7em 0;
       margin-left: 0.7em;

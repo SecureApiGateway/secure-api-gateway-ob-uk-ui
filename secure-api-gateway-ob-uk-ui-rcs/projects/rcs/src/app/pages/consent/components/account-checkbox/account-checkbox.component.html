@@ -4,8 +4,8 @@
   <mat-card-content>
     <div class="consent-box accounts" [formGroup]="form">
       <div class="accounts example-radio-group">
-        <label fxLayout="row" *ngFor="let account of accounts">
-          <div fxFlex>
+        <label class="account-row" *ngFor="let account of accounts">
+          <div class="account-info">
             <div class="account Aligner">
               <div>
                 <div>{{ account.account?.nickname }}</div>
@@ -14,9 +14,9 @@
                 </div>
               </div>
 
-              <span fxFlex></span>
+              <span class="spacer"></span>
               <div class="Aligner">
-                <mat-checkbox fxFlex class="Aligner-item" [formControlName]="account.id"></mat-checkbox>
+                <mat-checkbox class="Aligner-item" [formControlName]="account.id"></mat-checkbox>
               </div>
             </div>
           </div>

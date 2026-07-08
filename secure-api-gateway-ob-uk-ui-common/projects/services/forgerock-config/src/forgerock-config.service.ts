@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import _merge from 'lodash-es/merge';
 import _get from 'lodash-es/get';
 
@@ -15,12 +16,13 @@ export class ForgerockConfigService {
     return this._config;
   }
 
-  fetchAndMerge(defaultEnvironement: unknown = {}) {
-    return this.http
-      .get('deployment-settings.json')
-      .toPromise()
-      .then(json => (this._config = _merge(defaultEnvironement, json)))
-      .catch(() => (this._config = defaultEnvironement));
+  async fetchAndMerge(defaultEnvironement: unknown = {}) {
+    try {
+      const json = await firstValueFrom(this.http.get('deployment-settings.json'));
+      this._config = _merge(defaultEnvironement, json);
+    } catch {
+      this._config = defaultEnvironement;
+    }
   }
 
   get(key: string, defaultReturn?: unknown) {

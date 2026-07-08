@@ -14,7 +14,6 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { MediaObserver } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -72,7 +71,7 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
   private _wasFolded: boolean;
   private _backdrop: HTMLElement | null = null;
   private _player: AnimationPlayer;
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(
     private _animationBuilder: AnimationBuilder,
@@ -81,7 +80,6 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
     private _fuseConfigService: ForgerockMainLayoutConfigService,
     private _fuseMatchMediaService: ForegerockLayoutMatchMediaService,
     private _fuseSidebarService: ForgerockLayoutSidebarService,
-    private _observableMedia: MediaObserver,
     private _renderer: Renderer2
   ) {
     this.foldedAutoTriggerOnHover = true;
@@ -94,7 +92,7 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
 
     this._animationsEnabled = false;
     this._folded = false;
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   get folded(): boolean {
@@ -355,7 +353,7 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
     this._showSidebar();
 
     this._fuseMatchMediaService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
-      const isActive = this._observableMedia.isActive(this.lockedOpen);
+      const isActive = this._fuseMatchMediaService.isActive(this.lockedOpen);
 
       if (this._wasActive === isActive) {
         return;

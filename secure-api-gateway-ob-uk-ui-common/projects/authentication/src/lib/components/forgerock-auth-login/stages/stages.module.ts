@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -33,8 +32,7 @@ import { NotFoundComponent } from './not-found.component';
     ReactiveFormsModule,
     TranslateModule,
     MatProgressSpinnerModule,
-    MatButtonModule,
-    FlexLayoutModule
+    MatButtonModule
   ],
   exports: [
     LoginDynamicInputsModule,

@@ -1,0 +1,12 @@
+.consent-box {
+  display: flex;
+  flex-direction: row;
+
+  .consent-box-content {
+    flex: 1;
+  }
+}
+
+.spacer {
+  flex: 1;
+}

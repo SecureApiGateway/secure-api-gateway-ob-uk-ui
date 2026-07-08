@@ -1,0 +1,12 @@
+.account-row {
+  display: flex;
+  flex-direction: row;
+
+  .account-info {
+    flex: 1;
+  }
+}
+
+.spacer {
+  flex: 1;
+}

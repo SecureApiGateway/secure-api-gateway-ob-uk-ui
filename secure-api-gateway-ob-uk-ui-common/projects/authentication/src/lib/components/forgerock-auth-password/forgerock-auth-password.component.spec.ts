@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { provideRouter } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -31,7 +30,6 @@ describe('app:forgerock ForgerockAuthPasswordComponent', () => {
         ForgerockConfirmDialogModule,
         FormsModule,
         ReactiveFormsModule,
-        FlexLayoutModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

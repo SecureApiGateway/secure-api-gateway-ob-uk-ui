@@ -19,10 +19,10 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy {
 
   @HostBinding('class.open') public isOpen = false;
 
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(private _fuseNavigationService: ForgerockMainLayoutNavigationService, private _router: Router) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   /**

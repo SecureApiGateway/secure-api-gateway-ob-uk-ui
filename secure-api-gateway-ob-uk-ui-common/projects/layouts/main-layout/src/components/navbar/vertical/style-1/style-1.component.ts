@@ -22,7 +22,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
   clientName: string;
 
   // private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(
     private _fuseConfigService: ForgerockMainLayoutConfigService,
@@ -31,7 +31,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
     private _router: Router,
     private configService: ForgerockConfigService
   ) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
     this.clientName = this.configService.get('client.name') as string;
   }
   /**

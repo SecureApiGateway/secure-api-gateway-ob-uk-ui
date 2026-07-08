@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +24,6 @@ import { ForgerockAlertModule } from '@secureapigateway/secure-api-gateway-ob-uk
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    FlexLayoutModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

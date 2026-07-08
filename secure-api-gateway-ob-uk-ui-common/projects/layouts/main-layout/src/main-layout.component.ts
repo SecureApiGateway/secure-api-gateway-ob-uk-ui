@@ -32,7 +32,7 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './mo
 export class ForgerockMainLayoutComponent implements OnDestroy {
   config$: Observable<IForgerockMainLayoutConfig>;
   navigation$: Observable<{ key: string; navigation: IForgerockMainLayoutNavigation[] }>;
-  private _unsubscribeAll: Subject<unknown> = new Subject();
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
   private latestPathnameClass = '';
 
   constructor(

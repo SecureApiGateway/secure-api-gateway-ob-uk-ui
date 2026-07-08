@@ -23,13 +23,13 @@ export class ForgerockMainLayoutNavigationComponent implements OnInit {
   @Input()
   navigation: IForgerockMainLayoutNavigationItem[];
 
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(
     private _fuseNavigationService: ForgerockMainLayoutNavigationService,
     private configService: ForgerockConfigService
   ) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
   }
   ngOnInit(): void {
     this.navigation = this.filterNavigationWithRouteDenyList(

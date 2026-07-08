@@ -1,3 +1,12 @@
+.submit-row {
+  display: flex;
+  flex-direction: row;
+
+  .paymentButton {
+    flex: 1;
+  }
+}
+
 :host {
   ::ng-deep button[type='submit'] .mdc-button__label {
     display: flex;

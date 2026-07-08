@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ForgerockLayoutSidebarComponent } from './sidebar/sidebar.component';
@@ -10,8 +9,8 @@ import { ForgerockMainLayoutNavigationService } from './navigation/navigation.se
 
 @NgModule({
   declarations: [ForgerockLayoutSidebarComponent],
-  imports: [CommonModule, FlexLayoutModule, TranslateModule],
-  exports: [CommonModule, FlexLayoutModule, ForgerockLayoutSidebarComponent, TranslateModule],
+  imports: [CommonModule, TranslateModule],
+  exports: [CommonModule, ForgerockLayoutSidebarComponent, TranslateModule],
   providers: [ForgerockMainLayoutConfigService, ForgerockLayoutSidebarService, ForgerockMainLayoutNavigationService]
 })
 export class ForgerockMainLayoutSharedModule {}

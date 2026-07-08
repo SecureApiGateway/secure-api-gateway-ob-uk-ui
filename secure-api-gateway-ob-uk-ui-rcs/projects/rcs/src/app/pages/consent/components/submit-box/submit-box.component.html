@@ -1,11 +1,11 @@
 <div class="submit-box">
   <div *ngIf="label" class="title">{{ label | translate }}</div>
 
-  <div fxLayout="row">
-    <div fxFlex class="paymentButton" *ngIf="cancelLabel">
+  <div class="submit-row">
+    <div class="paymentButton" *ngIf="cancelLabel">
       <button mat-stroked-button (click)="cancel($event)">{{ cancelLabel | translate }}</button>
     </div>
-    <div fxFlex class="paymentButton">
+    <div class="paymentButton">
       <button
         mat-raised-button
         mat-button

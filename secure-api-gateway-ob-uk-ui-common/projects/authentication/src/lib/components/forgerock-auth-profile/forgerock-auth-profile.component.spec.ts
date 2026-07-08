@@ -3,7 +3,6 @@ import { provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { ProfileContainerComponent } from './forgerock-auth-profile.container';
@@ -20,7 +19,6 @@ describe('app:forgerock ProfileComponent', () => {
         StoreModule.forRoot({}),
         CommonModule,
         TranslateModule.forRoot({}),
-        FlexLayoutModule,
         MatTabsModule,
         ForgerockCustomerLogoModule
       ],
