@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {catchError, retry} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
@@ -19,18 +19,15 @@ import {ConsentDecision} from "../../../../src/app/types/ConsentDecision";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConsentComponent implements OnInit {
+  private readonly route = inject(ActivatedRoute);
+  private readonly api = inject(ApiService);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly messages = inject(ForgerockMessagesService);
+
   loading: boolean;
   error: Error;
   response: ApiResponses.ConsentDetailsResponse;
   consentRequest: string;
-
-  constructor(
-    private route: ActivatedRoute,
-    private api: ApiService,
-    private cdr: ChangeDetectorRef,
-    private messages: ForgerockMessagesService
-  ) {
-  }
 
   ngOnInit() {
     let redirect_uri: string;

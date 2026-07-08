@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -12,6 +12,8 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigationItem } from '
   styleUrls: ['./collapsable.component.scss']
 })
 export class FuseNavHorizontalCollapsableComponent implements OnInit, OnDestroy {
+  private readonly _fuseConfigService = inject(ForgerockMainLayoutConfigService);
+
   @HostBinding('class')
   classes = 'nav-collapsable nav-item';
 
@@ -22,12 +24,7 @@ export class FuseNavHorizontalCollapsableComponent implements OnInit, OnDestroy 
   isOpen = false;
 
   // Private
-  private _unsubscribeAll: Subject<void>;
-
-  constructor(private _fuseConfigService: ForgerockMainLayoutConfigService) {
-    // Set the private defaults
-    this._unsubscribeAll = new Subject<void>();
-  }
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   /**
    * Open

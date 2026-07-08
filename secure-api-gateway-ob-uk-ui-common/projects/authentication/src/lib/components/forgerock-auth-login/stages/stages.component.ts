@@ -7,7 +7,8 @@ import {
   Output,
   SimpleChanges,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  inject
 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import debug from 'debug';
@@ -37,14 +38,12 @@ const log = debug('ForgerockAuthLogin:StagesComponent');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StagesComponent implements OnChanges {
+  protected readonly route = inject(ActivatedRoute);
   @Input() response: ApiReponses.AuthLoginResponse;
   @Input() client: IConfigClient;
   @Output() formSubmit: EventEmitter<unknown> = new EventEmitter<unknown>();
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
-
-  constructor(protected route: ActivatedRoute) {}
-
 
   ngOnChanges(changes: SimpleChanges) {
     const authId = localStorage.getItem('AUTH_ID');

@@ -5,7 +5,8 @@ import {
   OnChanges,
   OnInit,
   Type,
-  ViewContainerRef
+  ViewContainerRef,
+  inject
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import debug from 'debug';
@@ -38,6 +39,7 @@ const components: { [type: string]: Type<Field> } = {
   selector: '[dynamicField]'
 })
 export class DynamicFieldDirective implements Field, OnChanges, OnInit {
+  private readonly container = inject(ViewContainerRef);
   @Input()
   config: ICallback;
   @Input()
@@ -46,8 +48,6 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   group: FormGroup;
 
   component: ComponentRef<Field>;
-
-  constructor(private container: ViewContainerRef) {}
 
   ngOnChanges() {
     if (this.component) {

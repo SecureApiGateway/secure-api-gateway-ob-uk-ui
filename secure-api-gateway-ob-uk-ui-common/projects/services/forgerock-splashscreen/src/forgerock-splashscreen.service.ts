@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
@@ -7,14 +7,14 @@ import { NavigationEnd, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ForgerockSplashscreenService {
+  private readonly _animationBuilder = inject(AnimationBuilder);
+  private readonly _document = inject<Document>(DOCUMENT);
+  private readonly _router = inject(Router);
+
   splashScreenEl: Element;
   player: AnimationPlayer;
   _init = false;
-  constructor(
-    private _animationBuilder: AnimationBuilder,
-    @Inject(DOCUMENT) private _document: Document,
-    private _router: Router
-  ) {}
+
 
   init(): void {
     if (this._init) {

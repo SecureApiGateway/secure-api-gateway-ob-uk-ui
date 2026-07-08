@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, NavigationExtras } from '@angular/router';
 import { ForgerockGDPRService } from './gdpr.service';
 
@@ -6,7 +6,9 @@ import { ForgerockGDPRService } from './gdpr.service';
   providedIn: 'root'
 })
 export class ForegerockGDPRConsentGuard implements CanActivate {
-  constructor(protected gdprService: ForgerockGDPRService, protected router: Router) {}
+  protected readonly gdprService = inject(ForgerockGDPRService);
+  protected readonly router = inject(Router);
+
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.gdprService.hasAnswered && !this.gdprService.hasConsented) {

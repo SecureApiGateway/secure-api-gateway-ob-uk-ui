@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -11,7 +11,9 @@ import { Params, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ForgerockAuthApiService {
-  constructor(private http: HttpClient, private configService: ForgerockConfigService, private router: Router) {}
+  private readonly http = inject(HttpClient);
+  private readonly configService = inject(ForgerockConfigService);
+  private readonly router = inject(Router);
 
   get sessionInfoUrl() {
     return `${this.configService.get('authenticationServer')}/json/sessions?_action=getSessionInfo`;

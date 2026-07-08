@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import * as fileSaver from 'file-saver';
 import { Store, select } from '@ngrx/store';
@@ -12,13 +12,11 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ForgerockCustomizationService {
-  public isOpened$ = new BehaviorSubject<boolean>(false);
+  protected readonly store = inject<Store<any>>(Store);
+  private readonly cssVarsService = inject(ForgerockCssVarsService);
+  private readonly document = inject<any>(DOCUMENT);
 
-  constructor(
-    protected store: Store<any>,
-    private cssVarsService: ForgerockCssVarsService,
-    @Inject(DOCUMENT) private document: any
-  ) {}
+  public isOpened$ = new BehaviorSubject<boolean>(false);
 
   open = async () => {
     await this.cssVarsService.init();

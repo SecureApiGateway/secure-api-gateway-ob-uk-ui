@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
@@ -9,6 +9,9 @@ import { ForgerockAuthApiService } from '../../forgerock-auth-api/forgerock-auth
 
 @Injectable()
 export class SessionEffects {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly actions$ = inject(Actions);
+
   request$ = createEffect(() =>
     this.actions$.pipe(
       ofType(sessionTypes.SESSION_REQUEST),
@@ -20,6 +23,4 @@ export class SessionEffects {
       )
     )
   );
-
-  constructor(private api: ForgerockAuthApiService, private actions$: Actions) {}
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { select, Store } from '@ngrx/store';
@@ -16,12 +16,11 @@ const log = debug('guards:IsOIDCConnectedGuard');
   providedIn: 'root'
 })
 export class IsOIDCConnectedGuard implements CanActivate {
-  constructor(
-    protected auth: ForgerockAuthRedirectOIDCService,
-    protected router: Router,
-    protected store: Store<IOIDCModuleState>,
-    protected configService: ForgerockConfigService
-  ) {}
+  protected readonly auth = inject(ForgerockAuthRedirectOIDCService);
+  protected readonly router = inject(Router);
+  protected readonly store = inject<Store<IOIDCModuleState>>(Store);
+  protected readonly configService = inject(ForgerockConfigService);
+
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     let isConnected;

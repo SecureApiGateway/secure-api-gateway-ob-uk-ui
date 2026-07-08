@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 
 import { StagesParentComponent } from './stages.parent.component';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -12,13 +12,10 @@ import { ActivatedRoute, Params } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExchanceCodeComponent extends StagesParentComponent implements OnInit {
+  protected readonly route = inject(ActivatedRoute);
   code: string;
   state: string;
   authId;
-
-  constructor(protected route: ActivatedRoute) {
-    super();
-  }
 
   ngOnInit() {
     super.ngOnInit();

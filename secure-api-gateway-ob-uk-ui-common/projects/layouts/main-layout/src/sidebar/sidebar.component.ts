@@ -11,7 +11,8 @@ import {
   Output,
   Renderer2,
   RendererStyleFlags2,
-  ViewEncapsulation
+  ViewEncapsulation,
+  inject
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { Subject } from 'rxjs';
@@ -29,6 +30,14 @@ import { ForegerockLayoutMatchMediaService } from './match-media.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
+  private readonly _animationBuilder = inject(AnimationBuilder);
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _fuseConfigService = inject(ForgerockMainLayoutConfigService);
+  private readonly _fuseMatchMediaService = inject(ForegerockLayoutMatchMediaService);
+  private readonly _fuseSidebarService = inject(ForgerockLayoutSidebarService);
+  private readonly _renderer = inject(Renderer2);
+
   @Input() name: string;
 
   @Input() key: string;
@@ -73,15 +82,7 @@ export class ForgerockLayoutSidebarComponent implements OnInit, OnDestroy {
   private _player: AnimationPlayer;
   private _unsubscribeAll: Subject<void>;
 
-  constructor(
-    private _animationBuilder: AnimationBuilder,
-    private _changeDetectorRef: ChangeDetectorRef,
-    private _elementRef: ElementRef,
-    private _fuseConfigService: ForgerockMainLayoutConfigService,
-    private _fuseMatchMediaService: ForegerockLayoutMatchMediaService,
-    private _fuseSidebarService: ForgerockLayoutSidebarService,
-    private _renderer: Renderer2
-  ) {
+  constructor() {
     this.foldedAutoTriggerOnHover = true;
     this.foldedWidth = 64;
     this.foldedChanged = new EventEmitter();

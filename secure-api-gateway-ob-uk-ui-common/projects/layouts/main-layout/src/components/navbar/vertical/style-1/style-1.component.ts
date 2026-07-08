@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -16,22 +16,21 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
+  private readonly _fuseConfigService = inject(ForgerockMainLayoutConfigService);
+  private readonly _fuseNavigationService = inject(ForgerockMainLayoutNavigationService);
+  private readonly _fuseSidebarService = inject(ForgerockLayoutSidebarService);
+  private readonly _router = inject(Router);
+  private readonly configService = inject(ForgerockConfigService);
+
   fuseConfig: unknown;
   // fusePerfectScrollbarUpdateTimeout: unknown;
   navigation: unknown;
   clientName: string;
 
   // private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
-  private _unsubscribeAll: Subject<void>;
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
-  constructor(
-    private _fuseConfigService: ForgerockMainLayoutConfigService,
-    private _fuseNavigationService: ForgerockMainLayoutNavigationService,
-    private _fuseSidebarService: ForgerockLayoutSidebarService,
-    private _router: Router,
-    private configService: ForgerockConfigService
-  ) {
-    this._unsubscribeAll = new Subject<void>();
+  constructor() {
     this.clientName = this.configService.get('client.name') as string;
   }
   /**

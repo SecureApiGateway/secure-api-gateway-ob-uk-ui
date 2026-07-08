@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -13,14 +13,14 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaletteComponent implements OnInit, OnDestroy {
+  private readonly cssVarsService = inject(ForgerockCssVarsService);
+
   @Input() type: IThemeType;
   formSubscription: Subscription;
   themesControl = new FormControl('theme');
   themeNames: string[];
   themeObject: { [key: string]: IPalette };
   paletteProps: string[];
-
-  constructor(private cssVarsService: ForgerockCssVarsService) {}
 
   ngOnInit() {
     this.paletteProps = this.cssVarsService.getPalettePropsByType(this.type);

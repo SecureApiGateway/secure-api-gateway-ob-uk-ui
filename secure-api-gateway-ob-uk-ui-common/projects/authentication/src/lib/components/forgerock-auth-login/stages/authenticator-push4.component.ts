@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { StagesParentComponent } from './stages.parent.component';
@@ -25,9 +25,7 @@ import { StagesParentComponent } from './stages.parent.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthenticatorPush4Component extends StagesParentComponent implements OnInit {
-  constructor(private sanitizer: DomSanitizer) {
-    super();
-  }
+  private readonly sanitizer = inject(DomSanitizer);
 
   ngOnInit() {
     super.ngOnInit();

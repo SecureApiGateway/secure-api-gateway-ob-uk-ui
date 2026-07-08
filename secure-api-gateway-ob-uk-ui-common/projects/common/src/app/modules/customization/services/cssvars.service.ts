@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import _merge from 'lodash-es/merge';
 import _get from 'lodash-es/get';
@@ -67,6 +67,9 @@ const paletteBackgroundProps: string[] = [
   providedIn: 'root'
 })
 export class ForgerockCssVarsService {
+  private readonly _document = inject<any>(DOCUMENT);
+  private readonly _config = inject<ForgerockCustomization>(ForgerockCustomizationToken);
+
   private _init = false;
   private _matPalettes: {
     [key: string]: IPalette;
@@ -83,15 +86,6 @@ export class ForgerockCssVarsService {
   private _matPaletteNames: string[] = [];
   private _foregroundPaletteNames: string[] = [];
   private _backgroundPaletteNames: string[] = [];
-
-  constructor(
-    @Inject(DOCUMENT) private _document: any,
-    @Inject(ForgerockCustomizationToken) private _config: ForgerockCustomization
-  ) {
-    // Keep in case the palette list changes
-    // const cssVars = require('sass-extract-loader!./cssvars.scss');
-    // this.parseScssVars(cssVars.global);
-  }
 
   public get matPalettes() {
     return this._matPalettes;

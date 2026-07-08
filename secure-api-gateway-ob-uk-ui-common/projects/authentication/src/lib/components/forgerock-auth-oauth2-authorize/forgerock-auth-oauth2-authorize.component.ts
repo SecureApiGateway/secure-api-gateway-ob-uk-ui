@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
@@ -41,17 +41,15 @@ import { encodeQueryData, replaceURLOrigin } from '@secureapigateway/secure-api-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthOauth2AuthorizeComponent implements OnInit {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly route = inject(ActivatedRoute);
+  private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
+  private readonly configService = inject(ForgerockConfigService);
+
   public isLoading = false;
   public error = '';
-
-  constructor(
-    private api: ForgerockAuthApiService,
-    private cdr: ChangeDetectorRef,
-    private route: ActivatedRoute,
-    private http: HttpClient,
-    private router: Router,
-    private configService: ForgerockConfigService
-  ) {}
 
   async ngOnInit() {
     try {

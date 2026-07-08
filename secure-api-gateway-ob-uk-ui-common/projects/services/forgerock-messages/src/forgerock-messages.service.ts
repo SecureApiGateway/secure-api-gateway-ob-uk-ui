@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 const defaultSnackbarOptions = {
@@ -7,7 +7,8 @@ const defaultSnackbarOptions = {
 
 @Injectable()
 export class ForgerockMessagesService {
-  constructor(private snackBar: MatSnackBar) {}
+  private readonly snackBar = inject(MatSnackBar);
+
 
   error(text = 'Something Wrong happened', action = '', options = defaultSnackbarOptions) {
     return this.snackBar.open(text, action, options);

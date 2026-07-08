@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 const BREAKPOINTS: Record<string, string> = {
@@ -22,10 +22,12 @@ const BREAKPOINTS: Record<string, string> = {
   providedIn: 'root'
 })
 export class ForegerockLayoutMatchMediaService {
+  private readonly _breakpointObserver = inject(BreakpointObserver);
+
   activeMediaQuery: string;
   onMediaChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private _breakpointObserver: BreakpointObserver) {
+  constructor() {
     this.activeMediaQuery = '';
 
     this._init();

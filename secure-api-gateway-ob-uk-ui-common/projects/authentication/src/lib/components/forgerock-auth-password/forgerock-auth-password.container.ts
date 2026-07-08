@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -25,10 +25,12 @@ import { ApiRequest } from '../../models';
   `
 })
 export class ForgerockAuthPasswordContainer implements OnInit {
+  private readonly store = inject(Store<IState>);
+
   user$: Observable<IUser>;
   isLoading$: Observable<boolean>;
 
-  constructor(private store: Store<IState>) {
+  constructor() {
     this.user$ = this.store.pipe(select(selectUser));
     this.isLoading$ = this.store.pipe(select(selectIsPasswordSubmitting));
   }

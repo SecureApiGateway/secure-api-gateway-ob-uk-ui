@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import _merge from 'lodash-es/merge';
@@ -8,9 +8,10 @@ import _get from 'lodash-es/get';
   providedIn: 'root'
 })
 export class ForgerockConfigService {
+  private readonly http = inject(HttpClient);
+
   private _config: unknown = {};
 
-  constructor(private http: HttpClient) {}
 
   get config() {
     return this._config;

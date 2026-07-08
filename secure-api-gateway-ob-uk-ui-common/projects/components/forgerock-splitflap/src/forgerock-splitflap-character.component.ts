@@ -7,7 +7,8 @@ import {
   SimpleChanges,
   HostBinding,
   ChangeDetectorRef,
-  OnDestroy
+  OnDestroy,
+  inject
 } from '@angular/core';
 @Component({
   standalone: false,
@@ -26,6 +27,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, OnDestroy {
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() size: string;
   @Input() theme = 'dark';
   @Input() value: string;
@@ -47,8 +50,6 @@ export class ForgerockSplitFlapCharacterComponent implements OnInit, OnChanges, 
     'transition-duration': '0',
     'transition-delay': '0'
   };
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   @HostBinding('class') get class() {
     return `${this.size} ${this.theme}`;

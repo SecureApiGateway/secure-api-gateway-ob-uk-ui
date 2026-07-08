@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -13,6 +13,8 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaletteBackgroundComponent implements OnInit, OnDestroy {
+  private readonly cssVarsService = inject(ForgerockCssVarsService);
+
   formSubscription: Subscription;
   themesControl = new FormControl('theme');
   themeNames: string[] = ['light', 'dark'];
@@ -20,8 +22,6 @@ export class PaletteBackgroundComponent implements OnInit, OnDestroy {
   backgroundThemeObject: { [key: string]: IPalette };
   foregroundPaletteProps: string[];
   backgroundPaletteProps: string[];
-
-  constructor(private cssVarsService: ForgerockCssVarsService) {}
 
   ngOnInit() {
     this.foregroundPaletteProps = this.cssVarsService.getPalettePropsByType('foreground');

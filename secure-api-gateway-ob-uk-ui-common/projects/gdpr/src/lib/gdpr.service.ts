@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NgcCookieConsentService, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 
@@ -8,14 +8,14 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   providedIn: 'root'
 })
 export class ForgerockGDPRService {
+  private readonly configService = inject(ForgerockConfigService);
+  private readonly ccService = inject(NgcCookieConsentService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+
   static gdprDeniedPage = 'access-denied';
 
-  constructor(
-    private configService: ForgerockConfigService,
-    private ccService: NgcCookieConsentService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor() {
     this.ccService.statusChange$.subscribe((event: NgcStatusChangeEvent) => {
       if (event.status === 'allow' && window.location.pathname === '/' + ForgerockGDPRService.gdprDeniedPage) {
         const { returnUrl } = this.route.snapshot.queryParams;
@@ -23,7 +23,7 @@ export class ForgerockGDPRService {
       } else if (event.status === 'deny' && window.location.pathname !== '/' + ForgerockGDPRService.gdprDeniedPage) {
         const options: NavigationExtras = {
           queryParams: {
-            returnUrl: encodeURIComponent(router.routerState.snapshot.url)
+            returnUrl: encodeURIComponent(this.router.routerState.snapshot.url)
           }
         };
         this.router.navigate(['/' + ForgerockGDPRService.gdprDeniedPage], options);

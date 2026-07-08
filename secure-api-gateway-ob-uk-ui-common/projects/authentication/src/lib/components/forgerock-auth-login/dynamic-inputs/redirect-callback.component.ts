@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Field, ICallback } from '../../../models';
@@ -14,14 +14,14 @@ import { ActivatedRoute, Params } from '@angular/router';
   `
 })
 export class RedirectCallbackComponent implements Field, OnInit {
+  protected readonly route = inject(ActivatedRoute);
+  private readonly conf = inject(ForgerockConfigService);
   authId: string;
   config: ICallback;
   group: FormGroup;
   redirectUrl: string;
   redirectMethod: string;
   trackingCookie: boolean;
-
-  constructor(protected route: ActivatedRoute, private conf: ForgerockConfigService) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {

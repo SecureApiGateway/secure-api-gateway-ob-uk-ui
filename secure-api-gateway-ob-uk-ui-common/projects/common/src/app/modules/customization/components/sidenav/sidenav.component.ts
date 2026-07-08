@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { ForgerockCustomizationService } from 'forgerock/src/app/modules/customization/services/customization.service';
@@ -13,15 +13,13 @@ import { AddLogoAction, AddIconAction, AddFaviconAction } from '../../store/redu
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockCustomizationSidenavComponent implements OnInit {
+  protected readonly store = inject<Store<any>>(Store);
+  private readonly customizationService = inject(ForgerockCustomizationService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   @Input() disableIcon = false;
   @Input() enable = true;
   isOpened: boolean;
-
-  constructor(
-    protected store: Store<any>,
-    private customizationService: ForgerockCustomizationService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit() {
     this.customizationService.onOpen().subscribe((isOpened: boolean) => {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, NavigationExtras } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -18,13 +18,11 @@ const log = debug('IsConnectedGuard');
   providedIn: 'root'
 })
 export abstract class IsConnectedGuard implements CanActivate {
-  constructor(
-    protected api: ForgerockAuthApiService,
-    protected router: Router,
-    protected store: Store<IState>,
-    protected configService: ForgerockConfigService,
-    protected messages: ForgerockMessagesService
-  ) {}
+  protected readonly api = inject(ForgerockAuthApiService);
+  protected readonly router = inject(Router);
+  protected readonly store = inject(Store<IState>);
+  protected readonly configService = inject(ForgerockConfigService);
+  protected readonly messages = inject(ForgerockMessagesService);
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     log('canActivate', route, state);

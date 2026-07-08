@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { timeout } from 'rxjs/operators';
@@ -8,7 +8,7 @@ export const DEFAULT_HTTP_TIMEOUT = 30000;
 
 @Injectable()
 export class TimeoutInterceptor implements HttpInterceptor {
-  constructor(@Inject(FORGEROCK_HTTP_TIMEOUT_TOKEN) protected appTimeout: number) {}
+  protected readonly appTimeout = inject(FORGEROCK_HTTP_TIMEOUT_TOKEN);
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     // timeout can be changed per call via timeout header

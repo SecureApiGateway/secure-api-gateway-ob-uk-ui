@@ -6,7 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
   ComponentRef,
-  Inject
+  inject
 } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
@@ -22,6 +22,10 @@ import { ForgerockMainLayoutComponentsToken } from '../../tokens';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
+  private readonly _fuseSidebarService = inject(ForgerockLayoutSidebarService);
+  private readonly configService = inject(ForgerockConfigService);
+  private readonly _components = inject<IForgerockMainLayoutComponents>(ForgerockMainLayoutComponentsToken);
+
   @Input() type: 'horizontal' | 'vertical' = 'vertical';
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true })
   dynamicTarget: ViewContainerRef;
@@ -31,15 +35,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   clientName: string;
   componentRef: ComponentRef<unknown>;
 
-  private _unsubscribeAll: Subject<void>;
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
-  constructor(
-    private _fuseSidebarService: ForgerockLayoutSidebarService,
-    private configService: ForgerockConfigService,
-    @Inject(ForgerockMainLayoutComponentsToken)
-    private _components: IForgerockMainLayoutComponents
-  ) {
-    this._unsubscribeAll = new Subject<void>();
+  constructor() {
     this.clientName = this.configService.get('client.name') as string;
   }
 

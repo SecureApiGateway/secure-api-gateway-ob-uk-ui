@@ -6,7 +6,8 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  inject
 } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import _get from 'lodash-es/get';
@@ -40,13 +41,15 @@ export const RegistrationValidator: ValidatorFn = (control: AbstractControl): Va
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthPasswordComponent implements OnInit, OnChanges {
+  private readonly configService = inject(ForgerockConfigService);
+
   @Input() user: IUser;
   @Input() isLoading = false;
   @Output() formSubmit = new EventEmitter<ApiRequest.IUserPasswordUpdateBody>();
   formGroup: FormGroup;
   isDisabled: boolean;
 
-  constructor(private configService: ForgerockConfigService) {
+  constructor() {
     this.isDisabled = this.configService.get('featureFlags.disablePasswordForm', false);
   }
 

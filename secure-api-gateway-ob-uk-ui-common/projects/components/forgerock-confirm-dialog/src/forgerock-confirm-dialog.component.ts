@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface ConfirmDialogData {
@@ -25,10 +25,8 @@ export interface ConfirmDialogData {
   `
 })
 export class ForgerockConfirmDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<ForgerockConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData
-  ) {}
+  public readonly dialogRef = inject<MatDialogRef<ForgerockConfirmDialogComponent>>(MatDialogRef);
+  public readonly data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
 
   onNoClick(): void {
     this.dialogRef.close();

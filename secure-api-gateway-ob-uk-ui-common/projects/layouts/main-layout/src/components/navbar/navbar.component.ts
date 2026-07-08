@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer2, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2, ViewEncapsulation, OnInit, OnDestroy, inject } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -13,17 +13,13 @@ import { IForgerockMainLayoutConfig } from '../../models';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _renderer = inject(Renderer2);
+  private readonly configService = inject(ForgerockMainLayoutConfigService);
+
   _variant = 'vertical-style-1';
   public layoutConfig: IForgerockMainLayoutConfig;
-  private _unsubscribeAll: Subject<void>;
-
-  constructor(
-    private _elementRef: ElementRef,
-    private _renderer: Renderer2,
-    private configService: ForgerockMainLayoutConfigService
-  ) {
-    this._unsubscribeAll = new Subject<void>();
-  }
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   get variant(): string {
     return this._variant;

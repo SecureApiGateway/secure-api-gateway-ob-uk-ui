@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnDestroy, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -30,17 +30,17 @@ import { IForgerockMainLayoutConfig, IForgerockMainLayoutNavigation } from './mo
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockMainLayoutComponent implements OnDestroy {
+  private readonly configService = inject(ForgerockMainLayoutConfigService);
+  private readonly navigationService = inject(ForgerockMainLayoutNavigationService);
+  private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
+
   config$: Observable<IForgerockMainLayoutConfig>;
   navigation$: Observable<{ key: string; navigation: IForgerockMainLayoutNavigation[] }>;
   private _unsubscribeAll: Subject<void> = new Subject<void>();
   private latestPathnameClass = '';
 
-  constructor(
-    private configService: ForgerockMainLayoutConfigService,
-    private navigationService: ForgerockMainLayoutNavigationService,
-    private router: Router,
-    @Inject(DOCUMENT) private document: Document
-  ) {
+  constructor() {
     this.config$ = this.configService.config;
     this.navigation$ = this.navigationService.onNavigationChanged;
     this.router.events.pipe(takeUntil(this._unsubscribeAll)).subscribe(val => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -30,18 +30,18 @@ function validateLowercase(c: FormControl) {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthRegisterComponent implements OnInit {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly messages = inject(ForgerockMessagesService);
+  private readonly dialog = inject(MatDialog);
+  private readonly translate = inject(TranslateService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly configService = inject(ForgerockConfigService);
+
   formGroup: FormGroup;
   disableRegistration: boolean;
 
-  constructor(
-    private api: ForgerockAuthApiService,
-    private messages: ForgerockMessagesService,
-    private dialog: MatDialog,
-    private translate: TranslateService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private configService: ForgerockConfigService
-  ) {
+  constructor() {
     this.disableRegistration = this.configService.get('featureFlags.disableRegistration', false);
   }
 

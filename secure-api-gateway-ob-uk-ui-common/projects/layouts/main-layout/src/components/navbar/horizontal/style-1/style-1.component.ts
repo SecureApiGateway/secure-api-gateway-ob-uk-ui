@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -12,13 +12,11 @@ import { ForgerockMainLayoutNavigationService } from '../../../../navigation/nav
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy {
+  private readonly _fuseNavigationService = inject(ForgerockMainLayoutNavigationService);
+
   navigation: unknown;
 
-  private _unsubscribeAll: Subject<void>;
-
-  constructor(private _fuseNavigationService: ForgerockMainLayoutNavigationService) {
-    this._unsubscribeAll = new Subject<void>();
-  }
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
     this._fuseNavigationService.onNavigationChanged

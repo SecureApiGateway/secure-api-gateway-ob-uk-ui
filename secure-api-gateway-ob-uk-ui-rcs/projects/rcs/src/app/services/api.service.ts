@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {ForgerockConfigService} from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
@@ -7,8 +7,9 @@ import {ForgerockConfigService} from '@secureapigateway/secure-api-gateway-ob-uk
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient, private configService: ForgerockConfigService) {
-  }
+  private readonly http = inject(HttpClient);
+  private readonly configService = inject(ForgerockConfigService);
+
 
   getConsentDetails(consentRequest: string) {
     return this.http.post(`${this.configService.get('remoteConsentServer')}/rcs/api/consent/details`, consentRequest, {

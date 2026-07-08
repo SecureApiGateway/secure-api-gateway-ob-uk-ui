@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
@@ -16,18 +16,16 @@ import { HttpClient } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockCustomerSVGComponent implements OnInit {
+  protected readonly store = inject<Store<unknown>>(Store);
+  protected readonly configService = inject(ForgerockConfigService);
+  protected readonly sanitizer = inject(DomSanitizer);
+  protected readonly http = inject(HttpClient);
+
   defaultImgSrc: string;
   svg$: Observable<SafeHtml>;
   width: number | string;
   height: number | string;
   stream$: Observable<string>;
-
-  constructor(
-    protected store: Store<unknown>,
-    protected configService: ForgerockConfigService,
-    protected sanitizer: DomSanitizer,
-    protected http: HttpClient
-  ) {}
 
   ngOnInit() {
     this.svg$ = this.stream$.pipe(

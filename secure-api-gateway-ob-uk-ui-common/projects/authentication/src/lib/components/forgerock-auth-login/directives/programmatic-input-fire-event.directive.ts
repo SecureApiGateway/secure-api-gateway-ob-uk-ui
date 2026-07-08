@@ -1,13 +1,15 @@
-import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer2, OnInit, inject } from '@angular/core';
 
 @Directive({
   standalone: false,
   selector: '[programmaticInputFireEvent]'
 })
 export class ProgrammaticInputFireEventDirective implements OnInit {
+  private readonly elementRef = inject(ElementRef);
+  private readonly renderer = inject(Renderer2);
   nativeElement: HTMLElement;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     this.nativeElement = this.elementRef.nativeElement;
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
@@ -28,10 +28,12 @@ import { IState } from '../../store/models';
   ]
 })
 export class ForgerockToolbarMenuContainer {
+  private readonly store = inject(Store<IState>);
+
   connected$: Observable<boolean>;
   username$: Observable<string>;
 
-  constructor(private store: Store<IState>) {
+  constructor() {
     this.connected$ = this.store.pipe(select(selectConnected));
     this.username$ = this.store.pipe(select(selectFullName));
   }

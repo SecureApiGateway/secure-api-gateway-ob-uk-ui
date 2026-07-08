@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { IForgerockMainLayoutNavigationItem, IForgerockMainLayoutNavigations } from '../models';
@@ -9,6 +9,9 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   providedIn: 'root'
 })
 export class ForgerockMainLayoutNavigationService {
+  private readonly _navigations = inject<IForgerockMainLayoutNavigations>(ForgerockMainLayoutNavigationsToken);
+  private readonly configService = inject(ForgerockConfigService);
+
   onItemCollapsed: Subject<IForgerockMainLayoutNavigationItem>;
   onItemCollapseToggled: Subject<void>;
 
@@ -22,11 +25,7 @@ export class ForgerockMainLayoutNavigationService {
   /**
    * Constructor
    */
-  constructor(
-    @Inject(ForgerockMainLayoutNavigationsToken)
-    private _navigations: IForgerockMainLayoutNavigations,
-    private configService: ForgerockConfigService
-  ) {
+  constructor() {
     this.onItemCollapsed = new Subject<IForgerockMainLayoutNavigationItem>();
     this.onItemCollapseToggled = new Subject<void>();
 

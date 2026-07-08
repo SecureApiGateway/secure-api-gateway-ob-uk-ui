@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of, throwError } from 'rxjs';
@@ -14,6 +14,12 @@ import { ForgerockMessagesService } from '@secureapigateway/secure-api-gateway-o
 
 @Injectable()
 export class UserEffects {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly actions$ = inject(Actions);
+  private readonly store = inject(Store<IState>);
+  private readonly message = inject(ForgerockMessagesService);
+  private readonly translate = inject(TranslateService);
+
   getProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userTypes.USER_GET_REQUEST),
@@ -69,12 +75,4 @@ export class UserEffects {
       )
     )
   );
-
-  constructor(
-    private api: ForgerockAuthApiService,
-    private actions$: Actions,
-    private store: Store<IState>,
-    private message: ForgerockMessagesService,
-    private translate: TranslateService
-  ) {}
 }

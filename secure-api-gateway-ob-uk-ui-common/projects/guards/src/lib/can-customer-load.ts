@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { CanLoad, Route, Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import debug from 'debug';
 
@@ -8,9 +8,12 @@ const log = debug('ForgerockCustomerCanAccessGuard');
 
 @Injectable()
 export class ForgerockCustomerCanAccessGuard implements CanLoad, CanActivate {
+  private readonly router = inject(Router);
+  private readonly configService = inject(ForgerockConfigService);
+
   blacklist: string[];
 
-  constructor(private router: Router, private configService: ForgerockConfigService) {
+  constructor() {
     this.blacklist = this.configService.get('routeDenyList', []);
   }
 

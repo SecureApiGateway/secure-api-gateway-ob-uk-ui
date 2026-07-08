@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, inject} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,8 +15,30 @@ import {ForgerockMessagesService} from "@secureapigateway/secure-api-gateway-ob-
   `
 })
 export class AppComponent implements OnInit {
+  private readonly document = inject<Document>(DOCUMENT);
+  private readonly splashscreenService = inject(ForgerockSplashscreenService);
+  private readonly translateService = inject(TranslateService);
+  private readonly platform = inject(Platform);
+  private readonly route = inject(ActivatedRoute);
+  private readonly messages = inject(ForgerockMessagesService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   loading: boolean;
   error: Error;
+
+  constructor() {
+    this.splashscreenService.init();
+
+    this.translateService.addLangs(['en', 'es']);
+    this.translateService.setDefaultLang('en');
+    this.translateService.use(this.translateService.getBrowserLang() || 'en');
+
+    // Add is-mobile class to the body if the platform is mobile
+    if (this.platform.ANDROID || this.platform.IOS) {
+      this.document.body.classList.add('is-mobile');
+    }
+  }
+
     ngOnInit(): void {
       console.log("APP")
       this.route.fragment.subscribe((fragment: string) => {
@@ -40,25 +62,5 @@ export class AppComponent implements OnInit {
       );
 
     }
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private splashscreenService: ForgerockSplashscreenService,
-    private translateService: TranslateService,
-    private platform: Platform,
-    private route: ActivatedRoute,
-    private messages: ForgerockMessagesService,
-    private cdr: ChangeDetectorRef,
-  ) {
-    this.splashscreenService.init();
-
-    this.translateService.addLangs(['en', 'es']);
-    this.translateService.setDefaultLang('en');
-    this.translateService.use(this.translateService.getBrowserLang() || 'en');
-
-    // Add is-mobile class to the body if the platform is mobile
-    if (this.platform.ANDROID || this.platform.IOS) {
-      this.document.body.classList.add('is-mobile');
-    }
-  }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -17,10 +17,12 @@ import { first } from 'rxjs/operators';
   `
 })
 export class ProfileContainerComponent implements OnInit {
+  private readonly store = inject(Store<IState>);
+
   userFullName$: Observable<string>;
   username$: Observable<string>;
 
-  constructor(private store: Store<IState>) {
+  constructor() {
     this.userFullName$ = this.store.pipe(select(selectFullName));
     this.username$ = this.store.pipe(select(selectUsername));
   }

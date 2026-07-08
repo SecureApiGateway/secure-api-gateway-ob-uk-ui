@@ -6,7 +6,8 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  inject
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import _get from 'lodash-es/get';
@@ -23,13 +24,14 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthDetailsComponent implements OnInit, OnChanges {
+  private readonly configService = inject(ForgerockConfigService);
   @Input() user: IUser;
   @Input() isLoading = false;
   @Output() formSubmit = new EventEmitter<ApiRequest.IUserUpdateBody>();
   formGroup: FormGroup;
   isDisabled: boolean;
 
-  constructor(private configService: ForgerockConfigService) {
+  constructor() {
     this.isDisabled = this.configService.get('featureFlags.disableProfileForm', false);
   }
 

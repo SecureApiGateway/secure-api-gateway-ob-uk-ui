@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
@@ -15,17 +15,16 @@ import { IForgerockMainLayoutConfig } from './models';
   providedIn: 'root'
 })
 export class ForgerockMainLayoutConfigService {
+  private readonly _platform = inject(Platform);
+  private readonly _router = inject(Router);
+  private readonly _document = inject(DOCUMENT);
+  private readonly _config = inject<IForgerockMainLayoutConfig>(ForgerockMainLayoutConfigToken);
+
   private _configSubject: BehaviorSubject<IForgerockMainLayoutConfig>;
   private readonly _defaultConfig: IForgerockMainLayoutConfig;
 
-  constructor(
-    private _platform: Platform,
-    private _router: Router,
-    @Inject(DOCUMENT) private _document: Document,
-    @Inject(ForgerockMainLayoutConfigToken)
-    private _config: IForgerockMainLayoutConfig
-  ) {
-    this._defaultConfig = _config;
+  constructor() {
+    this._defaultConfig = this._config;
 
     this._init();
   }

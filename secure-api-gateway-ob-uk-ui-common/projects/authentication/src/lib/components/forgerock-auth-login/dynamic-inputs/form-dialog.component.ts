@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -15,7 +15,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   `
 })
 export class FormDialogComponent {
-  constructor(public dialogRef: MatDialogRef<FormDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: { reason: string; message: string }) {}
+  public readonly dialogRef = inject<MatDialogRef<FormDialogComponent>>(MatDialogRef);
+  public readonly data = inject<{ reason: string; message: string }>(MAT_DIALOG_DATA);
 
   onNoClick(): void {
     this.dialogRef.close();

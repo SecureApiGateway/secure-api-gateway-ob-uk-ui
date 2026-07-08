@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UploadEvent, FileSystemFileEntry } from 'ngx-file-drop';
 
 import { ForgerockMessagesService } from 'forgerock/src/app/services/forgerock-messages/forgerock-messages.service';
@@ -16,9 +16,9 @@ export interface FileUploadChangeObject {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FileUploadComponent implements OnInit {
-  @Output() change = new EventEmitter<FileUploadChangeObject>();
+  private readonly message = inject(ForgerockMessagesService);
 
-  constructor(private message: ForgerockMessagesService) {}
+  @Output() change = new EventEmitter<FileUploadChangeObject>();
 
   ngOnInit() {}
 

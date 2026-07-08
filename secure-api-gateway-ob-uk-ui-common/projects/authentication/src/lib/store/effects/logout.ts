@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
@@ -9,6 +9,10 @@ import { LogoutSuccessAction, LogoutErrorAction, logoutTypes } from '../reducers
 
 @Injectable()
 export class LogoutEffects {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly actions$ = inject(Actions);
+  private readonly router = inject(Router);
+
   request$ = createEffect(() =>
     this.actions$.pipe(
       ofType(logoutTypes.LOGOUT_REQUEST),
@@ -25,6 +29,4 @@ export class LogoutEffects {
       )
     )
   );
-
-  constructor(private api: ForgerockAuthApiService, private actions$: Actions, private router: Router) {}
 }

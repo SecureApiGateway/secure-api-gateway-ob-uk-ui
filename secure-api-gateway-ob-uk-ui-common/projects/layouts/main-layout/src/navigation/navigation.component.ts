@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import debug from 'debug';
@@ -17,20 +17,17 @@ const log = debug('ForgerockMainLayoutNavigationComponent');
   encapsulation: ViewEncapsulation.None
 })
 export class ForgerockMainLayoutNavigationComponent implements OnInit {
+  private readonly _fuseNavigationService = inject(ForgerockMainLayoutNavigationService);
+  private readonly configService = inject(ForgerockConfigService);
+
   @Input()
   layout = 'vertical';
 
   @Input()
   navigation: IForgerockMainLayoutNavigationItem[];
 
-  private _unsubscribeAll: Subject<void>;
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
-  constructor(
-    private _fuseNavigationService: ForgerockMainLayoutNavigationService,
-    private configService: ForgerockConfigService
-  ) {
-    this._unsubscribeAll = new Subject<void>();
-  }
   ngOnInit(): void {
     this.navigation = this.filterNavigationWithRouteDenyList(
       this.navigation || this._fuseNavigationService.getCurrentNavigation()

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import debug from 'debug';
@@ -35,18 +35,17 @@ const log = debug('ForgerockAuthLogin:ForgerockAuthLoginComponent');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgerockAuthLoginComponent implements OnInit {
+  private readonly api = inject(ForgerockAuthApiService);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly route = inject(ActivatedRoute);
+  private readonly messages = inject(ForgerockMessagesService);
+  private readonly configService = inject(ForgerockConfigService);
   response: ApiReponses.AuthLoginResponse;
   error: Error;
   client: IConfigClient;
   disableRegistration: boolean;
 
-  constructor(
-    private api: ForgerockAuthApiService,
-    private cdr: ChangeDetectorRef,
-    private route: ActivatedRoute,
-    private messages: ForgerockMessagesService,
-    private configService: ForgerockConfigService
-  ) {
+  constructor() {
     this.client = this.configService.get('client');
     this.disableRegistration = this.configService.get('featureFlags.disableRegistration', false);
   }
