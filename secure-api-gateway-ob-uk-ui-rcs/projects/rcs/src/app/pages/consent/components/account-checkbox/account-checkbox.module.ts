@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { BankPipesModule } from '../../../../../../src/app/pipes/pipes.module';
@@ -13,7 +12,6 @@ import { AccountCheckboxComponent } from './account-checkbox.component';
   imports: [
     CommonModule,
     TranslateModule,
-    FlexLayoutModule,
     MatCardModule,
     MatCheckboxModule,
     FormsModule,

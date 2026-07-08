@@ -15,14 +15,14 @@ import { IForgerockMainLayoutConfig } from '../../models';
 export class NavbarComponent implements OnInit, OnDestroy {
   _variant = 'vertical-style-1';
   public layoutConfig: IForgerockMainLayoutConfig;
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(
     private _elementRef: ElementRef,
     private _renderer: Renderer2,
     private configService: ForgerockMainLayoutConfigService
   ) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   get variant(): string {

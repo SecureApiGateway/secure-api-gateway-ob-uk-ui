@@ -10,12 +10,12 @@
     <div class="divider"></div>
     <app-consent-box [items]="items"></app-consent-box>
         <div class="confirm-details example-radio-group">
-          <label fxLayout="row">
-            <div fxFlex>
+          <label class="account-row">
+            <div class="account-info">
               <div class="confirm-details Aligner">
-                <span fxFlex></span>
+                <span class="spacer"></span>
                 <div class="Aligner">
-                  <mat-checkbox fxFlex class="Aligner-item" (change)="onChange($event)">
+                  <mat-checkbox class="Aligner-item" (change)="onChange($event)">
                     {{ 'CONSENT.CUSTOMER-INFO.CONFIRM' | translate }}
                   </mat-checkbox>
                 </div>

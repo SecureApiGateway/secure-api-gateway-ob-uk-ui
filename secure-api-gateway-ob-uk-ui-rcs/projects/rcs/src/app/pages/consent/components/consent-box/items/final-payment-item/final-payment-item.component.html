@@ -1,6 +1,6 @@
 <div *ngIf="payload.finalPaymentAmount" class="final-payment-consent-box-item {{ cssClass }}">
   <span class="title">{{ payload.finalPaymentLabel | translate }}</span>
-  <div class="sub-row" fxLayout="column">
+  <div class="sub-row sub-row--column">
     <app-key-value-item
       [key]="payload.finalPaymentAmountLabel | translate"
       [value]="payload.finalPaymentAmount | AmountFormat"

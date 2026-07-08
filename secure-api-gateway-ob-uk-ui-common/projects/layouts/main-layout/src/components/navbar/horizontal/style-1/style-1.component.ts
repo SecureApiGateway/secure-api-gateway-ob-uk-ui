@@ -14,10 +14,10 @@ import { ForgerockMainLayoutNavigationService } from '../../../../navigation/nav
 export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy {
   navigation: unknown;
 
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(private _fuseNavigationService: ForgerockMainLayoutNavigationService) {
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   ngOnInit(): void {

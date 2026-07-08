@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import _get from 'lodash-es/get';
 
 import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-config';
@@ -62,7 +63,7 @@ export class ForgerockAuthOauth2AuthorizeComponent implements OnInit {
         // but not with the same `code`, `client_id` paramaters
         // so in this case we logout and redirect to /login
         try {
-          await this.api.logout().toPromise();
+          await firstValueFrom(this.api.logout());
         } catch {
           // do nothing if 401
         }
@@ -89,25 +90,23 @@ export class ForgerockAuthOauth2AuthorizeComponent implements OnInit {
     return redirection;
   }
 
-  getRedirection(): Promise<IOauth2AuthorizeRestReponse> {
-    return this.http
-      .get(
-        this.configService.get('authorizationServer') +
-          '/oauth2/rest/authorize' +
-          encodeQueryData(this.route.snapshot.queryParams),
-        {
-          withCredentials: true,
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-          })
-        }
-      )
-      .toPromise()
-      .then(
-        (response: IOauth2AuthorizeRestReponse) => response,
-        (e: HttpErrorResponse) => {
-          throw new Error(_get(<IAspspError>e.error, 'Errors[0].Message', 'An error occured'));
-        }
+  async getRedirection(): Promise<IOauth2AuthorizeRestReponse> {
+    try {
+      return await firstValueFrom(
+        this.http.get<IOauth2AuthorizeRestReponse>(
+          this.configService.get('authorizationServer') +
+            '/oauth2/rest/authorize' +
+            encodeQueryData(this.route.snapshot.queryParams),
+          {
+            withCredentials: true,
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json'
+            })
+          }
+        )
       );
+    } catch (e: unknown) {
+      throw new Error(_get(<IAspspError>(e as HttpErrorResponse).error, 'Errors[0].Message', 'An error occured'));
+    }
   }
 }

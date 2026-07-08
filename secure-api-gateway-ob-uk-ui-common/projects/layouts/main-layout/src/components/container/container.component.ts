@@ -31,10 +31,10 @@ export class LayoutContainerComponent implements OnInit, OnDestroy {
 
   public layoutConfig: IForgerockMainLayoutConfig;
 
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(private _configService: ForgerockMainLayoutConfigService) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   ngOnInit(): void {

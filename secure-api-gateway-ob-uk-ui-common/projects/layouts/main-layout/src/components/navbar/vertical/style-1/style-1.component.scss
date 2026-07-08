@@ -1,3 +1,9 @@
+.hide-gt-md {
+  @media (min-width: 960px) {
+    display: none !important;
+  }
+}
+
 @mixin forgerock-main-layout-nav-vertical1-theme($theme) {
   $sidebar-bg-color: mat.get-theme-color($theme, background, dialog);
   $appbar-bg-color: mat.get-theme-color($theme, primary, 800);

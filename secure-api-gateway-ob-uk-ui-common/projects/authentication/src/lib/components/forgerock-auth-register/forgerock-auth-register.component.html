@@ -59,7 +59,7 @@
         </mat-error> -->
       </mat-form-field>
       <mat-checkbox formControlName="consent" required>I agree to the terms and conditions</mat-checkbox>
-      <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="register-submit-row">
         <button mat-flat-button type="submit" color="accent" [disabled]="formGroup.invalid">
           {{ 'SIGNUP' | translate }}
         </button>

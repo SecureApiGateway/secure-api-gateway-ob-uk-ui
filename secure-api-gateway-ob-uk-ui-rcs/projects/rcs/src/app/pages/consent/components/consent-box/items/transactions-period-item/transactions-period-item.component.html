@@ -3,7 +3,7 @@
   class="transaction-period-consent-box-item {{ cssClass }}"
 >
   <span class="title">{{ 'CONSENT.ACCOUNT.TRANSACTION_PERIOD' | translate }}</span>
-  <div class="sub-row" fxLayout="column">
+  <div class="sub-row sub-row--column">
     <app-key-value-item
       *ngIf="payload.fromTransaction"
       [key]="'CONSENT.ACCOUNT.START' | translate"

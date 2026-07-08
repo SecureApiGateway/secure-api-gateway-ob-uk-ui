@@ -7,8 +7,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { ConfirmationCallbackComponent } from './confirmation-callback.component';
 import { ChoiceCallbackComponent } from './choice-callback.component';
 import { NameCallbackComponent } from './name-callback.component';
@@ -29,8 +27,7 @@ import { FormDialogComponent } from './form-dialog.component';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatButtonModule,
-    FlexLayoutModule
+    MatButtonModule
   ],
   declarations: [
     ChoiceCallbackComponent,

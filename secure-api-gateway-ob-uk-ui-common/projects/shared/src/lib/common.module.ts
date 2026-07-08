@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
@@ -20,7 +19,6 @@ import { ForgerockGDPRModule } from '@secureapigateway/secure-api-gateway-ob-uk-
     ForgerockSplashscreenModule,
     ForgerockGDPRModule,
     TranslateModule,
-    FlexLayoutModule,
     RouterModule
   ],
   exports: [
@@ -31,7 +29,6 @@ import { ForgerockGDPRModule } from '@secureapigateway/secure-api-gateway-ob-uk-
     ForgerockSplashscreenModule,
     ForgerockGDPRModule,
     TranslateModule,
-    FlexLayoutModule,
     RouterModule
   ],
   providers: [ForgerockCustomerCanAccessGuard]

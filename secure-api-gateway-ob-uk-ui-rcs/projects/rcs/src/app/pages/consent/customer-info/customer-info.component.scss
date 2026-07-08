@@ -1,3 +1,16 @@
+.account-row {
+  display: flex;
+  flex-direction: row;
+
+  .account-info {
+    flex: 1;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
 :host {
   mat-checkbox {
     height: 35px;

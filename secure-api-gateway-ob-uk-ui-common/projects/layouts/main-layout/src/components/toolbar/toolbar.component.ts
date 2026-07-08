@@ -31,7 +31,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   clientName: string;
   componentRef: ComponentRef<unknown>;
 
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(
     private _fuseSidebarService: ForgerockLayoutSidebarService,
@@ -39,7 +39,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     @Inject(ForgerockMainLayoutComponentsToken)
     private _components: IForgerockMainLayoutComponents
   ) {
-    this._unsubscribeAll = new Subject<unknown>();
+    this._unsubscribeAll = new Subject<void>();
     this.clientName = this.configService.get('client.name') as string;
   }
 

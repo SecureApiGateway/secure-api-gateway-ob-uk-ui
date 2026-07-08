@@ -22,11 +22,11 @@ export class FuseNavHorizontalCollapsableComponent implements OnInit, OnDestroy 
   isOpen = false;
 
   // Private
-  private _unsubscribeAll: Subject<unknown>;
+  private _unsubscribeAll: Subject<void>;
 
   constructor(private _fuseConfigService: ForgerockMainLayoutConfigService) {
     // Set the private defaults
-    this._unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject<void>();
   }
 
   /**

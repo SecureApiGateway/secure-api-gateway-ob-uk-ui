@@ -1,3 +1,18 @@
+.toolbar-inner {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hide-gt-md {
+  @media (min-width: 960px) {
+    display: none !important;
+  }
+}
+
 @mixin forgerock-main-layout-toolbar-theme($theme) {
   $appbar-bg-color: mat.get-theme-color($theme, primary, 800);
   $appbar-color: mat.get-theme-color($theme, primary, default-contrast);

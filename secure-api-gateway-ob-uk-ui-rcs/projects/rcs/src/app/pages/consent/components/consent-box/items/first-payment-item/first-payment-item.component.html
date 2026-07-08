@@ -1,6 +1,6 @@
 <div *ngIf="payload.firstPaymentAmount" class="first-payment-consent-box-item {{ cssClass }}">
   <span class="title">{{ payload.firstPaymentLabel | translate }}</span>
-  <div class="sub-row" fxLayout="column">
+  <div class="sub-row sub-row--column">
     <app-key-value-item
       [key]="payload.firstPaymentAmountLabel | translate"
       [value]="payload.firstPaymentAmount | AmountFormat"

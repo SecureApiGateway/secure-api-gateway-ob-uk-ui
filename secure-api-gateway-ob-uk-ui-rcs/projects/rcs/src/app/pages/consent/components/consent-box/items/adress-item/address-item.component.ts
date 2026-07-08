@@ -8,6 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
   standalone: false,
   selector: 'app-adress-item',
   templateUrl: './address-item.component.html',
+  styleUrls: ['./address-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddressItemComponent implements OnInit {

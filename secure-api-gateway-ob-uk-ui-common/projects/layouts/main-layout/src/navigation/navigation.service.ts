@@ -10,7 +10,7 @@ import { ForgerockConfigService } from '@secureapigateway/secure-api-gateway-ob-
 })
 export class ForgerockMainLayoutNavigationService {
   onItemCollapsed: Subject<IForgerockMainLayoutNavigationItem>;
-  onItemCollapseToggled: Subject<unknown>;
+  onItemCollapseToggled: Subject<void>;
 
   private _onNavigationChanged: BehaviorSubject<{ key: string; navigation: IForgerockMainLayoutNavigationItem[] }>;
   private _onNavigationRegistered: BehaviorSubject<[string, IForgerockMainLayoutNavigationItem[]]>;
@@ -27,8 +27,8 @@ export class ForgerockMainLayoutNavigationService {
     private _navigations: IForgerockMainLayoutNavigations,
     private configService: ForgerockConfigService
   ) {
-    this.onItemCollapsed = new Subject();
-    this.onItemCollapseToggled = new Subject();
+    this.onItemCollapsed = new Subject<IForgerockMainLayoutNavigationItem>();
+    this.onItemCollapseToggled = new Subject<void>();
 
     this._currentNavigationKey = null;
     this._onNavigationChanged = new BehaviorSubject(null);
