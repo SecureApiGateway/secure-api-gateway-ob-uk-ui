@@ -32,7 +32,7 @@
     "@angular/cli": "~21.2.18",
     "ejs": "^3.0.1",
     "favicons": "~7.3.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^11.3.6",
     "gzip-size": "^5.1.1",
     "html-minifier": "^4.0.0",
     "lodash": "^4.17.15",
