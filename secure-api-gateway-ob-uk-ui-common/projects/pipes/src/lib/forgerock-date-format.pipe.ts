@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import formatDate from 'date-fns/format';
+import { format as formatDate } from 'date-fns';
 import debug from 'debug';
 
 const log = debug('Pipe:forgerockDateFormat');

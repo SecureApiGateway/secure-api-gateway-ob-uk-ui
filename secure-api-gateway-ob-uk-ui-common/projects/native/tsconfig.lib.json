@@ -10,7 +10,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2020", "es2020.intl"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

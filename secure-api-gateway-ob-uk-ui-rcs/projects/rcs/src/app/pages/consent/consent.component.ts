@@ -8,7 +8,7 @@ import {ApiService} from '../../../../src/app/services/api.service';
 import {ApiResponses} from '../../../../src/app/types/api';
 import {ForgerockMessagesService} from '@secureapigateway/secure-api-gateway-ob-uk-ui-common/services/forgerock-messages';
 import {IConsentEventEmitter} from '../../types/consentItem';
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import {ConsentDecision} from "../../../../src/app/types/ConsentDecision";
 
 @Component({
