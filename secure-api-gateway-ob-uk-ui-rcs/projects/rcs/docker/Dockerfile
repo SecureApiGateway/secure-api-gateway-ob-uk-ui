@@ -1,5 +1,5 @@
 # Stage 1 - the build process
-FROM node:20 as build-ui
+FROM node:22 as build-ui
 
 WORKDIR /src
 COPY secure-api-gateway-ob-uk-ui-common/ /src/secure-api-gateway-ob-uk-ui-common/
