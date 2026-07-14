@@ -108,7 +108,7 @@
     "jest-preset-angular": "^17.0.0",
     "minimist": "^1.2.0",
     "ng-packagr": "~21.2.5",
-    "prettier": "^1.15.3",
+    "prettier": "^3.9.5",
     "pretty-quick": "^1.8.0",
     "scss-bundle": "^3.1.0",
     "tslib": "^2.3.0",
